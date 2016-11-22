@@ -1,0 +1,12 @@
+<%= form_for :user, url: '/users' do |f| %>
+
+  First Name: <%= f.text_field :first_name %><br />
+  Last Name: <%= f.text_field :last_name %><br />
+  Username <%= f.text_field :username %><br />
+  Email: <%= f.text_field :email %><br />
+  Date of Birth: <%= f.date_select :date_of_birth, :start_year => Date.today.year - 100, :end_year => Date.today.year %><br />
+  Password: <%= f.password_field :password %><br />
+  Password Confirmation: <%= f.password_field :password_confirmation %><br />
+  <%= f.submit "Signup" %>
+
+<% end %>
