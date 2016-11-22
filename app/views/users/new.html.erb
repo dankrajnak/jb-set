@@ -1,12 +1,23 @@
-<%= form_for :user, url: '/users' do |f| %>
-
-  First Name: <%= f.text_field :first_name %><br />
-  Last Name: <%= f.text_field :last_name %><br />
-  Username <%= f.text_field :username %><br />
-  Email: <%= f.text_field :email %><br />
-  Date of Birth: <%= f.date_select :date_of_birth, :start_year => Date.today.year - 100, :end_year => Date.today.year %><br />
-  Password: <%= f.password_field :password %><br />
-  Password Confirmation: <%= f.password_field :password_confirmation %><br />
-  <%= f.submit "Signup" %>
-
-<% end %>
+<div class="row">
+  <div class="col-md-12">
+    <h1>Signup</h1>
+    <hr />
+    <%= form_for :user, url: '/users', class: "form-group" do |f| %>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, class: "form-control form-margin-bottom" %>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, class: "form-control form-margin-bottom" %>
+      <%= f.label :username %>
+      <%= f.text_field :username, class: "form-control form-margin-bottom" %>
+      <%= f.label :email %>
+      <%= f.text_field :email, class: "form-control form-margin-bottom" %>
+      <%= f.label :date_of_birth %>
+      <%= f.date_field :date_of_birth, :start_year => Date.today.year - 100, :end_year => Date.today.year, class: "form-control form-margin-bottom" %>
+      <%= f.label :password %>
+      <%= f.password_field :password, class: "form-control form-margin-bottom" %>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, class: "form-control form-margin-bottom" %>
+      <%= f.submit "Signup", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
