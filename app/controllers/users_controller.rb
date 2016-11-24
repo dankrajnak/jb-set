@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user, :except => [:new, :create]
 
   def index
-    @users = @scope.all
+   @users = User.all
   end
 
   def show
@@ -68,4 +68,5 @@ class UsersController < ApplicationController
   def update_params
     create_params
   end
+
 end
