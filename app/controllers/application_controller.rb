@@ -6,7 +6,16 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-  def authorize
-    redirect_to login_path unless current_user
+  def authenticate_user
+    unless current_user
+      flash[:error] = "Sorry, you need to register or login to see that page!"
+      redirect_to login_path
+    end
   end
+
+  def not_found
+    flash[:error] = "Uh oh. There was an issue finding what you were looking for."
+    redirect_back :fallback_location => root_path
+  end
+
 end

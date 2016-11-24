@@ -2,22 +2,17 @@
 <html>
   <head>
     <title>CISV</title>
-    <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= csrf_meta_tags %>
   </head>
 
   <body>
+    <%= render :partial => "layouts/header" %>
     <div class="container">
-      <p>
-        <% if current_user %>
-          Signed in as <%= current_user.username %> | <%= link_to "Logout", logout_path %>
-        <% else %>
-          <%= link_to 'Login', login_path %> | <%= link_to 'Signup', signup_path %>
-        <% end %>
-      </p>
+      <%= render :partial => "layouts/flashes" %>
       <%= yield %>
     </div>
+    <%= render :partial => "layouts/footer" %>
   </body>
 </html>

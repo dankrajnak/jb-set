@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'static_pages#index'
 
   get '/login' => 'sessions#new'
@@ -6,6 +7,9 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   get '/signup' => 'users#new'
-  post '/users' => 'users#create'
-  get '/users' => 'users#index'
+  get '/about' => 'static_pages#about'
+  
+
+  resources :users, :except => [:new], :param => :username
+  
 end

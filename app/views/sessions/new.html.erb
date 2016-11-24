@@ -2,12 +2,13 @@
   <div class="col-md-12">
     <h1>Login</h1>
     <hr />
-    <%= form_tag '/login', class: "form-group" do %>
-      <%= label_tag :email %>
-      <%= text_field_tag :email, "Enter your email", class: "form-control form-margin-bottom" %>
-      <%= label_tag :password %>
-      <%= password_field_tag :password, "Enter your password", class: "form-control form-margin-bottom" %>
-      <%= submit_tag "Submit", class: "btn btn-primary" %>
+    <%= form_for :user, :url => login_path, :html => { :class => "form-horizontal" } do |f| %>
+      <%= f.label :username %>
+      <%= f.text_field :username, :class => "form-control form-margin-bottom" %>
+      <%= f.label :password %>
+      <%= f.password_field :password, :class => "form-control form-margin-bottom" %>
+      <%= f.submit "Submit", class: "btn btn-primary form-margin-bottom" %>
     <% end %>
+    <%= button_to "Sign Up", signup_path, method: :get, class: "btn btn-large" %>
   </div>
 </div>

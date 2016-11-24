@@ -1,25 +1,59 @@
 class UsersController < ApplicationController
-  before_filter :authorize, :except => [:new, :create]
+  before_action :authenticate_user, :except => [:new, :create]
 
   def index
-    @users = User.all
+    @users = @scope.all
+  end
+
+  def show
+    @user = User.find_by_username params[:username]
   end
 
   def new
+    @user = User.new
   end
 
   def create
-    user = User.new(user_params)
-    if user.save
-      session[:user_id] = user.id
+    @user = User.new create_params
+
+    if @user.save
+      flash[:success] = "Successfully signed up! Welcome, #{@user.first_name}."
+      session[:user_id] = @user.id
       redirect_to root_path
     else
-      redirect_to signup_path
+      render :new
+    end
+  end
+
+  def edit
+    @user = User.find_by_username params[:username]
+  end
+
+  def update
+    @user = User.find_by_username params[:username]
+
+    if @user.update_attributes update_params
+      flash[:success] = "User successfully updated."
+      render :show
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    user = User.find_by_username params[:username]
+
+    if user.destroy
+      flash[:success] = "User successfully destroyed."
+      redirect_to root_path
+    else
+      flash[:error] = "Unable to destroy the user."
+      redirect_back :fallback_location => users_path
     end
   end
 
   private
-  def user_params
+  def create_params
     params.require(:user).permit(
       :username,
       :first_name,
@@ -28,6 +62,10 @@ class UsersController < ApplicationController
       :date_of_birth,
       :password,
       :password_confirmation,
-      )
+    )
+  end
+
+  def update_params
+    create_params
   end
 end
