@@ -3,6 +3,7 @@
     <h1>Signup</h1>
     <hr />
     <%= form_for :user, url: '/users', class: "form-group" do |f| %>
+      <%= render :partial => "shared/form_errors", :locals => { :model => @user } %>
       <%= f.label :first_name %>
       <%= f.text_field :first_name, class: "form-control form-margin-bottom" %>
       <%= f.label :last_name %>
