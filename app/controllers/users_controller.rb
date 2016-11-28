@@ -61,6 +61,7 @@ class UsersController < ApplicationController
       :date_of_birth,
       :password,
       :password_confirmation,
+      :is_national
     )
   end
 

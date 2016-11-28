@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20160911214247) do
     t.string   "last_name",       null: false
     t.string   "email",           null: false
     t.date     "date_of_birth",   null: false
+    t.boolean  "is_national",     null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
