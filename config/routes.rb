@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   get '/about' => 'static_pages#about'
   
 
-  resources :users, :except => [:new], :param => :username
+  resources :users, :param => :username
   
 end
