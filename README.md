@@ -14,8 +14,8 @@ bundle install
 After that just "rails s" and go to localhost:3000
 
 
-#ALRIGHT MOTHERFUCKERS, HERE'S HOW IT'S GONNA GO
-This is way too last minute, and we're going to have to pull our shit together real quick.  If you want to know more about CISV, just let me know.  Here is what a Local Junior Representative or National Junior Representative will need to do with our app:
+#Project Plan
+Here is what a Local Junior Representative or National Junior Representative will need to do with our app:
 
 * Create an account as a national association or a local chapter
 * Fill out the questions which correspond to the national SET or local SET.  (We need to code this in a way that the questions will be able to easily change before this is officially published to the organization)
