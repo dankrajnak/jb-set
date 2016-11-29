@@ -3,15 +3,15 @@
     <h1><%= @user.first_name %>'s profile</h1>
     <hr/>
     <% if !@user.background_info %>
-      <%= link_to "Background Info", new_user_background_info_path(@user.username), class: "btn btn-primary" %>
+      <%= link_to "Background Info Survey", new_user_background_info_path(@user.username), class: "btn btn-primary" %>
     <% else %>
-      <%= link_to "Edit Background Info", edit_background_info_path(@user.background_info), class: "btn btn-primary" %>
+      <%= link_to "Edit Background Info Answers", edit_background_info_path(@user.background_info), class: "btn btn-primary" %>
     <% end %>
     <br><hr/>
     <% if !@user.size_and_capacity %>
-      <%= link_to "Size and Capacity", new_user_size_and_capacity_path(@user.username), class: "btn btn-primary" %>
+      <%= link_to "Size and Capacity Survey", new_user_size_and_capacity_path(@user.username), class: "btn btn-primary" %>
     <% else %>
-      <%= link_to "Edit Size and Capacity", edit_size_and_capacity_path(@user.size_and_capacity), class: "btn btn-primary" %>
+      <%= link_to "Edit Size and Capacity Answers", edit_size_and_capacity_path(@user.size_and_capacity), class: "btn btn-primary" %>
     <% end %>
     <br><hr/>
   </div>

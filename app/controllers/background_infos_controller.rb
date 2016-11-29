@@ -29,7 +29,7 @@ class BackgroundInfosController < ApplicationController
   # POST /background_infos
   # POST /background_infos.json
   def create
-    @background_info = BackgroundInfo.new(background_info_params)
+    @background_info = BackgroundInfo.new(create_params)
 
     @user = User.find_by_username params[:user_username]
     return not_found("user not found!") if @user.nil?
