@@ -11353,3 +11353,490 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 97ms (Views: 88.4ms | ActiveRecord: 4.8ms)
 
 
+Started GET "/" for 127.0.0.1 at 2016-11-28 23:47:13 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (8.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (2.1ms)
+  [1m[36mUser Load (27.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (139.0ms)
+  Rendered layouts/_flashes.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 603ms (Views: 473.6ms | ActiveRecord: 106.8ms)
+
+
+Started GET "/users/nwadih" for 127.0.0.1 at 2016-11-28 23:47:18 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"nwadih"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBackgroundInfo Load (17.9ms)[0m  [1m[34mSELECT  "background_infos".* FROM "background_infos" WHERE "background_infos"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  [1m[36mSizeAndCapacity Load (15.8ms)[0m  [1m[34mSELECT  "size_and_capacities".* FROM "size_and_capacities" WHERE "size_and_capacities"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (104.1ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 183ms (Views: 134.6ms | ActiveRecord: 40.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-28 23:47:20 -0500
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (2.0ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 77ms (Views: 75.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/about" for 127.0.0.1 at 2016-11-28 23:47:20 -0500
+Processing by StaticPagesController#about as HTML
+  Rendering static_pages/about.html.erb within layouts/application
+  Rendered static_pages/about.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (2.4ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 84ms (Views: 81.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-28 23:47:23 -0500
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (3.2ms)
+  Rendered layouts/_flashes.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 130ms (Views: 127.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/nwadih" for 127.0.0.1 at 2016-11-28 23:47:26 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"nwadih"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBackgroundInfo Load (1.4ms)[0m  [1m[34mSELECT  "background_infos".* FROM "background_infos" WHERE "background_infos"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  [1m[36mSizeAndCapacity Load (0.5ms)[0m  [1m[34mSELECT  "size_and_capacities".* FROM "size_and_capacities" WHERE "size_and_capacities"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (8.6ms)
+  Rendered layouts/_header.html.erb (1.3ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 103ms (Views: 92.4ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/users/nwadih/edit" for 127.0.0.1 at 2016-11-28 23:47:28 -0500
+Processing by UsersController#edit as HTML
+  Parameters: {"username"=>"nwadih"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering users/edit.html.erb within layouts/application
+  Rendered shared/_form_errors.html.erb (1.0ms)
+  Rendered users/edit.html.erb within layouts/application (71.4ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 138ms (Views: 129.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/nwadih" for 127.0.0.1 at 2016-11-28 23:47:30 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"nwadih"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBackgroundInfo Load (0.9ms)[0m  [1m[34mSELECT  "background_infos".* FROM "background_infos" WHERE "background_infos"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  [1m[36mSizeAndCapacity Load (1.2ms)[0m  [1m[34mSELECT  "size_and_capacities".* FROM "size_and_capacities" WHERE "size_and_capacities"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (7.9ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_flashes.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 73ms (Views: 66.5ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2016-11-28 23:47:32 -0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-28 23:47:32 -0500
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_flashes.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 94ms (Views: 92.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-28 23:47:36 -0500
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 81ms (Views: 78.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-28 23:49:20 -0500
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_flashes.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 81ms (Views: 78.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-28 23:49:33 -0500
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 84ms (Views: 82.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2016-11-28 23:49:47 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (4.2ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 86ms (Views: 84.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2016-11-28 23:49:48 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_form_errors.html.erb (2.9ms)
+  Rendered users/new.html.erb within layouts/application (13.7ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 92ms (Views: 89.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2016-11-28 23:49:51 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (4.7ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_flashes.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 87ms (Views: 85.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2016-11-28 23:49:57 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"W+pJWS0DM97Lpk4EwaAHs9rlkSuyjhA8EQSLr/dgnnXNuiSfpPH/iuky+yyEdM07ytt+76inufMstTezeLAKUA==", "user"=>{"username"=>"nwadih", "password"=>"[FILTERED]"}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "nwadih"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 109ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-28 23:49:57 -0500
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 61ms (Views: 60.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2016-11-28 23:50:02 -0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-28 23:50:02 -0500
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (1.6ms)
+  Rendered layouts/_flashes.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 90ms (Views: 88.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-28 23:50:34 -0500
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 68ms (Views: 66.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-28 23:50:36 -0500
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 69ms (Views: 67.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-28 23:51:59 -0500
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (0.5ms)
+Completed 500 Internal Server Error in 64ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Invalid CSS after "html ": expected selector or at-rule, was "{"):
+    2: <html>
+    3:   <head>
+    4:     <title>CISV</title>
+    5:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    6:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    7:     <%= csrf_meta_tags %>
+    8:   </head>
+  
+app/assets/stylesheets/application.scss:26
+app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb__3792771065136534480_70037262585760'
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.9ms)
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (7.5ms)
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (32.2ms)
+Started GET "/" for 127.0.0.1 at 2016-11-28 23:52:24 -0500
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_flashes.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 1368ms (Views: 1367.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-28 23:52:27 -0500
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 87ms (Views: 85.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/about" for 127.0.0.1 at 2016-11-28 23:52:28 -0500
+Processing by StaticPagesController#about as HTML
+  Rendering static_pages/about.html.erb within layouts/application
+  Rendered static_pages/about.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (1.3ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 81ms (Views: 78.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2016-11-28 23:52:31 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (5.1ms)
+  Rendered layouts/_header.html.erb (1.3ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 111ms (Views: 108.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2016-11-28 23:52:35 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IfV4lM/l0NVG6MET+48WJHg3PgmHre2BRKtiGTSpGb63pRVSRhccgWR8dDu+W9ysaAnRzZ2ERE55Gt4Fu3mNmw==", "user"=>{"username"=>"nwadih", "password"=>"[FILTERED]"}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "nwadih"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/login
+Completed 302 Found in 116ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2016-11-28 23:52:35 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 51ms (Views: 49.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2016-11-28 23:52:40 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qjHD8EoHZXmUJ7HEI1EXRconr8E3V+5ig8jPIneZOrxuoIzklHoOo17Gv27LHGbSj7JsFORTVionVQ/1dDfjhw==", "user"=>{"username"=>"nwadih", "password"=>"[FILTERED]"}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "nwadih"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 115ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-28 23:52:40 -0500
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (2.5ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 74ms (Views: 71.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/nwadih" for 127.0.0.1 at 2016-11-28 23:52:43 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"nwadih"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBackgroundInfo Load (0.4ms)[0m  [1m[34mSELECT  "background_infos".* FROM "background_infos" WHERE "background_infos"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  [1m[36mSizeAndCapacity Load (2.6ms)[0m  [1m[34mSELECT  "size_and_capacities".* FROM "size_and_capacities" WHERE "size_and_capacities"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (21.1ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 110ms (Views: 102.3ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/background_infos/4/edit" for 127.0.0.1 at 2016-11-28 23:52:44 -0500
+Processing by BackgroundInfosController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mBackgroundInfo Load (0.3ms)[0m  [1m[34mSELECT  "background_infos".* FROM "background_infos" WHERE "background_infos"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "background_infos".* FROM "background_infos" WHERE "background_infos"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering background_infos/edit.html.erb within layouts/application
+  Rendered shared/_form_errors.html.erb (0.6ms)
+  Rendered background_infos/edit.html.erb within layouts/application (5.0ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 68ms (Views: 59.9ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/users/nwadih/edit" for 127.0.0.1 at 2016-11-28 23:53:16 -0500
+Processing by UsersController#edit as HTML
+  Parameters: {"username"=>"nwadih"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering users/edit.html.erb within layouts/application
+  Rendered shared/_form_errors.html.erb (1.0ms)
+  Rendered users/edit.html.erb within layouts/application (14.0ms)
+  Rendered layouts/_header.html.erb (2.2ms)
+  Rendered layouts/_flashes.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 111ms (Views: 106.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/nwadih" for 127.0.0.1 at 2016-11-28 23:53:18 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"nwadih"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBackgroundInfo Load (0.5ms)[0m  [1m[34mSELECT  "background_infos".* FROM "background_infos" WHERE "background_infos"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  [1m[36mSizeAndCapacity Load (0.5ms)[0m  [1m[34mSELECT  "size_and_capacities".* FROM "size_and_capacities" WHERE "size_and_capacities"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (9.5ms)
+  Rendered layouts/_header.html.erb (1.3ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 120ms (Views: 112.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-28 23:53:20 -0500
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (2.6ms)
+  Rendered layouts/_flashes.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 85ms (Views: 82.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2016-11-28 23:53:25 -0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-28 23:53:25 -0500
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_flashes.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 90ms (Views: 87.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-28 23:54:11 -0500
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_flashes.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 100ms (Views: 98.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2016-11-28 23:54:14 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_form_errors.html.erb (0.6ms)
+  Rendered users/new.html.erb within layouts/application (8.4ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 76ms (Views: 74.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-28 23:54:38 -0500
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_flashes.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 82ms (Views: 79.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2016-11-28 23:54:45 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.3ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 88ms (Views: 86.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-28 23:54:48 -0500
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 93ms (Views: 90.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-28 23:55:21 -0500
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 80ms (Views: 78.9ms | ActiveRecord: 0.0ms)
+
+
