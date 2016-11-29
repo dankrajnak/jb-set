@@ -14,6 +14,9 @@
       <%= f.text_field :email, class: "form-control form-margin-bottom" %>
       <%= f.label :date_of_birth %> (has to be in format YYYY-MM-DD)*
       <%= f.date_field :date_of_birth, :start_year => Date.today.year - 100, :end_year => Date.today.year, class: "form-control form-margin-bottom" %>
+      <%= f.label :is_national, 'Local or National' %>
+      <%= f.select :is_national, [['Local', false], ['National', true]], {}, {class: "form-control"} %>
+      <br>
       <%= f.label :password %>*
       <%= f.password_field :password, class: "form-control form-margin-bottom" %>
       <%= f.label :password_confirmation %>* You have to confirm your password to make changes!

@@ -13,8 +13,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def not_found
-    flash[:error] = "Uh oh. There was an issue finding what you were looking for."
+  def not_found(message)
+    flash[:error] = "#{message}"
     redirect_back :fallback_location => root_path
   end
 

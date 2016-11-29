@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root 'static_pages#index'
 
   get '/login' => 'sessions#new'
@@ -11,5 +12,10 @@ Rails.application.routes.draw do
   
 
   resources :users, :param => :username
+  resources :background_infos, :except => [:new, :create]
+
+  resources :users, :only => [:show], :param => :username do
+    resources :background_infos, :only => [:new, :create]
+  end
   
 end

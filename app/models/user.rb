@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
+  has_one :background_info, :dependent => :destroy
+  
   validates :username, :presence => true
   validates :username, :uniqueness => true
   validates :username, :format => {

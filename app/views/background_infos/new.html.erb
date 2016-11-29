@@ -1,0 +1,19 @@
+<h1>New Background Info</h1>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= form_for @background_info, :url => user_background_infos_path(@user.username), class: "form-group" do |f| %>
+         <%= render :partial => "shared/form_errors", :locals => { :model => @background_info } %>
+        <%= f.label :jb_region %>
+        <%= f.text_field :jb_region, class: "form-control form-margin-bottom" %>
+
+        <%= f.label :national_jb %>
+        <%= f.text_field :national_jb, class: "form-control form-margin-bottom" %>
+
+        <%= f.label :local_jb %>
+        <%= f.text_field :local_jb, class: "form-control form-margin-bottom" %>
+
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

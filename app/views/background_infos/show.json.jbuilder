@@ -1,0 +1,1 @@
+json.partial! "background_infos/background_info", background_info: @background_info
