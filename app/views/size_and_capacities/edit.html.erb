@@ -1,0 +1,26 @@
+<h1>Editing Size And Capacity</h1>
+<hr/>
+<div class="row">
+  <div class="col-md-12">
+    <%= form_for @size_and_capacity, class: "form-group" do |f| %>
+        <%= render :partial => "shared/form_errors", :locals => { :model => @size_and_capacity } %>
+        
+        <%= f.label :num_events %>
+        <%= f.number_field :num_events, class: "form-control form-margin-bottom" %>
+
+         <%= f.label :num_related_area %>
+        <%= f.number_field :num_related_area, class: "form-control form-margin-bottom" %>
+
+        <%= f.label :age_group %>
+        <%= f.text_field :age_group, class: "form-control form-margin-bottom" %>
+
+        <%= f.label :involved %>
+        <%= f.number_field :involved, class: "form-control form-margin-bottom" %>
+ 
+        <%= f.label :gender_info %>
+        <%= f.text_field :gender_info, class: "form-control form-margin-bottom" %>
+
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

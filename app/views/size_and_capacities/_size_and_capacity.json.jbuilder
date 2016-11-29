@@ -1,0 +1,2 @@
+json.extract! size_and_capacity, :id, :user_id, :num_events, :num_related_area, :age_group, :involved, :gender_info, :created_at, :updated_at
+json.url size_and_capacity_url(size_and_capacity, format: :json)

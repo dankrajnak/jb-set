@@ -1,0 +1,1 @@
+json.array! @size_and_capacities, partial: 'size_and_capacities/size_and_capacity', as: :size_and_capacity
