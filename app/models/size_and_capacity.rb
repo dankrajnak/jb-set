@@ -7,5 +7,3 @@ class SizeAndCapacity < ApplicationRecord
     validates :gender_info, :presence => true
     validates :user_id, :presence => true
 end
-
-

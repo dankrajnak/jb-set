@@ -2,32 +2,24 @@ class SizeAndCapacitiesController < ApplicationController
   before_action :set_size_and_capacity, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user
 
-  # GET /size_and_capacities
-  # GET /size_and_capacities.json
   def index
     @size_and_capacities = SizeAndCapacity.all
   end
 
-  # GET /size_and_capacities/1
-  # GET /size_and_capacities/1.json
   def show
   end
 
-  # GET /size_and_capacities/new
   def new
     @size_and_capacity = SizeAndCapacity.new
     @user = User.find_by_username params[:user_username]
     return not_found("user not found!") if @user.nil?
   end
 
-  # GET /size_and_capacities/1/edit
   def edit
     @size_and_capacity = SizeAndCapacity.find params[:id]
     @user = current_user
   end
 
-  # POST /size_and_capacities
-  # POST /size_and_capacities.json
   def create
     @size_and_capacity = SizeAndCapacity.new(size_and_capacity_params)
     @user = User.find_by_username params[:user_username]
@@ -43,8 +35,6 @@ class SizeAndCapacitiesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /size_and_capacities/1
-  # PATCH/PUT /size_and_capacities/1.json
   def update
     @size_and_capacity = SizeAndCapacity.find params[:id]
 
@@ -56,8 +46,6 @@ class SizeAndCapacitiesController < ApplicationController
     end
   end
 
-  # DELETE /size_and_capacities/1
-  # DELETE /size_and_capacities/1.json
   def destroy
     @size_and_capacity.destroy
     respond_to do |format|

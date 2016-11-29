@@ -2,32 +2,24 @@ class BackgroundInfosController < ApplicationController
   before_action :set_background_info, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user
 
-  # GET /background_infos
-  # GET /background_infos.json
   def index
     @background_infos = BackgroundInfo.all
   end
 
-  # GET /background_infos/1
-  # GET /background_infos/1.json
   def show
   end
 
-  # GET /background_infos/new
   def new
     @background_info = BackgroundInfo.new
     @user = User.find_by_username params[:user_username]
     return not_found("user not found!") if @user.nil?
   end
 
-  # GET /background_infos/1/edit
   def edit
     @background_info = BackgroundInfo.find params[:id]
     @user = current_user
   end
 
-  # POST /background_infos
-  # POST /background_infos.json
   def create
     @background_info = BackgroundInfo.new(create_params)
 
@@ -44,8 +36,6 @@ class BackgroundInfosController < ApplicationController
     end
   end
 
-  # PATCH/PUT /background_infos/1
-  # PATCH/PUT /background_infos/1.json
   def update
     @background_info = BackgroundInfo.find params[:id]
 
@@ -57,8 +47,6 @@ class BackgroundInfosController < ApplicationController
     end
   end
 
-  # DELETE /background_infos/1
-  # DELETE /background_infos/1.json
   def destroy
     background_info = BackgroundInfo.find params[:id]
 
@@ -72,7 +60,6 @@ class BackgroundInfosController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
   def set_background_info
     @background_info = BackgroundInfo.find(params[:id])
   end
