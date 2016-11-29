@@ -4,6 +4,10 @@
     <hr />
     <p>A Web App for CISV users and tracking information</p>
     <br>
-    <%= button_to "Sign Up", signup_path, method: :get, class: "btn btn-primary form-margin-bottom" %>
+    <% if current_user.nil? %>
+      <%= button_to "Sign Up", signup_path, method: :get, class: "btn btn-primary form-margin-bottom" %>
+    <% else %>
+      <%= button_to "My profile", user_path(current_user.username), method: :get, class: "btn btn-primary form-margin-bottom" %>
+    <% end %>
   </div>
 </div>
