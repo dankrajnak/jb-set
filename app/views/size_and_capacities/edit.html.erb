@@ -8,18 +8,18 @@
         <%= f.label :num_events %>
         <%= f.number_field :num_events, class: "form-control form-margin-bottom" %>
 
-         <%= f.label :num_related_area %>
+        <%= f.label :num_related_area %>
         <%= f.number_field :num_related_area, class: "form-control form-margin-bottom" %>
 
         <%= f.label :age_group %>
-        <%= f.text_field :age_group, class: "form-control form-margin-bottom" %>
+        <%= f.select :age_group, [['11-14', '11-14'], ['15-18', '15-18'], ['19-23', '19-23'], ['23-25', '23-25'], ['It is very balanced', 'Balanced']], {}, {class: "form-control"}%>
 
         <%= f.label :involved %>
         <%= f.number_field :involved, class: "form-control form-margin-bottom" %>
  
         <%= f.label :gender_info %>
-        <%= f.text_field :gender_info, class: "form-control form-margin-bottom" %>
-
+        <%= f.select :gender_info, [['male', 'male'], ['female', 'female'], ['Balanced ratio of genders', 'balanced']], {}, {class: "form-control"} %>
+        <br>
         <%= f.submit "Submit", class: "btn btn-primary" %>
     <% end %>
   </div>
