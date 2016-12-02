@@ -14884,3 +14884,573 @@ Processing by LocalSurveysController#new as HTML
 Completed 200 OK in 168ms (Views: 93.2ms | ActiveRecord: 1.6ms)
 
 
+Started GET "/" for 127.0.0.1 at 2016-12-02 18:18:59 -0500
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered static_pages/index.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 94ms (Views: 91.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/nwadih" for 127.0.0.1 at 2016-12-02 18:18:59 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"nwadih"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBackgroundInfo Load (0.1ms)[0m  [1m[34mSELECT  "background_infos".* FROM "background_infos" WHERE "background_infos"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mSizeAndCapacity Load (0.1ms)[0m  [1m[34mSELECT  "size_and_capacities".* FROM "size_and_capacities" WHERE "size_and_capacities"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mLocalSurvey Load (0.1ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (3.9ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_flashes.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 61ms (Views: 58.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/about" for 127.0.0.1 at 2016-12-02 18:19:00 -0500
+Processing by StaticPagesController#about as HTML
+  Rendering static_pages/about.html.erb within layouts/application
+  Rendered static_pages/about.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_flashes.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 83ms (Views: 80.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-12-02 18:19:00 -0500
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered static_pages/index.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 84ms (Views: 82.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/nwadih" for 127.0.0.1 at 2016-12-02 18:19:04 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"nwadih"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBackgroundInfo Load (0.1ms)[0m  [1m[34mSELECT  "background_infos".* FROM "background_infos" WHERE "background_infos"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mSizeAndCapacity Load (0.2ms)[0m  [1m[34mSELECT  "size_and_capacities".* FROM "size_and_capacities" WHERE "size_and_capacities"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mLocalSurvey Load (0.2ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (8.9ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_flashes.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 107ms (Views: 102.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/nwadih/local_surveys/new" for 127.0.0.1 at 2016-12-02 18:19:05 -0500
+Processing by LocalSurveysController#new as HTML
+  Parameters: {"user_username"=>"nwadih"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering local_surveys/new.html.erb within layouts/application
+  Rendered local_surveys/_form.html.erb (44.8ms)
+  Rendered local_surveys/new.html.erb within layouts/application (47.2ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 117ms (Views: 111.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/nwadih/local_surveys/new" for 127.0.0.1 at 2016-12-02 18:20:03 -0500
+Processing by LocalSurveysController#new as HTML
+  Parameters: {"user_username"=>"nwadih"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering local_surveys/new.html.erb within layouts/application
+  Rendered local_surveys/_form.html.erb (19.5ms)
+  Rendered local_surveys/new.html.erb within layouts/application (20.9ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 74ms (Views: 71.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-12-02 18:25:19 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered static_pages/index.html.erb within layouts/application (20.5ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 275ms (Views: 267.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/nwadih" for 127.0.0.1 at 2016-12-02 18:25:20 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"nwadih"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBackgroundInfo Load (0.1ms)[0m  [1m[34mSELECT  "background_infos".* FROM "background_infos" WHERE "background_infos"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mSizeAndCapacity Load (0.2ms)[0m  [1m[34mSELECT  "size_and_capacities".* FROM "size_and_capacities" WHERE "size_and_capacities"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mLocalSurvey Load (0.2ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (31.4ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_flashes.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 84ms (Views: 76.8ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/about" for 127.0.0.1 at 2016-12-02 18:25:21 -0500
+Processing by StaticPagesController#about as HTML
+  Rendering static_pages/about.html.erb within layouts/application
+  Rendered static_pages/about.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 116ms (Views: 113.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/nwadih" for 127.0.0.1 at 2016-12-02 18:25:22 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"nwadih"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBackgroundInfo Load (0.1ms)[0m  [1m[34mSELECT  "background_infos".* FROM "background_infos" WHERE "background_infos"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mSizeAndCapacity Load (0.2ms)[0m  [1m[34mSELECT  "size_and_capacities".* FROM "size_and_capacities" WHERE "size_and_capacities"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mLocalSurvey Load (0.1ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (10.2ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 92ms (Views: 88.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/nwadih/local_surveys/new" for 127.0.0.1 at 2016-12-02 18:25:23 -0500
+Processing by LocalSurveysController#new as HTML
+  Parameters: {"user_username"=>"nwadih"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering local_surveys/new.html.erb within layouts/application
+  Rendered local_surveys/new.html.erb within layouts/application (161.3ms)
+Completed 500 Internal Server Error in 245ms (ActiveRecord: 1.3ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `local_survey' for #<#<Class:0x00000003bba190>:0x00000003b72d68>
+Did you mean?  @local_survey):
+    1: <h1>New Local Survey</h1>
+    2: 
+    3: <%= form_for(local_survey) do |f| %>
+    4: <%= render :partial => "shared/form_errors", :locals => { :model => @local_survey } %>
+    5:   <div class="field">
+    6:     <%= f.label "Please select your JB Region" %>
+  
+app/views/local_surveys/new.html.erb:3:in `_app_views_local_surveys_new_html_erb___2204450579017374090_31365240'
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.5ms)
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (17.9ms)
+Started GET "/users/nwadih/local_surveys/new" for 127.0.0.1 at 2016-12-02 18:25:54 -0500
+Processing by LocalSurveysController#new as HTML
+  Parameters: {"user_username"=>"nwadih"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering local_surveys/new.html.erb within layouts/application
+  Rendered shared/_form_errors.html.erb (0.5ms)
+  Rendered local_surveys/new.html.erb within layouts/application (40.0ms)
+  Rendered layouts/_header.html.erb (1.6ms)
+  Rendered layouts/_flashes.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 127ms (Views: 123.3ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/local_surveys" for 127.0.0.1 at 2016-12-02 18:26:01 -0500
+  
+ActionController::RoutingError (No route matches [POST] "/local_surveys"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered collection of /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [47 times] (18.6ms)
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.9ms)
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (57.9ms)
+Started POST "/local_surveys" for 127.0.0.1 at 2016-12-02 18:26:33 -0500
+  
+ActionController::RoutingError (No route matches [POST] "/local_surveys"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered collection of /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [47 times] (14.5ms)
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.3ms)
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (50.7ms)
+Started GET "/users/nwadih/local_surveys/new" for 127.0.0.1 at 2016-12-02 18:27:12 -0500
+Processing by LocalSurveysController#new as HTML
+  Parameters: {"user_username"=>"nwadih"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering local_surveys/new.html.erb within layouts/application
+  Rendered local_surveys/_form.html.erb (23.1ms)
+  Rendered local_surveys/new.html.erb within layouts/application (24.8ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_flashes.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 84ms (Views: 81.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/local_surveys" for 127.0.0.1 at 2016-12-02 18:27:20 -0500
+  
+ActionController::RoutingError (No route matches [POST] "/local_surveys"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered collection of /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [47 times] (12.6ms)
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.7ms)
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (55.7ms)
+Started GET "/users/nwadih/local_surveys/new" for 127.0.0.1 at 2016-12-02 18:28:19 -0500
+Processing by LocalSurveysController#new as HTML
+  Parameters: {"user_username"=>"nwadih"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering local_surveys/new.html.erb within layouts/application
+  Rendered local_surveys/_form.html.erb (25.4ms)
+  Rendered local_surveys/new.html.erb within layouts/application (26.8ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 95ms (Views: 91.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/nwadih/local_surveys/new" for 127.0.0.1 at 2016-12-02 18:28:47 -0500
+Processing by LocalSurveysController#new as HTML
+  Parameters: {"user_username"=>"nwadih"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering local_surveys/new.html.erb within layouts/application
+  Rendered local_surveys/_form.html.erb (37.5ms)
+  Rendered local_surveys/new.html.erb within layouts/application (39.9ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 127ms (Views: 121.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/local_surveys" for 127.0.0.1 at 2016-12-02 18:28:49 -0500
+  
+ActionController::RoutingError (No route matches [POST] "/local_surveys"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered collection of /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [47 times] (26.2ms)
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.4ms)
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (66.2ms)
+Started GET "/" for 127.0.0.1 at 2016-12-02 18:31:50 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered static_pages/index.html.erb within layouts/application (20.6ms)
+  Rendered layouts/_header.html.erb (1.3ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 339ms (Views: 331.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/nwadih" for 127.0.0.1 at 2016-12-02 18:32:12 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"nwadih"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBackgroundInfo Load (0.4ms)[0m  [1m[34mSELECT  "background_infos".* FROM "background_infos" WHERE "background_infos"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mSizeAndCapacity Load (0.2ms)[0m  [1m[34mSELECT  "size_and_capacities".* FROM "size_and_capacities" WHERE "size_and_capacities"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mLocalSurvey Load (0.3ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (45.0ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 132ms (Views: 123.6ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/users/nwadih/local_surveys/new" for 127.0.0.1 at 2016-12-02 18:32:13 -0500
+Processing by LocalSurveysController#new as HTML
+  Parameters: {"user_username"=>"nwadih"}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering local_surveys/new.html.erb within layouts/application
+  Rendered local_surveys/new.html.erb within layouts/application (3.5ms)
+Completed 500 Internal Server Error in 77ms (ActiveRecord: 3.9ms)
+
+
+  
+SyntaxError (/home/wadihn/webapps/Mixed_Nuts_Final/app/views/local_surveys/new.html.erb:3: syntax error, unexpected keyword_do_block
+..., class: "form-group" do |f| do |f| @output_buffer.safe_appe...
+...                               ^):
+  
+app/views/local_surveys/new.html.erb:3: syntax error, unexpected keyword_do_block
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.6ms)
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (21.7ms)
+Started GET "/users/nwadih/local_surveys/new" for 127.0.0.1 at 2016-12-02 18:32:42 -0500
+Processing by LocalSurveysController#new as HTML
+  Parameters: {"user_username"=>"nwadih"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering local_surveys/new.html.erb within layouts/application
+  Rendered local_surveys/new.html.erb within layouts/application (112.5ms)
+Completed 500 Internal Server Error in 119ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `user_local_survey_path' for #<#<Class:0x007ff42c290a18>:0x00000003ef4bd0>
+Did you mean?  user_local_surveys_path
+               user_local_surveys_url):
+    1: <h1>New Local Survey</h1>
+    2: 
+    3: <%= form_for @local_survey, :url => user_local_survey_path(@user.username), class: "form-group" do |f| %>
+    4: 
+    5:   <div class="field">
+    6:     <%= f.label "Please select your JB Region" %>
+  
+app/views/local_surveys/new.html.erb:3:in `_app_views_local_surveys_new_html_erb___3220058272222002178_33013520'
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.7ms)
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/wadihn/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (21.5ms)
+Started GET "/users/nwadih/local_surveys/new" for 127.0.0.1 at 2016-12-02 18:33:01 -0500
+Processing by LocalSurveysController#new as HTML
+  Parameters: {"user_username"=>"nwadih"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering local_surveys/new.html.erb within layouts/application
+  Rendered local_surveys/new.html.erb within layouts/application (51.0ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_flashes.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 139ms (Views: 134.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/nwadih/local_surveys" for 127.0.0.1 at 2016-12-02 18:33:04 -0500
+Processing by LocalSurveysController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yIGFAZd6dP+KXSVUZDnUHVS5gBx/yHrqb9jb8PY7CgcMEMoVSQcfJUC8K/6MdKWKESxDyazMwqLLRRsn9ZXTPA==", "local_survey"=>{"jb_region"=>"", "national_jb"=>"", "local_jb"=>"", "nun_local_events"=>"", "num_related"=>"", "age_group"=>"", "num_jbers"=>"", "gender_ratio"=>"", "represented"=>"0", "good_relationship"=>"0", "awareness_of_meetings"=>"0", "num_local_attenders"=>"", "num_regional_attenders"=>"", "num_international_attenders"=>"", "participates"=>"0", "knowGoals"=>"0", "GQ1"=>"0", "GQ2"=>"0", "GQ3"=>"0", "GQ4"=>"0", "GQ5"=>"0", "GQ6"=>"0", "GQ7"=>"0", "GQ8"=>"0", "GQ9"=>"0", "G2Q1"=>"0", "G2Q2"=>"0", "G2Q3"=>"0", "G2Q4"=>"0", "G2Q5"=>"0", "G2Q6"=>"0", "G3Q1"=>"0", "G3Q2"=>"0", "G3Q3"=>"0", "G3Q4"=>"0", "G3Q5"=>"0", "G4Q1"=>"0", "G4Q2"=>"0", "G4Q3"=>"0", "G4Q4"=>"0", "G4Q5"=>"", "G4Q6"=>""}, "commit"=>"Submit", "user_username"=>"nwadih"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "local_surveys" ("user_id", "jb_region", "national_jb", "local_jb", "gender_ratio", "represented", "good_relationship", "awareness_of_meetings", "participates", "knowGoals", "GQ1", "GQ2", "GQ3", "GQ4", "GQ5", "GQ6", "GQ7", "GQ8", "GQ9", "G2Q1", "G2Q2", "G2Q3", "G2Q4", "G2Q5", "G2Q6", "G3Q1", "G3Q2", "G3Q3", "G3Q4", "G3Q5", "G4Q1", "G4Q2", "G4Q3", "G4Q4", "G4Q5", "G4Q6", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_id", 1], ["jb_region", ""], ["national_jb", ""], ["local_jb", ""], ["gender_ratio", ""], ["represented", false], ["good_relationship", false], ["awareness_of_meetings", false], ["participates", false], ["knowGoals", false], ["GQ1", false], ["GQ2", false], ["GQ3", false], ["GQ4", false], ["GQ5", false], ["GQ6", false], ["GQ7", false], ["GQ8", false], ["GQ9", false], ["G2Q1", false], ["G2Q2", false], ["G2Q3", false], ["G2Q4", false], ["G2Q5", false], ["G2Q6", false], ["G3Q1", false], ["G3Q2", false], ["G3Q3", false], ["G3Q4", false], ["G3Q5", false], ["G4Q1", false], ["G4Q2", false], ["G4Q3", false], ["G4Q4", false], ["G4Q5", ""], ["G4Q6", ""], ["created_at", 2016-12-02 23:33:04 UTC], ["updated_at", 2016-12-02 23:33:04 UTC]]
+  [1m[35m (97.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/nwadih
+Completed 302 Found in 194ms (ActiveRecord: 99.2ms)
+
+
+Started GET "/users/nwadih" for 127.0.0.1 at 2016-12-02 18:33:04 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"nwadih"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBackgroundInfo Load (0.1ms)[0m  [1m[34mSELECT  "background_infos".* FROM "background_infos" WHERE "background_infos"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mSizeAndCapacity Load (0.1ms)[0m  [1m[34mSELECT  "size_and_capacities".* FROM "size_and_capacities" WHERE "size_and_capacities"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mLocalSurvey Load (0.1ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (5.0ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 58ms (Views: 55.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/local_surveys/1/edit" for 127.0.0.1 at 2016-12-02 18:33:09 -0500
+Processing by LocalSurveysController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLocalSurvey Load (0.6ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering local_surveys/edit.html.erb within layouts/application
+  Rendered local_surveys/_form.html.erb (40.5ms)
+  Rendered local_surveys/edit.html.erb within layouts/application (42.6ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 129ms (Views: 120.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/nwadih" for 127.0.0.1 at 2016-12-02 18:33:15 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"nwadih"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBackgroundInfo Load (0.2ms)[0m  [1m[34mSELECT  "background_infos".* FROM "background_infos" WHERE "background_infos"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mSizeAndCapacity Load (4.9ms)[0m  [1m[34mSELECT  "size_and_capacities".* FROM "size_and_capacities" WHERE "size_and_capacities"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mLocalSurvey Load (0.3ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (17.0ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 120ms (Views: 111.2ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/local_surveys/1/edit" for 127.0.0.1 at 2016-12-02 18:33:17 -0500
+Processing by LocalSurveysController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLocalSurvey Load (0.3ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering local_surveys/edit.html.erb within layouts/application
+  Rendered local_surveys/_form.html.erb (35.4ms)
+  Rendered local_surveys/edit.html.erb within layouts/application (37.4ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 108ms (Views: 97.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/nwadih" for 127.0.0.1 at 2016-12-02 18:33:23 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"nwadih"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nwadih"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBackgroundInfo Load (0.2ms)[0m  [1m[34mSELECT  "background_infos".* FROM "background_infos" WHERE "background_infos"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mSizeAndCapacity Load (0.1ms)[0m  [1m[34mSELECT  "size_and_capacities".* FROM "size_and_capacities" WHERE "size_and_capacities"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mLocalSurvey Load (0.2ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (7.8ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 112ms (Views: 107.6ms | ActiveRecord: 0.8ms)
+
+
