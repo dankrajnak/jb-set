@@ -1,23 +1,23 @@
 <% provide(:title, "Edit Profile") %>
 <div class="row">
   <div class="col-md-12">
-    <h1>Signup</h1>
+    <h1>Edit my profile</h1>
     <hr />
     <%= form_for :user, url: '/users', class: "form-group" do |f| %>
-      <h4>Feel free to edit your profile here</h4>
-      <%= f.label "First name" %>
+      <%= f.label "Edit first name" %>
       <%= f.text_field :first_name, class: "form-control form-margin-bottom" %>
-      <%= f.label "Last name" %>
+      <%= f.label "Edit last name" %>
       <%= f.text_field :last_name, class: "form-control form-margin-bottom" %>
-      <%= f.label "Your email" %>
+      <%= f.label "Edit your email" %>
       <%= f.text_field :email, class: "form-control form-margin-bottom" %>
-      <%= f.label "Your date of birth" %>
+      <%= f.label "Edit your date of birth" %>
       <%= f.date_field :date_of_birth, :start_year => Date.today.year - 100, :end_year => Date.today.year, class: "form-control form-margin-bottom" %>
       <%= f.label :is_national, "Are you a LJR or a NJR?" %>
       <%= f.select :is_national, [['Local', false], ['National', true]], {}, {class: "form-control"} %>
 
       <br />
-      <%= f.submit "Done!", class: "btn btn-primary" %>
+      <%= f.submit "Save", class: "btn btn-primary" %>
+      <%= link_to "Cancel", user_path(current_user.username), class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
