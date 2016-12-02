@@ -2,18 +2,19 @@
 <hr/>
 <div class="row">
   <div class="col-md-12">
+    <p>Please provide some background information.</p>
     <%= form_for @background_info, :url => user_background_infos_path(@user.username), class: "form-group" do |f| %>
-         <%= render :partial => "shared/form_errors", :locals => { :model => @background_info } %>
-        <%= f.label :jb_region %>
-        <%= f.text_field :jb_region, class: "form-control form-margin-bottom" %>
+      <%= render :partial => "shared/form_errors", :locals => { :model => @background_info } %>
+      <%= f.label "Please enter your JB region:" %>
+      <%= f.text_field :jb_region, class: "form-control form-margin-bottom" %>
 
-        <%= f.label :national_jb %>
-        <%= f.text_field :national_jb, class: "form-control form-margin-bottom" %>
+      <%= f.label "Please select your national JB:" %>
+      <%= f.text_field :national_jb, class: "form-control form-margin-bottom" %>
 
-        <%= f.label :local_jb %>
-        <%= f.text_field :local_jb, class: "form-control form-margin-bottom" %>
+      <%= f.label "Please select your local JB:" %>
+      <%= f.text_field :local_jb, class: "form-control form-margin-bottom" %>
 
-        <%= f.submit "Submit", class: "btn btn-primary" %>
+      <%= f.submit "Submit", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>

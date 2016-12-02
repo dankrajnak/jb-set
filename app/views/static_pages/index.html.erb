@@ -6,6 +6,7 @@
     <br>
     <% if current_user.nil? %>
       <%= button_to "Sign Up", signup_path, method: :get, class: "btn btn-primary form-margin-bottom" %>
+      <%= button_to "Login", login_path, method: :get, class: "btn btn-primary form-margin-bottom" %>
     <% else %>
       <%= button_to "My profile", user_path(current_user.username), method: :get, class: "btn btn-primary form-margin-bottom" %>
     <% end %>

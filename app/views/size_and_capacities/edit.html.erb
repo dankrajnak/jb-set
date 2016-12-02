@@ -1,23 +1,23 @@
-<h1>Editing Size And Capacity</h1>
+<h1>Edit Size And Capacity</h1>
 <hr/>
 <div class="row">
   <div class="col-md-12">
-    <%= form_for @size_and_capacity, class: "form-group" do |f| %>
-        <%= render :partial => "shared/form_errors", :locals => { :model => @size_and_capacity } %>
-        
-        <%= f.label :num_events %>
+    <p>You can edit your answers here.</p>
+    <%= form_for @size_and_capacity, class: "form-group" do |f| %>      <%= render :partial => "shared/form_errors", :locals => { :model => @size_and_capacity } %>       <%= render :partial => "shared/form_errors", :locals => { :model => @size_and_capacity } %>
+
+        <%= f.label "How many local JB events did you have in 2015?" %>
         <%= f.number_field :num_events, class: "form-control form-margin-bottom" %>
 
-        <%= f.label :num_related_area %>
+        <%= f.label "How many of them have had activities related to the content area of the year?" %>
         <%= f.number_field :num_related_area, class: "form-control form-margin-bottom" %>
 
-        <%= f.label :age_group %>
+        <%= f.label "Which age group is most highly represented in your JB?" %>
         <%= f.select :age_group, [['11-14', '11-14'], ['15-18', '15-18'], ['19-23', '19-23'], ['23-25', '23-25'], ['It is very balanced', 'Balanced']], {}, {class: "form-control"}%>
 
-        <%= f.label :involved %>
+        <%= f.label "How many JBers are involved in your JB activities?" %>
         <%= f.number_field :involved, class: "form-control form-margin-bottom" %>
- 
-        <%= f.label :gender_info %>
+
+        <%= f.label "Would you say your local JB is composed more of males or females?" %>
         <%= f.select :gender_info, [['male', 'male'], ['female', 'female'], ['Balanced ratio of genders', 'balanced']], {}, {class: "form-control"} %>
         <br>
         <%= f.submit "Submit", class: "btn btn-primary" %>

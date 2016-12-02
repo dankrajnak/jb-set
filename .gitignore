@@ -1,10 +1,10 @@
 *.rbc
 capybara-*.html
 .rspec
-/log
+/log/*
 /log/development.log
 log/development.log
-/tmp
+/tmp/*
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /public/system
