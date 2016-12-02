@@ -15454,3 +15454,39 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 112ms (Views: 107.6ms | ActiveRecord: 0.8ms)
 
 
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateLocalSurveys (20161202221319)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "local_surveys" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "jb_region" varchar, "national_jb" varchar, "local_jb" varchar, "nun_local_events" integer, "num_related" integer, "age_group" integer, "num_jbers" integer, "gender_ratio" varchar, "represented" boolean, "good_relationship" boolean, "awareness_of_meetings" boolean, "num_local_attenders" integer, "num_regional_attenders" integer, "num_international_attenders" integer, "participates" boolean, "knowGoals" boolean, "GQ1" boolean, "GQ2" boolean, "GQ3" boolean, "GQ4" boolean, "GQ5" boolean, "GQ6" boolean, "GQ7" boolean, "GQ8" boolean, "GQ9" boolean, "G2Q1" boolean, "G2Q2" boolean, "G2Q3" boolean, "G2Q4" boolean, "G2Q5" boolean, "G2Q6" boolean, "G3Q1" boolean, "G3Q2" boolean, "G3Q3" boolean, "G3Q4" boolean, "G3Q5" boolean, "G4Q1" boolean, "G4Q2" boolean, "G4Q3" boolean, "G4Q4" boolean, "G4Q5" varchar, "G4Q6" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_local_surveys_on_user_id" ON "local_surveys" ("user_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20161202221319"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_background_infos_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_background_infos_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_local_surveys_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_local_surveys_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_size_and_capacities_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_size_and_capacities_on_user_id' AND type='index'
+[0m
