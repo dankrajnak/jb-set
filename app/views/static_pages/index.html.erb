@@ -2,13 +2,12 @@
   <div class="col-md-12">
     <h1>CISV</h1>
     <hr />
-    <p>A Web App for CISV users and tracking information</p>
-    <br>
-    <% if current_user.nil? %>
-      <%= button_to "Sign Up", signup_path, method: :get, class: "btn btn-primary form-margin-bottom" %>
-      <%= button_to "Login", login_path, method: :get, class: "btn btn-primary form-margin-bottom" %>
-    <% else %>
-      <%= button_to "My profile", user_path(current_user.username), method: :get, class: "btn btn-primary form-margin-bottom" %>
-    <% end %>
+    <p>Welcome to the CISV web app. Take some surveys and stuff. Look below for things.</p>
+    <div>
+      Here's where the first graph is gonna go
+    </div>
+    <div>
+      Here's where the second graph, or first table, will go
+    </div>
   </div>
 </div>
