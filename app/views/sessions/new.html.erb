@@ -1,3 +1,4 @@
+<% provide(:title, "Login") %>
 <div class="row">
   <div class="col-md-12">
     <h1>Login</h1>
@@ -9,6 +10,5 @@
       <%= f.password_field :password, :class => "form-control form-margin-bottom" %>
       <%= f.submit "Submit", class: "btn btn-primary form-margin-bottom" %>
     <% end %>
-    <%= button_to "Sign Up", signup_path, method: :get, class: "btn btn-large" %>
   </div>
 </div>
