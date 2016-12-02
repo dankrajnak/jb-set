@@ -3,8 +3,7 @@
 <div class="row">
   <div class="col-md-12">
     <p>You can edit your answers here.</p>
-    <%= form_for @size_and_capacity, :url => user_size_and_capacities_path(@user.username), class: "form-group" do |f| %>
-        <%= render :partial => "shared/form_errors", :locals => { :model => @size_and_capacity } %>
+    <%= form_for @size_and_capacity, class: "form-group" do |f| %>      <%= render :partial => "shared/form_errors", :locals => { :model => @size_and_capacity } %>       <%= render :partial => "shared/form_errors", :locals => { :model => @size_and_capacity } %>
 
         <%= f.label "How many local JB events did you have in 2015?" %>
         <%= f.number_field :num_events, class: "form-control form-margin-bottom" %>

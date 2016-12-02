@@ -4,7 +4,7 @@
   <div class="col-md-12">
     <p>You can edit your answers here.</p>
     <%= form_for @background_info, class: "form-group" do |f| %>      <%= render :partial => "shared/form_errors", :locals => { :model => @background_info } %>
-      <%= f.label "Please your JB region:" %>
+      <%= f.label "Please enter your JB region:" %>
       <%= f.text_field :jb_region, class: "form-control form-margin-bottom" %>
 
       <%= f.label "Please select your national JB:" %>
