@@ -31,7 +31,7 @@
     <h3>Surveys! </h3>
     <hr/>
     <% if !@user.local_survey %>
-      <%= link_to "Local Survey", new_user_local_survey_path(@user.username), class: "btn btn-primary" %>
+      <%= link_to "Take Local Survey", new_user_local_survey_path(@user.username), class: "btn btn-primary" %>
     <% else %>
       <%= link_to "Edit Local Survey", edit_local_survey_path(@user.local_survey), class: "btn btn-primary" %>
     <% end %>
