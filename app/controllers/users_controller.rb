@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @user = User.new create_params
 
     if @user.save
-      flash[:success] = "Successfully signed up!"
+      flash[:success] = "Successfully signed up! Please log in to get started."
       redirect_to login_path
     else
       render :new
@@ -30,11 +30,14 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by_username params[:username]
+    @user.password = User.find_by_username params[:password]
+    @user.password_confirmation = User.find_by_username params[:password_confirmation]
+
     if @user.update_attributes update_params
       flash[:success] = "User successfully updated."
       redirect_to user_path(params[:username])
     else
-      render :edit
+      render :update
     end
   end
 

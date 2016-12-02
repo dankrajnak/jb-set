@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :username, :uniqueness => true
   validates :username, :format => {
     :with => /\A[a-zA-Z0-9_-]+\z/,
-    :message => "only allows letters, numbers, -, and _"
+    :message => "Username can only have letters, numbers, -, and _"
   }
   validates :username, :exclusion => {
     :in => %w(new edit),
@@ -16,6 +16,10 @@ class User < ApplicationRecord
   }
   validates :email, :presence => true
   validates :email, :uniqueness => true
+  validates :email, :format => {
+    :with => /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/,
+    :message => "Please enter a vaild email address."
+  }
   validates :first_name, :presence => true
   validates :last_name, :presence => true
   validates :date_of_birth, :presence => true
