@@ -17,9 +17,8 @@ class UsersController < ApplicationController
     @user = User.new create_params
 
     if @user.save
-      flash[:success] = "Successfully signed up! Welcome, #{@user.first_name}."
-      session[:user_id] = @user.id
-      redirect_to root_path
+      flash[:success] = "Successfully signed up!"
+      redirect_to login_path
     else
       render :new
     end
