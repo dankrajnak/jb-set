@@ -1,32 +1,23 @@
+<% provide(:title, "Edit Profile") %>
 <div class="row">
   <div class="col-md-12">
-    <h1>Edit Profile</h1>
+    <h1>Edit my profile</h1>
     <hr />
-    <%= form_for @user, :url => user_path(@user.username) do |f| %>
-      <%= render :partial => "shared/form_errors", :locals => { :model => @user } %>
-      <%= f.label :first_name %>*
+    <%= form_for :user, url: '/users', class: "form-group" do |f| %>
+      <%= f.label "Edit first name" %>
       <%= f.text_field :first_name, class: "form-control form-margin-bottom" %>
-      <%= f.label :last_name %>*
+      <%= f.label "Edit last name" %>
       <%= f.text_field :last_name, class: "form-control form-margin-bottom" %>
-      <%= f.label :username %>*
-      <%= f.text_field :username, class: "form-control form-margin-bottom" %>
-      <%= f.label :email %>*
+      <%= f.label "Edit your email" %>
       <%= f.text_field :email, class: "form-control form-margin-bottom" %>
-      <%= f.label :date_of_birth %> (has to be in format YYYY-MM-DD)*
+      <%= f.label "Edit your date of birth" %>
       <%= f.date_field :date_of_birth, :start_year => Date.today.year - 100, :end_year => Date.today.year, class: "form-control form-margin-bottom" %>
-      <%= f.label :is_national, 'Local or National' %>
+      <%= f.label :is_national, "Are you a LJR or a NJR?" %>
       <%= f.select :is_national, [['Local', false], ['National', true]], {}, {class: "form-control"} %>
-      <br>
-      <%= f.label :password %>*
-      <%= f.password_field :password, class: "form-control form-margin-bottom" %>
-      <%= f.label :password_confirmation %>* You have to confirm your password to make changes!
-      <%= f.password_field :password_confirmation, class: "form-control form-margin-bottom" %>
-      <%= f.submit "Save Changes", class: "btn btn-primary" %>
+
+      <br />
+      <%= f.submit "Save", class: "btn btn-primary" %>
+      <%= link_to "Cancel", user_path(current_user.username), class: "btn btn-primary" %>
     <% end %>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <p>* denotes a required field.</p>
   </div>
 </div>

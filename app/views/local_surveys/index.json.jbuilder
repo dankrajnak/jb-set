@@ -1,0 +1,1 @@
+json.array! @local_surveys, partial: 'local_surveys/local_survey', as: :local_survey

@@ -1,18 +1,41 @@
+<% provide(:title, "Profile") %>
 <div class="row">
   <div class="col-md-12">
-    <h1><%= @user.first_name %>'s profile</h1>
+    <h1><%= @user.first_name %>'s Profile <%= link_to (image_tag("/assets/pencil.jpg", width: "15px", height: "15px", :alt => "Edit profile")), edit_user_path(current_user.username) %></h1>
     <hr/>
-    <% if !@user.background_info %>
-      <%= link_to "Background Info Survey", new_user_background_info_path(@user.username), class: "btn btn-primary" %>
+
+    <!-- needs to be better formatted -->
+    <table id="profile-info-table">
+      <tr>
+        <td>First Name:&nbsp;</td>
+        <td><%= current_user.first_name %></td>
+      </tr>
+      <tr>
+        <td>Last Name:&nbsp;</td>
+        <td><%= current_user.last_name %></td>
+      </tr>
+      <tr>
+        <td>Username:&nbsp;</td>
+        <td><%= current_user.username %></td>
+      </tr>
+      <tr>
+        <td>Email:&nbsp;</td>
+        <td><%= current_user.email %></td>
+      </tr>
+      <tr>
+        <td>Password:&nbsp;</td>
+        <td>******</td>
+      </tr>
+    </table>
+
+    <h3>Surveys! </h3>
+    <hr/>
+    <% if !@user.local_survey %>
+      <%= link_to "Take Local Survey", new_user_local_survey_path(@user.username), class: "btn btn-primary" %>
     <% else %>
-      <%= link_to "Edit Background Info Answers", edit_background_info_path(@user.background_info), class: "btn btn-primary" %>
+      <%= link_to "Edit Local Survey", edit_local_survey_path(@user.local_survey), class: "btn btn-primary" %>
     <% end %>
     <br><hr/>
-    <% if !@user.size_and_capacity %>
-      <%= link_to "Size and Capacity Survey", new_user_size_and_capacity_path(@user.username), class: "btn btn-primary" %>
-    <% else %>
-      <%= link_to "Edit Size and Capacity Answers", edit_size_and_capacity_path(@user.size_and_capacity), class: "btn btn-primary" %>
-    <% end %>
-    <br><hr/>
+
   </div>
 </div>

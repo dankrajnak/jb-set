@@ -1,0 +1,2 @@
+module LocalSurveysHelper
+end

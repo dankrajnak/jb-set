@@ -1,13 +1,20 @@
+<% provide(:title, "Home") %>
 <div class="row">
   <div class="col-md-12">
     <h1>CISV</h1>
     <hr />
-    <p>Welcome to the CISV web app. Take some surveys and stuff. Look below for things.</p>
-    <div>
-      Here's where the first graph is gonna go
+    <p>Welcome to the CISV web app. Please
+    <% if current_user.nil? %>
+      <%= link_to "log in", login_path %> or <%= link_to "sign up", signup_path %>
+    <% else %>
+      <%= link_to "log in", user_path(current_user.username) %> or <%= link_to "sign up", user_path(current_user.username) %>
+    <% end %>
+    to take our surveys! Or, check out the data below, which we've gathered from previously completed surveys!</p>
+    <div class="jumbotron">
+      <p>Here's where the first graph is gonna go</p>
     </div>
-    <div>
-      Here's where the second graph, or first table, will go
+    <div class="jumbotron">
+      <p>Here's where the second graph, or first table, will go</p>
     </div>
   </div>
 </div>
