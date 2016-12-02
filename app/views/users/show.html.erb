@@ -14,5 +14,11 @@
       <%= link_to "Edit Size and Capacity Answers", edit_size_and_capacity_path(@user.size_and_capacity), class: "btn btn-primary" %>
     <% end %>
     <br><hr/>
+    <% if !@user.local_survey %>
+      <%= link_to "Local Survey", new_user_local_survey_path(@user.username), class: "btn btn-primary" %>
+    <% else %>
+      <%= link_to "Edit Local Survey", edit_local_survey_path(@user.local_survey), class: "btn btn-primary" %>
+    <% end %>
+    <br><hr/>
   </div>
 </div>

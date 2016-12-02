@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20161202221319) do
   end
 
   create_table "local_surveys", force: :cascade do |t|
+    t.integer  "user_id"
     t.string   "jb_region"
     t.string   "national_jb"
     t.string   "local_jb"
@@ -67,44 +68,7 @@ ActiveRecord::Schema.define(version: 20161202221319) do
     t.string   "G4Q6"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-  end
-
-  create_table "rapidfire_answers", force: :cascade do |t|
-    t.integer  "attempt_id"
-    t.integer  "question_id"
-    t.text     "answer_text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["attempt_id"], name: "index_rapidfire_answers_on_attempt_id"
-    t.index ["question_id"], name: "index_rapidfire_answers_on_question_id"
-  end
-
-  create_table "rapidfire_attempts", force: :cascade do |t|
-    t.integer  "survey_id"
-    t.string   "user_type"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["survey_id"], name: "index_rapidfire_attempts_on_survey_id"
-    t.index ["user_id", "user_type"], name: "index_rapidfire_attempts_on_user_id_and_user_type"
-  end
-
-  create_table "rapidfire_questions", force: :cascade do |t|
-    t.integer  "survey_id"
-    t.string   "type"
-    t.string   "question_text"
-    t.integer  "position"
-    t.text     "answer_options"
-    t.text     "validation_rules"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["survey_id"], name: "index_rapidfire_questions_on_survey_id"
-  end
-
-  create_table "rapidfire_surveys", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.index ["user_id"], name: "index_local_surveys_on_user_id"
   end
 
   create_table "size_and_capacities", force: :cascade do |t|

@@ -1,68 +1,55 @@
 class LocalSurveysController < ApplicationController
   before_action :set_local_survey, only: [:show, :edit, :update, :destroy]
-
-  # GET /local_surveys
-  # GET /local_surveys.json
+  before_action :authenticate_user
+  
   def index
     @local_surveys = LocalSurvey.all
   end
 
-  # GET /local_surveys/1
-  # GET /local_surveys/1.json
   def show
   end
 
-  # GET /local_surveys/new
   def new
     @local_survey = LocalSurvey.new
+    @user = User.find_by_username params[:user_username]
+    return not_found("user not found!") if @user.nil?
   end
 
-  # GET /local_surveys/1/edit
   def edit
+    @local_survey = LocalSurvey.find params[:id]
+    @user = current_user
   end
 
-  # POST /local_surveys
-  # POST /local_surveys.json
   def create
     @local_survey = LocalSurvey.new(local_survey_params)
+    @user = User.find_by_username params[:user_username]
+    return not_found("user not found!") if @user.nil?
 
-    respond_to do |format|
-      if @local_survey.save
-        format.html { redirect_to @local_survey, notice: 'Local survey was successfully created.' }
-        format.json { render :show, status: :created, location: @local_survey }
-      else
-        format.html { render :new }
-        format.json { render json: @local_survey.errors, status: :unprocessable_entity }
-      end
+    @local_survey.user = @user
+
+    if @local_survey.save
+      flash[:success] = "Survey Taken!."
+      redirect_to user_path(@user.username)
+    else
+      render :new
     end
   end
 
-  # PATCH/PUT /local_surveys/1
-  # PATCH/PUT /local_surveys/1.json
   def update
-    respond_to do |format|
-      if @local_survey.update(local_survey_params)
-        format.html { redirect_to @local_survey, notice: 'Local survey was successfully updated.' }
-        format.json { render :show, status: :ok, location: @local_survey }
-      else
-        format.html { render :edit }
-        format.json { render json: @local_survey.errors, status: :unprocessable_entity }
-      end
+    @local_survey = LocalSurvey.new(local_survey_params)
+
+    if @local_survey.update_attributes local_survey_params
+      flash[:success] = "Updated!"
+      redirect_to user_path(current_user.username)
+    else
+      render :edit
     end
   end
 
-  # DELETE /local_surveys/1
-  # DELETE /local_surveys/1.json
   def destroy
-    @local_survey.destroy
-    respond_to do |format|
-      format.html { redirect_to local_surveys_url, notice: 'Local survey was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_local_survey
       @local_survey = LocalSurvey.find(params[:id])
     end
