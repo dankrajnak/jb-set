@@ -3,13 +3,13 @@
   <div class="col-md-12">
     <h1>CISV</h1>
     <hr />
-    <p>Welcome to the CISV web app. Please
+    <p>Welcome to the CISV web app.
     <% if current_user.nil? %>
-      <%= link_to "log in", login_path %> or <%= link_to "sign up", signup_path %>
+     Please <%= link_to "log in", login_path %> or <%= link_to "sign up", signup_path %>
     <% else %>
-      <%= link_to "log in", user_path(current_user.username) %> or <%= link_to "sign up", user_path(current_user.username) %>
+     Please visit <%= link_to "your profile", user_path(current_user.username) %>
     <% end %>
-    to take our surveys! Or, check out the data below, which we've gathered from previously completed surveys!</p>
+     to take our surveys! Or, check out the data below, which we've gathered from previously completed surveys!</p>
     <div class="jumbotron">
       <p>Here's where the first graph is gonna go</p>
     </div>
