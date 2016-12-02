@@ -4,6 +4,35 @@
     <h1><%= @user.first_name %>'s Profile <%= link_to (image_tag("/assets/pencil.jpg", width: "15px", height: "15px", :alt => "Edit profile")), edit_user_path(current_user.username) %></h1>
     <hr/>
 
+    <table>
+      <tr>
+        <td>First Name:&nbsp;</td>
+        <td><%= current_user.first_name %></td>
+      </tr>
+      <tr>
+        <td>Last Name:&nbsp;</td>
+        <td><%= current_user.last_name %></td>
+      </tr>
+      <tr>
+        <td>Username:&nbsp;</td>
+        <td><%= current_user.username %></td>
+      </tr>
+      <tr>
+        <td>Email:&nbsp;</td>
+        <td><%= current_user.email %></td>
+      </tr>
+      <tr>
+        <td>Password:&nbsp;</td>
+        <td>******</td>
+      </tr>
+    </table>
+<!--
+    <p>First Name:<span class="text-muted"><%= current_user.first_name %></span></p>
+    <p>Last Name:<span class="text-muted"><%= current_user.last_name %></span></p>
+    <p>Password:<span class="text-muted">******</span></p>
+    <p>Email:<span class="text-muted"><%= current_user.email %></span></p>
+    <span class="text-muted"><%= current_user.last_name %></span></p>
+ -->
 
   </div>
 </div>
