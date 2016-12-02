@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :local_surveys
   resources :size_and_capacities
   root 'static_pages#index'
 

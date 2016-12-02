@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_secure_password
   has_one :background_info, :dependent => :destroy
   has_one :size_and_capacity, :dependent => :destroy
+  has_one :local_survey, :dependent => :destroy
 
   validates :username, :presence => true
   validates :username, :uniqueness => true
