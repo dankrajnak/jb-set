@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20161129024634) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "background_infos", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "jb_region"
@@ -22,7 +19,7 @@ ActiveRecord::Schema.define(version: 20161129024634) do
     t.string   "local_jb"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["user_id"], name: "index_background_infos_on_user_id", using: :btree
+    t.index ["user_id"], name: "index_background_infos_on_user_id"
   end
 
   create_table "size_and_capacities", force: :cascade do |t|
@@ -34,7 +31,7 @@ ActiveRecord::Schema.define(version: 20161129024634) do
     t.string   "gender_info"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.index ["user_id"], name: "index_size_and_capacities_on_user_id", using: :btree
+    t.index ["user_id"], name: "index_size_and_capacities_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -49,6 +46,4 @@ ActiveRecord::Schema.define(version: 20161129024634) do
     t.datetime "updated_at",      null: false
   end
 
-  add_foreign_key "background_infos", "users"
-  add_foreign_key "size_and_capacities", "users"
 end
