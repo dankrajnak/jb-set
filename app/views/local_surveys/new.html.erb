@@ -45,7 +45,7 @@
 
   <div class="field">
     <%= f.label "Do you know who you're represented by on a Local/National/International level?" %>
-    <%= f.check_box :represented, class: "form-control form-margin-bottom"  %>
+    <%= f.select :represented, [['select', ' '], ['true', true], ['false', false]], {}, {class: "form-control"} %>
   </div>
 
   <div class="field">
