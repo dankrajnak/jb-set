@@ -75,3 +75,12 @@ code {
   display: inline;
   @extend .has-error;
 }
+
+/*No Padding or Margins*/
+  .no-padding{
+      padding: 0;
+  }
+  
+  .no-margins{
+      margins: 0;
+  }
