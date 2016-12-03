@@ -1,1 +1,0 @@
-json.array! @background_infos, partial: 'background_infos/background_info', as: :background_info

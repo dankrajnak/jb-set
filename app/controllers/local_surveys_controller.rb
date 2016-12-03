@@ -1,7 +1,6 @@
 class LocalSurveysController < ApplicationController
   before_action :set_local_survey, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user
-  
   def index
     @local_surveys = LocalSurvey.all
   end
