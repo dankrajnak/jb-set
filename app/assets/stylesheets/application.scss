@@ -84,3 +84,11 @@ code {
   .no-margins{
       margins: 0;
   }
+
+
+  #front-map{
+    position: absolute;
+    top: 0px;
+    left:0px;
+    z-index: -1;
+  }
