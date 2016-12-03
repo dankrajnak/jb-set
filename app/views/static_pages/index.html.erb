@@ -1,20 +1,108 @@
 <% provide(:title, "Home") %>
-<div class="row">
-  <div class="col-md-12">
-    <h1>CISV</h1>
-    <hr />
-    <p>Welcome to the CISV web app.
-    <% if current_user.nil? %>
-     Please <%= link_to "log in", login_path %> or <%= link_to "sign up", signup_path %>
-    <% else %>
-     Please visit <%= link_to "your profile", user_path(current_user.username) %>
-    <% end %>
-     to take our surveys! Or, check out the data below, which we've gathered from previously completed surveys!</p>
-    <div class="jumbotron">
-      <p>Here's where the first graph is gonna go</p>
+
+  <header>
+      <canvas id= "front-map"></canvas>
+      <h1>JB SET</h1>
+      <hr />
+      <p>Welcome to the 2017 JB Standard Evaluational Tool.
+      <% if current_user.nil? %>
+       Please <%= link_to "log in", login_path %> or <%= link_to "sign up", signup_path %>
+      <% else %>
+       Please visit <%= link_to "your profile", user_path(current_user.username) %>
+      <% end %>
+       to take our surveys! Check the map to see which countries have filled out the National SET so far, or check out the data below, which we've gathered from previously completed surveys!</p>
+  </header>
+
+
+  <div class = "row col-md-12">
+      <div class="jumbotron">
+      <p>Here's where the first graph will go </p>
     </div>
     <div class="jumbotron">
       <p>Here's where the second graph, or first table, will go</p>
     </div>
   </div>
-</div>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="//d3js.org/queue.v1.min.js"></script>
+<script src="https://d3js.org/topojson.v2.min.js"></script>
+<script>
+
+
+
+var width = window.innerWidth,
+    height = window.innerHeight,
+    offset = 30;
+
+var velocity = .01,
+  t0 = Date.now();
+
+d3.select("#front-map").attr("width", window.innerWidth)
+  .attr("height", window.innerHeight);
+
+d3.select("header").attr("style", "height: "+ (window.innerHeight)+"px;");
+
+var projection = d3.geoEquirectangular()
+    .scale(height/Math.PI)
+    .translate([width/2, height/2+offset]);
+
+var context = d3.select("#front-map").node().getContext("2d");
+
+
+var path = d3.geoPath()
+    .projection(projection)
+    .context(context);
+
+queue()
+  .defer(d3.json, "<%= image_url("world-110m.json") %>")
+  .defer(d3.tsv, "<%= image_url("world-country-names.tsv") %>")
+  .await(ready);
+
+function ready(error, world, names) {
+  if (error) throw error;
+
+  var land = topojson.feature(world, world.objects.land),
+    countries = topojson.feature(world, world.objects.countries).features;
+    borders = topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; }),
+   n = countries.length;
+
+  countries = countries.filter(function(d) {
+    return names.some(function(n) {
+      if (d.id == n.id) return d.name = n.name;
+    });
+  })
+
+  var countriesPresent = Array();
+  countries.forEach(function(country, index){
+    if(index%2==0 && country.name != "Antarctica")
+    countriesPresent.push(country);
+  });
+  
+
+  d3.timer(function(){
+    var t = Date.now()-t0;
+    projection.rotate([width/2+velocity*t]);
+    context.fillStyle = "#DDD";
+    context.clearRect(0, 0, width ,height);
+    context.beginPath();
+    countriesPresent.forEach(function(country){
+      path(country);
+    });
+    context.fill();
+    context.strokeStyle = "#FFF";
+    context.lineWidth = .5;
+    context.beginPath();
+    path(borders);
+    context.stroke();
+
+  });
+
+
+}
+
+</script>
+
+
+
+
+
