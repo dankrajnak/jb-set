@@ -15490,3 +15490,351 @@ Migrating to CreateLocalSurveys (20161202221319)
             FROM sqlite_temp_master
             WHERE name='index_size_and_capacities_on_user_id' AND type='index'
 [0m
+Started GET "/" for ::1 at 2016-12-02 19:00:04 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered static_pages/index.html.erb within layouts/application (39.2ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 580ms (Views: 560.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/password" for ::1 at 2016-12-02 19:00:07 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"password"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "password"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mLocalSurvey Load (0.6ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (44.7ms)
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_flashes.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (1.3ms)
+Completed 200 OK in 168ms (Views: 160.2ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/users/password" for ::1 at 2016-12-02 19:04:37 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"password"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "password"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mLocalSurvey Load (0.3ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (4.2ms)
+  Rendered layouts/_header.html.erb (1.3ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 101ms (Views: 97.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/password" for ::1 at 2016-12-02 19:04:40 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"password"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "password"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mLocalSurvey Load (0.1ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (2.6ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 67ms (Views: 63.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/password" for ::1 at 2016-12-02 19:04:49 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"password"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "password"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mLocalSurvey Load (0.1ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_flashes.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 95ms (Views: 89.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/password" for ::1 at 2016-12-02 19:05:10 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"password"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "password"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mLocalSurvey Load (0.8ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (4.7ms)
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 94ms (Views: 88.6ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/users/password" for ::1 at 2016-12-02 19:05:23 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"password"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "password"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mLocalSurvey Load (0.3ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 68ms (Views: 64.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/password" for ::1 at 2016-12-02 19:06:39 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"password"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "password"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mLocalSurvey Load (0.3ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_header.html.erb (1.7ms)
+  Rendered layouts/_flashes.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 110ms (Views: 104.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/password" for ::1 at 2016-12-02 19:06:41 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"password"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "password"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mLocalSurvey Load (0.2ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (2.3ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 72ms (Views: 67.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/password" for ::1 at 2016-12-02 19:07:10 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"password"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "password"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mLocalSurvey Load (0.9ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (5.2ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_flashes.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 110ms (Views: 103.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/password" for ::1 at 2016-12-02 19:07:30 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"password"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "password"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mLocalSurvey Load (0.5ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (4.2ms)
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_flashes.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 148ms (Views: 142.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/password" for ::1 at 2016-12-02 19:07:57 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"password"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "password"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mLocalSurvey Load (0.1ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (2.3ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_flashes.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 95ms (Views: 91.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/password" for ::1 at 2016-12-02 19:08:02 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"password"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "password"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mLocalSurvey Load (0.7ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (4.6ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 84ms (Views: 80.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/password" for ::1 at 2016-12-02 19:08:11 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"password"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "password"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mLocalSurvey Load (0.2ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (2.6ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_flashes.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 90ms (Views: 86.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/password" for ::1 at 2016-12-02 19:08:20 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"password"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "password"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mLocalSurvey Load (0.2ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (2.6ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 93ms (Views: 87.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/password" for ::1 at 2016-12-02 19:12:19 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"password"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "password"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mLocalSurvey Load (0.2ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (3.2ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 1898ms (Views: 1894.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/password" for ::1 at 2016-12-02 19:12:27 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"password"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "password"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mLocalSurvey Load (0.1ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (3.4ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_flashes.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 92ms (Views: 88.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/password" for ::1 at 2016-12-02 19:12:38 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"password"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "password"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mLocalSurvey Load (0.2ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (2.8ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 85ms (Views: 81.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/password" for ::1 at 2016-12-02 19:12:56 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"password"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "password"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mLocalSurvey Load (0.2ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 82ms (Views: 78.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/password" for ::1 at 2016-12-02 19:13:46 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"password"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "password"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mLocalSurvey Load (0.2ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 89ms (Views: 85.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/password" for ::1 at 2016-12-02 19:13:56 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"password"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "password"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mLocalSurvey Load (0.2ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 109ms (Views: 105.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/password" for ::1 at 2016-12-02 19:14:03 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"password"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "password"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mLocalSurvey Load (0.2ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+  Rendered layouts/_flashes.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 73ms (Views: 70.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/password" for ::1 at 2016-12-02 19:14:09 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"password"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "password"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mLocalSurvey Load (0.2ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (2.3ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 77ms (Views: 74.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/password" for ::1 at 2016-12-02 19:14:17 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"password"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "password"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mLocalSurvey Load (0.2ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_flashes.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 93ms (Views: 84.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/password" for ::1 at 2016-12-02 19:14:23 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"username"=>"password"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "password"], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mLocalSurvey Load (0.2ms)[0m  [1m[34mSELECT  "local_surveys".* FROM "local_surveys" WHERE "local_surveys"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 87ms (Views: 82.6ms | ActiveRecord: 0.5ms)
+
+
