@@ -7,9 +7,67 @@
 
 @import "creative";
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+
+/* Custom page CSS */
+body > .container {
+  padding: 70px 15px 60px;
+}
+
+.container .text-muted {
+  margin: 20px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+.row-bottom {
+  position: relative;
+}
+
+.bottom-align {
+  position: absolute;
+  bottom:0;
+  right:0;
+}
+
+.footer-text {
+  padding: 0px;
+}
+
+.field_with_errors {
+  display: inline;
+  @extend .has-error;
+}
+
+/*No Padding or Margins*/
+  .no-padding{
+      padding: 0;
+  }
+  
+  .no-margins{
+      margins: 0;
+  }
+
+
   #front-map{
     position: absolute;
     top: 0px;
     left:0px;
     z-index: -1;
   }
+

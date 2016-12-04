@@ -3,28 +3,22 @@
   <header>
         <div class="header-content">
             <div class="header-content-inner">
-                <h1 id="homeHeading">Your Favorite Source of Free Bootstrap Themes</h1>
+                <h1 id="homeHeading">Welcome to the JB SET</h1>
                 <hr>
-                <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
-                <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+                <p>
+                  <% if current_user.nil? %>
+                  Please <%= link_to "log in", login_path %> or <%= link_to "sign up", signup_path %>
+                  <% else %>
+                  Please visit <%= link_to "your profile", user_path(current_user.username) %>
+                  <% end %>
+                  to take the SET! 
+                  </p>
+                <a href="#about" class="btn btn-primary btn-xl page-scroll">Who's Filled it Out?</a>
             </div>
         </div>
     </header>
 
-  <!--<header>
-      <canvas id= "front-map"></canvas>
-      <h1>JB SET</h1>
-      <hr />
-      <p>Welcome to the 2017 JB Standard Evaluational Tool.
-      <% if current_user.nil? %>
-       Please <%= link_to "log in", login_path %> or <%= link_to "sign up", signup_path %>
-      <% else %>
-       Please visit <%= link_to "your profile", user_path(current_user.username) %>
-      <% end %>
-       to take our surveys! Check the map to see which countries have filled out the National SET so far, or check out the data below, which we've gathered from previously completed surveys!</p>
-  </header>-->
-
-
+<div class = "container">
   <div class = "row col-md-12">
       <div class="jumbotron">
       <p>Here's where the first graph will go </p>
@@ -33,8 +27,75 @@
       <p>Here's where the second graph, or first table, will go</p>
     </div>
   </div>
+</div>
 
+<script>
+(function($) {
+    "use strict"; // Start of use strict
 
+    // jQuery for page scrolling feature - requires jQuery Easing plugin
+    $('a.page-scroll').bind('click', function(event) {
+        var $anchor = $(this);
+        $('html, body').stop().animate({
+            scrollTop: ($($anchor.attr('href')).offset().top - 50)
+        }, 1250, 'easeInOutExpo');
+        event.preventDefault();
+    });
+
+    // Highlight the top nav as scrolling occurs
+    $('body').scrollspy({
+        target: '.navbar-fixed-top',
+        offset: 51
+    });
+
+    // Closes the Responsive Menu on Menu Item Click
+    $('.navbar-collapse ul li a').click(function() {
+        $('.navbar-toggle:visible').click();
+    });
+
+    // Offset for Main Navigation
+    $('#mainNav').affix({
+        offset: {
+            top: 100
+        }
+    })
+
+    // Initialize and Configure Scroll Reveal Animation
+    window.sr = ScrollReveal();
+    sr.reveal('.sr-icons', {
+        duration: 600,
+        scale: 0.3,
+        distance: '0px'
+    }, 200);
+    sr.reveal('.sr-button', {
+        duration: 1000,
+        delay: 200
+    });
+    sr.reveal('.sr-contact', {
+        duration: 600,
+        scale: 0.3,
+        distance: '0px'
+    }, 300);
+
+    //Initialize and Configure Magnific Popup Lightbox Plugin
+    $('.popup-gallery').magnificPopup({
+        delegate: 'a',
+        type: 'image',
+        tLoading: 'Loading image #%curr%...',
+        mainClass: 'mfp-img-mobile',
+        gallery: {
+            enabled: true,
+            navigateByImgClick: true,
+            preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
+        },
+        image: {
+            tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
+        }
+    });
+
+})(jQuery); // End of use strict
+
+</script>
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://d3js.org/queue.v1.min.js"></script>

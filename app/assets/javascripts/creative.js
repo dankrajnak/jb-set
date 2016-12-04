@@ -1,4 +1,4 @@
-!function($) {
+(function($) {
     "use strict"; // Start of use strict
 
     // jQuery for page scrolling feature - requires jQuery Easing plugin
@@ -45,7 +45,7 @@
         distance: '0px'
     }, 300);
 
-    // Initialize and Configure Magnific Popup Lightbox Plugin
+    //Initialize and Configure Magnific Popup Lightbox Plugin
     $('.popup-gallery').magnificPopup({
         delegate: 'a',
         type: 'image',
@@ -61,4 +61,4 @@
         }
     });
 
-}(jQuery); // End of use strict
+})(jQuery); // End of use strict
