@@ -14,4 +14,9 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require scrollreveal
+//= require jquery.magnific-popup.js
+//= jquery.easing.min.js
 //= require_tree .
+
+
