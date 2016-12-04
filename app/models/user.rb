@@ -24,7 +24,6 @@ class User < ApplicationRecord
   validates :first_name, :presence => true
   validates :last_name, :presence => true
   validates :date_of_birth, :presence => true
-  validates :password, presence: true
-  validates :password, confirmation: true
-  validates :password_confirmation, presence: true
+  validates :password, :presence => true, :on => :new
+  validates :password_confirmation, :presence => true, :on => :new
 end

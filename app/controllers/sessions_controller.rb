@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
       redirect_to user_path(current_user.username)
     else
       flash[:error] = "Please enter a valid username and password."
+      redirect_to login_path
     end
   end
 

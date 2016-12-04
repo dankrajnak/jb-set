@@ -30,14 +30,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by_username params[:username]
-    @user.password = User.find_by_username params[:password]
-    @user.password_confirmation = User.find_by_username params[:password_confirmation]
 
     if @user.update_attributes update_params
       flash[:success] = "User successfully updated."
-      redirect_to user_path(params[:username])
+      redirect_to user_path(@user.username)
     else
-      render :update
+      render :edit
     end
   end
 
@@ -68,7 +66,13 @@ class UsersController < ApplicationController
   end
 
   def update_params
-    create_params
+    params.require(:user).permit(
+      :first_name,
+      :last_name,
+      :email,
+      :date_of_birth,
+      :is_national
+    )
   end
 
 end

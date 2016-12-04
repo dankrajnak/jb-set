@@ -10,14 +10,10 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
 
   resources :users, :param => :username
-  resources :background_infos, :except => [:new, :create]
-  resources :size_and_capacities, :except => [:new, :create] 
   resources :local_surveys, :except => [:new, :create]
   resources :national_surveys, :except => [:new, :create]
 
   resources :users, :only => [:show], :param => :username do
-    resources :background_infos, :only => [:new, :create]
-    resources :size_and_capacities,:only => [:new, :create]
     resources :local_surveys, :only => [:new, :create]
     resources :national_surveys, :only=> [:new, :create]  
   end
