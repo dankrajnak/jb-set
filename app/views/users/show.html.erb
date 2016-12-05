@@ -7,8 +7,9 @@
     <div class="no-padding container">
       <div class="no-padding col-md-6">
         <h3>Your information <%= link_to (image_tag("/assets/pencil.jpg", width: "15px", height: "15px", :alt => "Edit profile")), edit_user_path(@user.username) %></h3>
-        <table>
-          <tr>
+        <div class="table-responsive">
+        <table id="profile-info-table" class="table">
+          <tr class="info">
             <td>First Name:&nbsp;</td>
             <td><%= current_user.first_name %></td>
           </tr>
@@ -16,7 +17,7 @@
             <td>Last Name:&nbsp;</td>
             <td><%= current_user.last_name %></td>
           </tr>
-          <tr>
+          <tr class="info">
             <td>Username:&nbsp;</td>
             <td><%= current_user.username %></td>
           </tr>
@@ -25,6 +26,7 @@
             <td><%= current_user.email %></td>
           </tr>
         </table>
+        </div>
       </div>
       <div class="col-md-6">
         <h3>Surveys taken</h3>
