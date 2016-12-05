@@ -54,7 +54,7 @@
     <% if !@user.national_survey %>
       <%= link_to "Take National Survey", new_user_national_survey_path(@user.username), class: "btn btn-primary" %>
     <% else %>
-      <%= link_to "Edit National Survey", edit_local_national_path(@user.local_survey), class: "btn btn-primary" %>
+      <%= link_to "Edit National Survey", edit_national_survey_path(@user.national_survey), class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
