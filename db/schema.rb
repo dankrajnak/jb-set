@@ -12,16 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20161204221622) do
 
-  create_table "background_infos", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "jb_region"
-    t.string   "national_jb"
-    t.string   "local_jb"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["user_id"], name: "index_background_infos_on_user_id"
-  end
-
   create_table "local_surveys", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "jb_region"
@@ -117,18 +107,6 @@ ActiveRecord::Schema.define(version: 20161204221622) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.index ["user_id"], name: "index_national_surveys_on_user_id"
-  end
-
-  create_table "size_and_capacities", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "num_events"
-    t.integer  "num_related_area"
-    t.string   "age_group"
-    t.integer  "involved"
-    t.string   "gender_info"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.index ["user_id"], name: "index_size_and_capacities_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

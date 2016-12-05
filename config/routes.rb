@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :users, :param => :username
   resources :local_surveys, :except => [:new, :create]
   resources :national_surveys, :except => [:new, :create]
+
   resources :users, :only => [:show], :param => :username do
     resources :local_surveys, :only => [:new, :create]
     resources :national_surveys, :only=> [:new, :create]

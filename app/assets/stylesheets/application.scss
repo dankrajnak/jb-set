@@ -14,12 +14,9 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
 @import "sessions";
 @import "static_pages";
 @import "users";
-@import "background_infos";
-@import "size_and_capacities";
 
 /* Sticky footer */
 html {
@@ -80,7 +77,7 @@ code {
   .no-padding{
       padding: 0;
   }
-  
+
   .no-margins{
       margins: 0;
   }
