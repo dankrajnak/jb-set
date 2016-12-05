@@ -38,7 +38,9 @@ class LocalSurveysController < ApplicationController
   end
 
   def update
-    @local_survey = LocalSurvey.new(local_survey_params)
+    @user = current_user
+    @local_survey = @user.local_survey
+
 
     if @local_survey.update_attributes local_survey_params
       # Send thank you email
