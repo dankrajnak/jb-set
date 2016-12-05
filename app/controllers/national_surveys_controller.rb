@@ -36,7 +36,8 @@ class NationalSurveysController < ApplicationController
   end
 
   def update
-    @national_survey = NationalSurvey.new(national_survey_params)
+    @user = current_user
+    @national_survey = @user.national_survey
 
     if @national_survey.update_attributes national_survey_params
       flash[:success] = "Updated!"
