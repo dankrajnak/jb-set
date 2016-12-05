@@ -1,6 +1,7 @@
 <h1>New National Survey</h1>
 
 <%= form_for @national_survey, :url => user_national_surveys_path(@user.username), class: "form-group" do |f| %>
+<%= render :partial => "shared/form_errors", :locals => { :model => @national_survey } %>
 
   <div class="field">
     <%= f.label "Please select your JB Region." %>
