@@ -208,8 +208,7 @@
     <%= f.text_field :S6Q2, class: "form-control form-margin-bottom" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Submit", class: "btn btn-primary" %>
-  </div>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+  <%= link_to "Cancel", user_path(current_user.username), class: "btn btn-danger" %>
 
 <% end %>

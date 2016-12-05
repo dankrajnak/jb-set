@@ -44,7 +44,7 @@ class LocalSurveysController < ApplicationController
 
     if @local_survey.update_attributes local_survey_params
       # Send thank you email
-      send_email current_user.email current_user.first_name
+      #send_email current_user.email current_user.first_name
 
       flash[:success] = "Updated!"
       redirect_to user_path(current_user.username)
