@@ -1,6 +1,7 @@
 <% provide(:title, "Home") %>
   
   <header>
+    <%= image_tag "header" %>
         <div class="header-content">
             <div class="header-content-inner">
                 <h1 id="homeHeading">Welcome to the JB SET</h1>
@@ -13,13 +14,15 @@
                   <% end %>
                   to take the SET! 
                   </p>
-                <a href="#about" class="btn btn-primary btn-xl page-scroll">Who's Filled it Out?</a>
+                <a href="#front-map" class="btn btn-primary btn-xl page-scroll">Who's Filled it Out?</a>
             </div>
         </div>
     </header>
 
-<div class = "container">
+<section class = "container-fluid bg-dark">
+  <canvas id="front-map"></canvas>
   <div class = "row col-md-12">
+ 
       <div class="jumbotron">
       <p>Here's where the first graph will go </p>
     </div>
@@ -27,7 +30,7 @@
       <p>Here's where the second graph, or first table, will go</p>
     </div>
   </div>
-</div>
+</section>
 
 <script>
 (function($) {
@@ -156,14 +159,14 @@ function ready(error, world, names) {
   d3.timer(function(){
     var t = Date.now()-t0;
     projection.rotate([width/2+velocity*t]);
-    context.fillStyle = "#DDD";
+    context.fillStyle = "#FFF";
     context.clearRect(0, 0, width ,height);
     context.beginPath();
-    countries.forEach(function(country){
+    countriesPresent.forEach(function(country){
       path(country);
     });
     context.fill();
-    context.strokeStyle = "#FFF";
+    context.strokeStyle = "#222";
     context.lineWidth = .5;
     context.beginPath();
     path(borders);
