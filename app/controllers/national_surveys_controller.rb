@@ -12,7 +12,7 @@ class NationalSurveysController < ApplicationController
   def new
     @national_survey = NationalSurvey.new
     @user = User.find_by_username params[:user_username]
-    return not_found("user not found!") if @user.nil?
+    return not_found("User not found!") if @user.nil?
   end
 
   def edit
@@ -23,12 +23,12 @@ class NationalSurveysController < ApplicationController
   def create
     @national_survey = NationalSurvey.new(national_survey_params)
     @user = User.find_by_username params[:user_username]
-    return not_found("user not found!") if @user.nil?
+    return not_found("User not found!") if @user.nil?
 
     @national_survey.user = @user
 
     if @national_survey.save
-      flash[:success] = "Survey Taken!."
+      flash[:success] = "Your survey answers have been recorded. Thank you!"
       redirect_to user_path(@user.username)
     else
       render :new
@@ -40,7 +40,7 @@ class NationalSurveysController < ApplicationController
     @national_survey = @user.national_survey
 
     if @national_survey.update_attributes national_survey_params
-      flash[:success] = "Updated!"
+      flash[:success] = "Your survey answers have been updated."
       redirect_to user_path(current_user.username)
     else
       render :edit
