@@ -1,20 +1,20 @@
 <h1>Editing Local Survey</h1>
 
-<%= form_for @local_survey , class: "form-group" do |f| %>
+<%= form_for @local_survey, class: "form-group" do |f| %>
 <%= render :partial => "shared/form_errors", :locals => { :model => @local_survey } %>
 
   <div class="field">
-    <%= f.label "Please select your JB Region" %>
+    <%= f.label "Enter your JB Region" %>
     <%= f.text_field :jb_region, class: "form-control form-margin-bottom" %>
   </div>
 
   <div class="field">
-    <%= f.label "Select your national JB" %>
+    <%= f.label "Enter your national JB" %>
     <%= f.text_field :national_jb, class: "form-control form-margin-bottom" %>
   </div>
 
   <div class="field">
-    <%= f.label "Select your local JB" %>
+    <%= f.label "Enter your local JB" %>
     <%= f.text_field :local_jb, class: "form-control form-margin-bottom" %>
   </div>
 
@@ -30,7 +30,7 @@
 
   <div class="field">
     <%= f.label "Which age group is most highly represented in your JB?" %>
-    <%= f.number_field :age_group, class: "form-control form-margin-bottom"  %>
+        <%= f.select :age_group, [['select', nil], ['11-14', '11-14'], ['15-18', '15-18'], ['19-23', '19-23'], ['24-25', '24-25'], ['It is very balanced', 'It is very balanced']],  {class: "form-control form-margin-bottom"} %>
   </div>
 
   <div class="field">
@@ -40,11 +40,11 @@
 
   <div class="field">
     <%= f.label "Would you say your local JB is composed of more:" %>
-    <%= f.text_field :gender_ratio, class: "form-control form-margin-bottom"  %>
+    <%= f.select :gender_ratio, [['select', nil], ['male', 'male'], ['female', 'female'], ['It is very balanced', 'It is very balanced']],  {class: "form-control form-margin-bottom"} %>
   </div>
 
   <div class="field">
-    <%= f.label "Do you know who you're represented by on a Local/National/International level?" %>
+    <%= f.label "I know who represents me on a Local/National/International level." %>
     <%= f.select :represented, [['select', nil], ['true', true], ['false', false]],  {class: "form-control form-margin-bottom"} %>
   </div>
 
@@ -76,16 +76,15 @@
   <div class="field">
     <%= f.label "My local JB participates in regional/international projects." %>
     <%= f.select :participates, [['select', nil], ['true', true], ['false', false]],  {class: "form-control form-margin-bottom"} %>
-    
   </div>
 
   <div class="field">
-    <%= f.label "I know the Junior Branch Goals." %>
+    <%= f.label "I know the Junior Branch goals." %>
     <%= f.select :knowGoals, [['select', nil], ['true', true], ['false', false]],  {class: "form-control form-margin-bottom"} %>
   </div>
 
   <div class="field">
-    <%= f.label "JB experiences are enjoyable" %>
+    <%= f.label "JB experiences are enjoyable." %>
     <%= f.select :GQ1, [['select', nil], ['true', true], ['false', false]],  {class: "form-control form-margin-bottom"} %>
   </div>
 
@@ -206,20 +205,18 @@
 
   <div class="field">
     <%= f.label "Do you think the JB Goals should be revised?" %>
-    <%= f.text_field :G4Q5, class: "form-control form-margin-bottom"  %>
+    <%= f.select :G4Q5, [['select', nil], ['yes', 'yes'], ['no', 'no']], {class: "form-control"} %>
   </div>
 
   <div class="field">
     <%= f.label "Do you think the JB indicators in the JB goals should be revised?" %>
-    <%= f.text_field :G4Q6, class: "form-control form-margin-bottom"  %>
+    <%= f.select :G4Q6, [['select', nil], ['yes', 'yes'], ['no', 'no']], {class: "form-control"} %>
   </div>
 
+  <div class="actions">
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
 
-  <%= f.submit "Submit", class: "btn btn-primary" %>
+  <br />
   <%= link_to "Cancel", user_path(current_user.username), class: "btn btn-danger" %>
-
 <% end %>
-
-
-
-
