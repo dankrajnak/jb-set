@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20161202221319) do
-
+ActiveRecord::Schema.define(version: 20161204221622) do
 
   create_table "local_surveys", force: :cascade do |t|
     t.integer  "user_id"
@@ -110,7 +108,6 @@ ActiveRecord::Schema.define(version: 20161202221319) do
     t.datetime "updated_at",             null: false
     t.index ["user_id"], name: "index_national_surveys_on_user_id"
   end
-
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false
