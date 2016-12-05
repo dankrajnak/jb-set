@@ -1,18 +1,29 @@
 <% provide(:title, "Home") %>
-
+  <div class = "index-page">
   <header>
-    <canvas id= "front-map"></canvas>
-    <h1>JB SET</h1>
-    <p>Welcome to the 2017 JB Standard Evaluational Tool.
-    <% if current_user.nil? %>
-     Please <%= link_to "log in", login_path %> or <%= link_to "sign up", signup_path %>
-    <% else %>
-     Please visit <%= link_to "your profile", user_path(current_user.username) %>
-    <% end %>
-     to take our surveys! Check the map to see which countries have filled out the National SET so far, or check out the data below, which we've gathered from previously completed surveys!</p>
-  </header>
 
+    <%= image_tag "header" %>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1 id="homeHeading">Welcome to the JB SET</h1>
+                <hr>
+                <p>
+                  <% if current_user.nil? %>
+                  Please <%= link_to "log in", login_path %> or <%= link_to "sign up", signup_path %>
+                  <% else %>
+                  Please visit <%= link_to "your profile", user_path(current_user.username) %>
+                  <% end %>
+                  to take the SET! 
+                  </p>
+                <a href="#front-map" class="btn btn-primary btn-xl page-scroll">Who's Filled it Out?</a>
+            </div>
+        </div>
+    </header>
+
+<section class = "container-fluid bg-dark">
+  <canvas id="front-map"></canvas>
   <div class = "row col-md-12">
+ 
       <div class="jumbotron">
       <p>Here's where the first graph will go </p>
     </div>
@@ -20,6 +31,78 @@
       <p>Here's where the second graph, or first table, will go</p>
     </div>
   </div>
+</section>
+</div>
+
+<script>
+(function($) {
+    "use strict"; // Start of use strict
+
+    // jQuery for page scrolling feature - requires jQuery Easing plugin
+    $('a.page-scroll').bind('click', function(event) {
+        var $anchor = $(this);
+        $('html, body').stop().animate({
+            scrollTop: ($($anchor.attr('href')).offset().top - 50)
+        }, 1250, 'easeInOutExpo');
+        event.preventDefault();
+    });
+
+    // Highlight the top nav as scrolling occurs
+    $('body').scrollspy({
+        target: '.navbar-fixed-top',
+        offset: 51
+    });
+
+
+    // Closes the Responsive Menu on Menu Item Click
+    $('.navbar-collapse ul li a').click(function() {
+        $('.navbar-toggle:visible').click();
+    });
+
+    // Offset for Main Navigation
+    $('#mainNav').affix({
+        offset: {
+            top: 100
+        }
+    })
+
+    // Initialize and Configure Scroll Reveal Animation
+    window.sr = ScrollReveal();
+    sr.reveal('.sr-icons', {
+        duration: 600,
+        scale: 0.3,
+        distance: '0px'
+    }, 200);
+    sr.reveal('.sr-button', {
+        duration: 1000,
+        delay: 200
+    });
+    sr.reveal('.sr-contact', {
+        duration: 600,
+        scale: 0.3,
+        distance: '0px'
+    }, 300);
+
+    //Initialize and Configure Magnific Popup Lightbox Plugin
+    $('.popup-gallery').magnificPopup({
+        delegate: 'a',
+        type: 'image',
+        tLoading: 'Loading image #%curr%...',
+        mainClass: 'mfp-img-mobile',
+        gallery: {
+            enabled: true,
+            navigateByImgClick: true,
+            preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
+        },
+        image: {
+            tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
+        }
+    });
+
+})(jQuery); // End of use strict
+
+jQuery.easing.jswing=jQuery.easing.swing;jQuery.extend(jQuery.easing,{def:"easeOutQuad",swing:function(e,f,a,h,g){return jQuery.easing[jQuery.easing.def](e,f,a,h,g)},easeInQuad:function(e,f,a,h,g){return h*(f/=g)*f+a},easeOutQuad:function(e,f,a,h,g){return -h*(f/=g)*(f-2)+a},easeInOutQuad:function(e,f,a,h,g){if((f/=g/2)<1){return h/2*f*f+a}return -h/2*((--f)*(f-2)-1)+a},easeInCubic:function(e,f,a,h,g){return h*(f/=g)*f*f+a},easeOutCubic:function(e,f,a,h,g){return h*((f=f/g-1)*f*f+1)+a},easeInOutCubic:function(e,f,a,h,g){if((f/=g/2)<1){return h/2*f*f*f+a}return h/2*((f-=2)*f*f+2)+a},easeInQuart:function(e,f,a,h,g){return h*(f/=g)*f*f*f+a},easeOutQuart:function(e,f,a,h,g){return -h*((f=f/g-1)*f*f*f-1)+a},easeInOutQuart:function(e,f,a,h,g){if((f/=g/2)<1){return h/2*f*f*f*f+a}return -h/2*((f-=2)*f*f*f-2)+a},easeInQuint:function(e,f,a,h,g){return h*(f/=g)*f*f*f*f+a},easeOutQuint:function(e,f,a,h,g){return h*((f=f/g-1)*f*f*f*f+1)+a},easeInOutQuint:function(e,f,a,h,g){if((f/=g/2)<1){return h/2*f*f*f*f*f+a}return h/2*((f-=2)*f*f*f*f+2)+a},easeInSine:function(e,f,a,h,g){return -h*Math.cos(f/g*(Math.PI/2))+h+a},easeOutSine:function(e,f,a,h,g){return h*Math.sin(f/g*(Math.PI/2))+a},easeInOutSine:function(e,f,a,h,g){return -h/2*(Math.cos(Math.PI*f/g)-1)+a},easeInExpo:function(e,f,a,h,g){return(f==0)?a:h*Math.pow(2,10*(f/g-1))+a},easeOutExpo:function(e,f,a,h,g){return(f==g)?a+h:h*(-Math.pow(2,-10*f/g)+1)+a},easeInOutExpo:function(e,f,a,h,g){if(f==0){return a}if(f==g){return a+h}if((f/=g/2)<1){return h/2*Math.pow(2,10*(f-1))+a}return h/2*(-Math.pow(2,-10*--f)+2)+a},easeInCirc:function(e,f,a,h,g){return -h*(Math.sqrt(1-(f/=g)*f)-1)+a},easeOutCirc:function(e,f,a,h,g){return h*Math.sqrt(1-(f=f/g-1)*f)+a},easeInOutCirc:function(e,f,a,h,g){if((f/=g/2)<1){return -h/2*(Math.sqrt(1-f*f)-1)+a}return h/2*(Math.sqrt(1-(f-=2)*f)+1)+a},easeInElastic:function(f,h,e,l,k){var i=1.70158;var j=0;var g=l;if(h==0){return e}if((h/=k)==1){return e+l}if(!j){j=k*0.3}if(g<Math.abs(l)){g=l;var i=j/4}else{var i=j/(2*Math.PI)*Math.asin(l/g)}return -(g*Math.pow(2,10*(h-=1))*Math.sin((h*k-i)*(2*Math.PI)/j))+e},easeOutElastic:function(f,h,e,l,k){var i=1.70158;var j=0;var g=l;if(h==0){return e}if((h/=k)==1){return e+l}if(!j){j=k*0.3}if(g<Math.abs(l)){g=l;var i=j/4}else{var i=j/(2*Math.PI)*Math.asin(l/g)}return g*Math.pow(2,-10*h)*Math.sin((h*k-i)*(2*Math.PI)/j)+l+e},easeInOutElastic:function(f,h,e,l,k){var i=1.70158;var j=0;var g=l;if(h==0){return e}if((h/=k/2)==2){return e+l}if(!j){j=k*(0.3*1.5)}if(g<Math.abs(l)){g=l;var i=j/4}else{var i=j/(2*Math.PI)*Math.asin(l/g)}if(h<1){return -0.5*(g*Math.pow(2,10*(h-=1))*Math.sin((h*k-i)*(2*Math.PI)/j))+e}return g*Math.pow(2,-10*(h-=1))*Math.sin((h*k-i)*(2*Math.PI)/j)*0.5+l+e},easeInBack:function(e,f,a,i,h,g){if(g==undefined){g=1.70158}return i*(f/=h)*f*((g+1)*f-g)+a},easeOutBack:function(e,f,a,i,h,g){if(g==undefined){g=1.70158}return i*((f=f/h-1)*f*((g+1)*f+g)+1)+a},easeInOutBack:function(e,f,a,i,h,g){if(g==undefined){g=1.70158}if((f/=h/2)<1){return i/2*(f*f*(((g*=(1.525))+1)*f-g))+a}return i/2*((f-=2)*f*(((g*=(1.525))+1)*f+g)+2)+a},easeInBounce:function(e,f,a,h,g){return h-jQuery.easing.easeOutBounce(e,g-f,0,h,g)+a},easeOutBounce:function(e,f,a,h,g){if((f/=g)<(1/2.75)){return h*(7.5625*f*f)+a}else{if(f<(2/2.75)){return h*(7.5625*(f-=(1.5/2.75))*f+0.75)+a}else{if(f<(2.5/2.75)){return h*(7.5625*(f-=(2.25/2.75))*f+0.9375)+a}else{return h*(7.5625*(f-=(2.625/2.75))*f+0.984375)+a}}}},easeInOutBounce:function(e,f,a,h,g){if(f<g/2){return jQuery.easing.easeInBounce(e,f*2,0,h,g)*0.5+a}return jQuery.easing.easeOutBounce(e,f*2-g,0,h,g)*0.5+h*0.5+a}});
+</script>
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://d3js.org/queue.v1.min.js"></script>
@@ -80,14 +163,14 @@ function ready(error, world, names) {
   d3.timer(function(){
     var t = Date.now()-t0;
     projection.rotate([width/2+velocity*t]);
-    context.fillStyle = "#DDD";
+    context.fillStyle = "#FFF";
     context.clearRect(0, 0, width ,height);
     context.beginPath();
-    countries.forEach(function(country){
+    countriesPresent.forEach(function(country){
       path(country);
     });
     context.fill();
-    context.strokeStyle = "#FFF";
+    context.strokeStyle = "#222";
     context.lineWidth = .5;
     context.beginPath();
     path(borders);

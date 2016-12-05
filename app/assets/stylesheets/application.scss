@@ -1,7 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "sessions";
-@import "static_pages";
+
 @import "users";
 
 /* Sticky footer */
@@ -75,3 +75,4 @@ code {
     left:0px;
     z-index: -1;
   }
+
