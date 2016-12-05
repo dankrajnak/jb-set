@@ -49,12 +49,12 @@
 
   <div class="field">
     <%= f.label "The relationship between my JB and my CISV NA/PA's board is good." %>
-    <%= f.check_box :S3Q1, class: "form-control form-margin-bottom" %>
+    <%= f.select :S3Q1,[['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
   </div>
 
   <div class="field">
     <%= f.label "My JB participates in neighborhood projects." %>
-    <%= f.check_box :S3Q2, class: "form-control form-margin-bottom" %>
+    <%= f.select :S3Q2, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
   </div>
 
   <div class="field">
@@ -64,7 +64,7 @@
 
   <div class="field">
     <%= f.label "My JB participates in regional projects." %>
-    <%= f.check_box :S3Q4, class: "form-control form-margin-bottom" %>
+    <%= f.select :S3Q4, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
   </div>
 
   <div class="field">
@@ -74,42 +74,42 @@
 
   <div class="field">
     <%= f.label "As NJRs, we constantly are always in touch with our Junior Branch Regional Team (e.g. AJB Team, APJB Team, EJB Team)." %>
-    <%= f.check_box :S3P1Q1, class: "form-control form-margin-bottom" %>
+    <%= f.select :S3P1Q1, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
   </div>
 
   <div class="field">
     <%= f.label "Our coordinator and our regional team represent us." %>
-    <%= f.check_box :S3P1Q2, class: "form-control form-margin-bottom" %>
+    <%= f.select :S3P1Q2, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
   </div>
 
   <div class="field">
     <%= f.label "The regional team is responsive to our needs." %>
-    <%= f.check_box :S3P1Q3, class: "form-control form-margin-bottom" %>
+    <%= f.select :S3P1Q3, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
   </div>
 
   <div class="field">
     <%= f.label "Tools and information provided by the regional team are useful and helpful." %>
-    <%= f.check_box :S3P1Q4, class: "form-control form-margin-bottom" %>
+    <%= f.select :S3P1Q4, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
   </div>
 
   <div class="field">
     <%= f.label "Our coordinator is up to date with our national JB." %>
-    <%= f.check_box :S3P1Q5, class: "form-control form-margin-bottom" %>
+    <%= f.select :S3P1Q5, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
   </div>
 
   <div class="field">
     <%= f.label "We are up to date with the work of our Regional team." %>
-    <%= f.check_box :S3P1Q6, class: "form-control form-margin-bottom" %>
+    <%= f.select :S3P1Q6, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
   </div>
 
   <div class="field">
     <%= f.label "My JB Participates in international projects (e.g. Branch out, Dig In... Please specify)." %>
-    <%= f.check_box :S3P2Q1, class: "form-control form-margin-bottom" %>
+    <%= f.select :S3P2Q1, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
   </div>
 
   <div class="field">
     <%= f.label "We feel that the work developed by IJB Team contributes to our national JB." %>
-    <%= f.check_box :S3P2Q2, class: "form-control form-margin-bottom" %>
+    <%= f.select :S3P2Q2, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
   </div>
 
   <div class="field">
@@ -129,7 +129,7 @@
 
   <div class="field">
     <%= f.label "As NJRs, we constatnly communicate with the LJRs." %>
-    <%= f.check_box :S4P1Q1, class: "form-control form-margin-bottom" %>
+    <%= f.select :S4P1Q1, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
   </div>
 
   <div class="field">
@@ -139,47 +139,47 @@
 
   <div class="field">
     <%= f.label "In 2015, Educational Content was very explored at our national trainings/workshops/meetings." %>
-    <%= f.check_box :S4P2Q1, class: "form-control form-margin-bottom" %>
+    <%= f.select :S4P2Q1, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
   </div>
 
   <div class="field">
     <%= f.label "Our national JB develops consistent Educational Content projects." %>
-    <%= f.check_box :S4P2Q2, class: "form-control form-margin-bottom" %>
+    <%= f.select :S4P2Q2, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
   </div>
 
   <div class="field">
     <%= f.label "Does your national JB have a national training for JBers?" %>
-    <%= f.check_box :S4P3Q1, class: "form-control form-margin-bottom" %>
+    <%= f.select :S4P3Q1, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
   </div>
 
   <div class="field">
     <%= f.label "Does your national JB have a specific trainings for LJRs?" %>
-    <%= f.check_box :S4P3Q2, class: "form-control form-margin-bottom" %>
+    <%= f.select :S4P3Q2, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
   </div>
 
   <div class="field">
     <%= f.label "Does your national JB have trainings for local JBs?" %>
-    <%= f.check_box :S4P3Q3, class: "form-control form-margin-bottom" %>
+    <%= f.select :S4P3Q3, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
   </div>
 
   <div class="field">
     <%= f.label "Does your national JB have documents to describe the role of a JB?" %>
-    <%= f.check_box :S4P3Q4, class: "form-control form-margin-bottom" %>
+    <%= f.select :S4P3Q4, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
   </div>
 
   <div class="field">
     <%= f.label "Our national JB does a consistent yearly evaluation." %>
-    <%= f.check_box :S4P4Q1, class: "form-control form-margin-bottom" %>
+    <%= f.select :S4P4Q1, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
   </div>
 
   <div class="field">
     <%= f.label "Our national JB does a yearly strategic planning." %>
-    <%= f.check_box :S4P4Q2, class: "form-control form-margin-bottom"%>
+    <%= f.select :S4P4Q2, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom"%>
   </div>
 
   <div class="field">
     <%= f.label "Our national JB follows the development of local JBs during the year." %>
-    <%= f.check_box :S4P4Q3, class: "form-control form-margin-bottom" %>
+    <%= f.select :S4P4Q3, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
   </div>
 
   <div class="field">
@@ -189,12 +189,12 @@
 
   <div class="field">
     <%= f.label "Do you know who your National Risk Manager is?" %>
-    <%= f.check_box :S5Q1, class: "form-control form-margin-bottom" %>
+    <%= f.select :S5Q1, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
   </div>
 
   <div class="field">
     <%= f.label "Our national Risk Manager is aware of all the activities organized by the JB." %>
-    <%= f.check_box :S5Q2, class: "form-control form-margin-bottom" %>
+    <%= f.select :S5Q2, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
   </div>
 
   <div class="field">
