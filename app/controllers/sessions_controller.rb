@@ -1,12 +1,10 @@
 class SessionsController < ApplicationController
-  def new
-  end
 
   def create
     user = User.find_by_username params[:user][:username]
 
     if user.nil?
-      not_found("There is no account tied to that user. Please enter a valid username and password, or sign up to create an account.")
+      not_found("There is no account tied to that username. Please enter a valid username and password, or sign up to create an account.")
     elsif user && user.authenticate(params[:user][:password])
       session[:user_id] = user.id
       flash[:success] = "Welcome, #{user.first_name}."

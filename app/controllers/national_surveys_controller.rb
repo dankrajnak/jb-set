@@ -6,9 +6,6 @@ class NationalSurveysController < ApplicationController
     @national_surveys = NationalSurvey.all
   end
 
-  def show
-  end
-
   def new
     @national_survey = NationalSurvey.new
     @user = User.find_by_username params[:user_username]

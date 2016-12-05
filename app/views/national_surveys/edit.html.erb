@@ -1,3 +1,4 @@
+<% provide(:title, "Edit National Survey") %>
 <h1>Editing National Survey</h1>
 
 <%= form_for @national_survey, class: "form-group" do |f| %>
@@ -206,10 +207,6 @@
   <div class="field">
     <%= f.label "Does filling JB SET help your JB somehow? If yes, how? If not, why?" %>
     <%= f.text_field :S6Q2, class: "form-control form-margin-bottom" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Submit", class: "btn btn-primary" %>
   </div>
 
   <%= f.submit "Submit", class: "btn btn-primary" %>

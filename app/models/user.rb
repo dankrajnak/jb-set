@@ -13,7 +13,7 @@ class User < ApplicationRecord
   }
   validates :username, :exclusion => {
     :in => %w(new edit),
-    :message => "%{value} is reserved."
+    :message => "%{value} is a reserved token. Please select another username."
   }
   validates :email, :presence => true
   validates :email, :uniqueness => true

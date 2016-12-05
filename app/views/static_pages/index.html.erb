@@ -1,18 +1,16 @@
 <% provide(:title, "Home") %>
 
   <header>
-      <canvas id= "front-map"></canvas>
-      <h1>JB SET</h1>
-      <hr />
-      <p>Welcome to the 2017 JB Standard Evaluational Tool.
-      <% if current_user.nil? %>
-       Please <%= link_to "log in", login_path %> or <%= link_to "sign up", signup_path %>
-      <% else %>
-       Please visit <%= link_to "your profile", user_path(current_user.username) %>
-      <% end %>
-       to take our surveys! Check the map to see which countries have filled out the National SET so far, or check out the data below, which we've gathered from previously completed surveys!</p>
+    <canvas id= "front-map"></canvas>
+    <h1>JB SET</h1>
+    <p>Welcome to the 2017 JB Standard Evaluational Tool.
+    <% if current_user.nil? %>
+     Please <%= link_to "log in", login_path %> or <%= link_to "sign up", signup_path %>
+    <% else %>
+     Please visit <%= link_to "your profile", user_path(current_user.username) %>
+    <% end %>
+     to take our surveys! Check the map to see which countries have filled out the National SET so far, or check out the data below, which we've gathered from previously completed surveys!</p>
   </header>
-
 
   <div class = "row col-md-12">
       <div class="jumbotron">
@@ -23,15 +21,13 @@
     </div>
   </div>
 
-
-
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://d3js.org/queue.v1.min.js"></script>
 <script src="https://d3js.org/d3-geo.v1.min.js"></script>
 <script src="https://d3js.org/d3-geo-projection.v1.min.js"></script>
 <script src="https://d3js.org/topojson.v2.min.js"></script>
-<script>
 
+<script>
 var width = window.innerWidth,
     height = window.innerHeight,
     offset = 30;
@@ -79,7 +75,7 @@ function ready(error, world, names) {
     if(index%2==0 && country.name != "Antarctica")
     countriesPresent.push(country);
   });
-  
+
 
   d3.timer(function(){
     var t = Date.now()-t0;
@@ -99,9 +95,7 @@ function ready(error, world, names) {
 
   });
 
-
 }
-
 </script>
 
 

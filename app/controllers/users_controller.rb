@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user, :except => [:new, :create]
 
-  def index
-   @users = User.all
-  end
-
   def show
     @user = User.find_by_username params[:username]
   end
@@ -32,7 +28,7 @@ class UsersController < ApplicationController
     @user = User.find_by_username params[:username]
 
     if @user.update_attributes update_params
-      flash[:success] = "You profile information was successfully updated."
+      flash[:success] = "Your profile information was successfully updated."
       redirect_to user_path(@user.username)
     else
       render :edit
@@ -43,11 +39,11 @@ class UsersController < ApplicationController
     user = User.find_by_username params[:username]
 
     if user.destroy
-      flash[:success] = "Your accoutn was successfull deleted."
+      flash[:success] = "Your account was successfull deleted."
       redirect_to root_path
     else
       flash[:error] = "We were unable to delete your account at this time."
-      redirect_back :fallback_location => users_path
+      redirect_back :fallback_location => users_path(@user.username)
     end
   end
 

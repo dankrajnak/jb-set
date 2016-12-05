@@ -1,21 +1,23 @@
 Rails.application.routes.draw do
 
-  resources :national_surveys
+  # home/index/root page
   root 'static_pages#index'
-  get '/about' => 'static_pages#about'
 
+  # GET requests
+  get '/about' => 'static_pages#about'
   get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/signup' => 'users#new'
+
+  # POST requests
+  post '/login' => 'sessions#create'
 
   resources :users, :param => :username
   resources :local_surveys, :except => [:new, :create]
   resources :national_surveys, :except => [:new, :create]
-
   resources :users, :only => [:show], :param => :username do
     resources :local_surveys, :only => [:new, :create]
-    resources :national_surveys, :only=> [:new, :create]  
+    resources :national_surveys, :only=> [:new, :create]
   end
-  
+
 end

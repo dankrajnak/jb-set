@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user
     unless current_user
-      flash[:error] = "Sorry, you need to register or login to see that page!"
+      flash[:error] = "Sorry, you need to sign up or login to see that page!"
       redirect_to login_path
     end
   end
