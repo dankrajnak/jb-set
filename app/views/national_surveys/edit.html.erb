@@ -181,6 +181,7 @@
     <%= f.label "Does filling JB SET help your JB somehow? If yes, how? If not, why?" %>
     <%= f.text_field :S6Q2, class: "form-control form-margin-bottom" %>
 
-  <%= f.submit "Submit", class: "btn btn-primary" %>
-  <%= link_to "Cancel", user_path(current_user.username), class: "btn btn-danger" %>
+    <br />
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+    <%= link_to "Cancel", user_path(current_user.username), class: "btn btn-danger" %>
 <% end %>
