@@ -1,0 +1,186 @@
+<% provide(:title, "Edit National Survey") %>
+<h1>Editing National Survey</h1>
+<hr />
+
+<%= form_for @national_survey, class: "form-group" do |f| %>
+<%= render :partial => "shared/form_errors", :locals => { :model => @national_survey } %>
+
+    <%= f.label "Enter your JB Region." %>
+    <%= f.text_field :jb_region, class: "form-control form-margin-bottom" %>
+
+    <%= f.label "Enter your JB Neighborhood." %>
+    <%= f.text_field :jb_neighborhood, class: "form-control form-margin-bottom" %>
+
+    <%= f.label "Enter your number of chapters." %>
+    <%= f.number_field :num_chapters, class: "form-control form-margin-bottom" %>
+
+    <%= f.label "Enter your national JB." %>
+    <%= f.text_field :national_jb, class: "form-control form-margin-bottom" %>
+
+    <%= f.label "Describe the leadership/composition of national JB board, if you have one." %>
+    <%= f.text_field :leadership_composition, class: "form-control form-margin-bottom" %>
+
+    <%= f.label "How many national JB events do you have per year?" %>
+    <%= f.number_field :national_events, class: "form-control form-margin-bottom" %>
+
+    <%= f.label "How many JBers, on average, are active participants in your JB?" %>
+    <%= f.number_field :num_active, class: "form-control form-margin-bottom" %>
+
+    <%= f.label "How many JBers, on average, are active participants in your national JB?" %>
+    <%= f.number_field :num_active_national, class: "form-control form-margin-bottom" %>
+
+    <%= f.label "My local JB is composed of more " %>
+    <br />
+    <%= f.select :gender_ratio, [['select', nil], ['male', 'male'], ['female', 'female'], ['It is very balanced', 'It is very balanced']],  {class: "form-control form-margin-bottom"} %>
+    <br /><br />
+
+    <%= f.label "The relationship between my JB and my CISV NA/PA's board is good." %>
+    <br />
+    <%= f.select :S3Q1,[['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
+    <br /><br />
+
+    <%= f.label "My JB participates in neighborhood projects." %>
+    <br />
+    <%= f.select :S3Q2, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
+    <br /><br />
+
+    <%= f.label "How many JBers from your NA have attended your most recent neighborhood workshop?" %>
+    <%= f.number_field :S3Q3, class: "form-control form-margin-bottom" %>
+
+    <%= f.label "My JB participates in regional projects." %>
+    <br />
+    <%= f.select :S3Q4, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
+    <br /><br />
+
+    <%= f.label "How many JBers from your NA attended your most recent regional meeting?" %>
+    <%= f.number_field :S3Q5, class: "form-control form-margin-bottom" %>
+
+    <%= f.label "As NJRs, we are always in touch with our Junior Branch Regional Team (e.g. AJB Team, APJB Team, EJB Team)." %>
+    <br />
+    <%= f.select :S3P1Q1, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
+    <br /><br />
+
+    <%= f.label "Our coordinator and our regional team represent us." %>
+    <br />
+    <%= f.select :S3P1Q2, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
+    <br /><br />
+
+    <%= f.label "The regional team is responsive to our needs." %>
+    <br />
+    <%= f.select :S3P1Q3, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
+    <br /><br />
+
+    <%= f.label "Tools and information provided by the regional team are useful and helpful." %>
+    <br />
+    <%= f.select :S3P1Q4, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
+    <br /><br />
+
+    <%= f.label "Our coordinator is up to date with our national JB." %>
+    <br />
+    <%= f.select :S3P1Q5, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
+    <br /><br />
+
+    <%= f.label "We are up to date with the work of our Regional team." %>
+    <br />
+    <%= f.select :S3P1Q6, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
+    <br /><br />
+
+    <%= f.label "My JB Participates in international projects (e.g. Branch out, Dig In... Please specify)." %>
+    <br />
+    <%= f.select :S3P2Q1, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
+    <br /><br />
+
+    <%= f.label "We feel that the work developed by IJB Team contributes to our national JB." %>
+    <br />
+    <%= f.select :S3P2Q2, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
+    <br /><br />
+
+    <%= f.label "How many JBers from your NA attended the last IJBC (International Junior Branch Conference)?" %>
+    <%= f.number_field :S3P2Q3, class: "form-control form-margin-bottom" %>
+
+    <%= f.label "We are " %>
+    <br />
+    <%= f.select :S3P2Q4, [['select', nil], ['funded', 'funded'], ['partially funded', 'partially funded'], ['not funded', 'not funded']], class: "form-control form-margin-bottom" %>
+    <br /><br />
+
+    <%= f.label "If yes, by whom are you funded?" %>
+    <%= f.text_field :S3P2Q5, class: "form-control form-margin-bottom" %>
+
+    <%= f.label "As NJRs, we constatnly communicate with the LJRs." %>
+    <br />
+    <%= f.select :S4P1Q1, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
+    <br /><br />
+
+    <%= f.label "Which are the most effective methods of communication you use to keep in touch with LJRs?" %>
+    <%= f.text_field :S4P1Q2, class: "form-control form-margin-bottom" %>
+
+    <%= f.label "In 2015, Educational Content was very explored at our national trainings/workshops/meetings." %>
+    <br /><
+    <%= f.select :S4P2Q1, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
+    <br /><br />
+
+    <%= f.label "Our national JB develops consistent Educational Content projects." %>
+    <br />
+    <%= f.select :S4P2Q2, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
+    <br /><br />
+
+    <%= f.label "Our national JB has a national training for JBers." %>
+    <br />
+    <%= f.select :S4P3Q1, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
+    <br /><br />
+
+    <%= f.label "Our national JB has a specific trainings for LJRs." %>
+    <br />
+    <%= f.select :S4P3Q2, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
+    <br /><br />
+
+    <%= f.label "Our national JB have trainings for local JBs." %>
+    <br />
+    <%= f.select :S4P3Q3, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
+    <br /><br />
+
+    <%= f.label "Our national JB has documents to describe the role of a JB." %>
+    <br />
+    <%= f.select :S4P3Q4, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
+    <br /><br />
+
+    <%= f.label "Our national JB does a consistent yearly evaluation." %>
+    <br />
+    <%= f.select :S4P4Q1, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
+    <br /><br />
+
+    <%= f.label "Our national JB does a yearly strategic planning." %>
+    <br />
+    <%= f.select :S4P4Q2, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom"%>
+    <br /><br />
+
+
+    <%= f.label "Our national JB follows the development of local JBs during the year." %>
+    <br />
+    <%= f.select :S4P4Q3, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
+    <br /><br />
+
+    <%= f.label "The NJRs have a Midway-Meeting? Online, In-person, No" %>
+    <br />
+    <%= f.select :S4P4Q4, [['select', nil], ['Midway-Meeting', 'Midway-Meeting'], ['Online', 'Online'], ['Neither', 'Neither']], class: "form-control form-margin-bottom" %>
+    <br /><br />
+
+    <%= f.label "Do you know who your National Risk Manager is?" %>
+    <br />
+    <%= f.select :S5Q1, [['select', nil], ['yes', 'yes'], ['no', 'no']], class: "form-control form-margin-bottom" %>
+    <br /><br />
+
+    <%= f.label "Our national Risk Manager is aware of all the activities organized by the JB." %>
+    <br />
+    <%= f.select :S5Q2, [['select', nil], ['true', true], ['false', false]], class: "form-control form-margin-bottom" %>
+    <br /><br />
+
+    <%= f.label "Please provide any recommendations or comments for the JB set group." %>
+    <%= f.text_field :S6Q1, class: "form-control form-margin-bottom" %>
+
+    <%= f.label "Does filling JB SET help your JB somehow? If yes, how? If not, why?" %>
+    <%= f.text_field :S6Q2, class: "form-control form-margin-bottom" %>
+
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+  <%= link_to "Cancel", user_path(current_user.username), class: "btn btn-danger" %>
+<% end %>

@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_one :background_info, :dependent => :destroy
   has_one :size_and_capacity, :dependent => :destroy
   has_one :local_survey, :dependent => :destroy
+  has_one :national_survey, :dependent => :destroy
 
   validates :username, :presence => true
   validates :username, :uniqueness => true
@@ -12,7 +13,7 @@ class User < ApplicationRecord
   }
   validates :username, :exclusion => {
     :in => %w(new edit),
-    :message => "%{value} is reserved."
+    :message => "%{value} is a reserved token. Please select another username."
   }
   validates :email, :presence => true
   validates :email, :uniqueness => true
@@ -23,7 +24,6 @@ class User < ApplicationRecord
   validates :first_name, :presence => true
   validates :last_name, :presence => true
   validates :date_of_birth, :presence => true
-  validates :password, presence: true
-  validates :password, confirmation: true
-  validates :password_confirmation, presence: true
+  validates :password, :presence => true, :on => :new
+  validates :password_confirmation, :presence => true, :on => :new
 end

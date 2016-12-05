@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user, :except => [:new, :create]
 
-  def index
-   @users = User.all
-  end
-
   def show
     @user = User.find_by_username params[:username]
   end
@@ -17,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new create_params
 
     if @user.save
-      flash[:success] = "Successfully signed up! Please log in to get started."
+      flash[:success] = "Success! Please log in to get started."
       redirect_to login_path
     else
       render :new
@@ -30,14 +26,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by_username params[:username]
-    @user.password = User.find_by_username params[:password]
-    @user.password_confirmation = User.find_by_username params[:password_confirmation]
 
     if @user.update_attributes update_params
-      flash[:success] = "User successfully updated."
-      redirect_to user_path(params[:username])
+      flash[:success] = "Your profile information was successfully updated."
+      redirect_to user_path(@user.username)
     else
-      render :update
+      render :edit
     end
   end
 
@@ -45,11 +39,11 @@ class UsersController < ApplicationController
     user = User.find_by_username params[:username]
 
     if user.destroy
-      flash[:success] = "User successfully destroyed."
+      flash[:success] = "Your account was successfull deleted."
       redirect_to root_path
     else
-      flash[:error] = "Unable to destroy the user."
-      redirect_back :fallback_location => users_path
+      flash[:error] = "We were unable to delete your account at this time."
+      redirect_back :fallback_location => users_path(@user.username)
     end
   end
 
@@ -68,7 +62,13 @@ class UsersController < ApplicationController
   end
 
   def update_params
-    create_params
+    params.require(:user).permit(
+      :first_name,
+      :last_name,
+      :email,
+      :date_of_birth,
+      :is_national
+    )
   end
 
 end

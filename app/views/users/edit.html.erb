@@ -3,7 +3,9 @@
   <div class="col-md-12">
     <h1>Edit my profile</h1>
     <hr />
-    <%= form_for :user, url: '/users', class: "form-group" do |f| %>
+    <%= form_for @user, :url => user_path(@user.username), :html => { :class => "form-group" } do |f| %>
+      <%= render :partial => "shared/form_errors", :locals => { :model => @user } %>
+
       <%= f.label "Edit first name" %>
       <%= f.text_field :first_name, class: "form-control form-margin-bottom" %>
       <%= f.label "Edit last name" %>
@@ -17,7 +19,8 @@
 
       <br />
       <%= f.submit "Save", class: "btn btn-primary" %>
-      <%= link_to "Cancel", user_path(current_user.username), class: "btn btn-primary" %>
+      <%= link_to "Cancel", user_path(current_user.username), class: "btn btn-danger" %>
+
     <% end %>
   </div>
 </div>

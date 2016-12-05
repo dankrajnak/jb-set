@@ -1,6 +1,7 @@
 <% provide(:title, "Home") %>
   <div class = "index-page">
   <header>
+
     <%= image_tag "header" %>
         <div class="header-content">
             <div class="header-content-inner">
@@ -51,6 +52,7 @@
         target: '.navbar-fixed-top',
         offset: 51
     });
+
 
     // Closes the Responsive Menu on Menu Item Click
     $('.navbar-collapse ul li a').click(function() {
@@ -107,8 +109,8 @@ jQuery.easing.jswing=jQuery.easing.swing;jQuery.extend(jQuery.easing,{def:"easeO
 <script src="https://d3js.org/d3-geo.v1.min.js"></script>
 <script src="https://d3js.org/d3-geo-projection.v1.min.js"></script>
 <script src="https://d3js.org/topojson.v2.min.js"></script>
-<script>
 
+<script>
 var width = window.innerWidth,
     height = window.innerHeight,
     offset = 30;
@@ -156,7 +158,7 @@ function ready(error, world, names) {
     if(index%2==0 && country.name != "Antarctica")
     countriesPresent.push(country);
   });
-  
+
 
   d3.timer(function(){
     var t = Date.now()-t0;
@@ -176,9 +178,7 @@ function ready(error, world, names) {
 
   });
 
-
 }
-
 </script>
 
 

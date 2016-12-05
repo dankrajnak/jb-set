@@ -1,223 +1,202 @@
+<% provide(:title, "Edit Local Survey") %>
 <h1>Editing Local Survey</h1>
+<hr />
 
-<%= form_for @local_survey , class: "form-group" do |f| %>
+<%= form_for @local_survey, class: "form-group" do |f| %>
 <%= render :partial => "shared/form_errors", :locals => { :model => @local_survey } %>
 
-  <div class="field">
-    <%= f.label "Please select your JB Region" %>
+    <%= f.label "Enter your JB Region" %>
     <%= f.text_field :jb_region, class: "form-control form-margin-bottom" %>
-  </div>
 
-  <div class="field">
-    <%= f.label "Select your national JB" %>
+    <%= f.label "Enter your national JB" %>
     <%= f.text_field :national_jb, class: "form-control form-margin-bottom" %>
-  </div>
 
-  <div class="field">
-    <%= f.label "Select your local JB" %>
+    <%= f.label "Enter your local JB" %>
     <%= f.text_field :local_jb, class: "form-control form-margin-bottom" %>
-  </div>
 
-  <div class="field">
     <%= f.label "How many local JB events did you have in 2015?" %>
     <%= f.number_field :nun_local_events, class: "form-control form-margin-bottom" %>
-  </div>
 
-  <div class="field">
     <%= f.label "How many of them had activities related to the content area of the year?" %>
     <%= f.number_field :num_related, class: "form-control form-margin-bottom" %>
-  </div>
 
-  <div class="field">
     <%= f.label "Which age group is most highly represented in your JB?" %>
-    <%= f.number_field :age_group, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :age_group, [['select', nil], ['11-14', '11-14'], ['15-18', '15-18'], ['19-23', '19-23'], ['24-25', '24-25'], ['It is very balanced', 'It is very balanced']],  {class: "form-control form-margin-bottom"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "How many JBers are involved in your JB activites?" %>
     <%= f.number_field :num_jbers, class: "form-control form-margin-bottom"  %>
-  </div>
 
-  <div class="field">
-    <%= f.label "Would you say your local JB is composed of more:" %>
-    <%= f.text_field :gender_ratio, class: "form-control form-margin-bottom"  %>
-  </div>
+    <%= f.label "My local JB is composed of more " %>
+    <br />
+    <%= f.select :gender_ratio, [['select', nil], ['male', 'male'], ['female', 'female'], ['It is very balanced', 'It is very balanced']],  {class: "form-control form-margin-bottom"} %>
+    <br /><br />
 
-  <div class="field">
-    <%= f.label "Do you know who you're represented by on a Local/National/International level?" %>
-    <%= f.check_box :represented, class: "form-control form-margin-bottom"  %>
-  </div>
+    <%= f.label "I know who represents me on a Local/National/International level." %>
+    <br />
+    <%= f.select :represented, [['select', nil], ['true', true], ['false', false]],  {class: "form-control form-margin-bottom"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "The relationship between my JB and my CISV National/Promotional Association's board is good." %>
-    <%= f.check_box :good_relationship, class: "form-control form-margin-bottom" %>
-  </div>
+    <br />
+    <%= f.select :good_relationship, [['select', nil], ['true', true], ['false', false]],  {class: "form-control form-margin-bottom"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "I'm aware of neighborhood/regional meetings." %>
-    <%= f.check_box :awareness_of_meetings, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :awareness_of_meetings, [['select', nil], ['true', true], ['false', false]],  {class: "form-control form-margin-bottom"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "How many JBers from your local JB have attended your most recent neighborhood workshop?" %>
     <%= f.number_field :num_local_attenders, class: "form-control form-margin-bottom"  %>
-  </div>
 
-  <div class="field">
     <%= f.label "How many JBers from your local JB attended your region's most recent annual meeting?" %>
     <%= f.number_field :num_regional_attenders, class: "form-control form-margin-bottom"  %>
-  </div>
 
-  <div class="field">
     <%= f.label "How many JBers from your local JB attended the last IJBC(International Junior Branch Conference)?" %>
     <%= f.number_field :num_international_attenders, class: "form-control form-margin-bottom"  %>
-  </div>
 
-  <div class="field">
     <%= f.label "My local JB participates in regional/international projects." %>
-    <%= f.check_box :participates, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :participates, [['select', nil], ['true', true], ['false', false]],  {class: "form-control form-margin-bottom"} %>
+    <br /><br />
 
-  <div class="field">
-    <%= f.label "I know the Junior Branch Goals." %>
-    <%= f.check_box :knowGoals, class: "form-control form-margin-bottom"  %>
-  </div>
+    <%= f.label "I know the Junior Branch goals." %>
+    <br />
+    <%= f.select :knowGoals, [['select', nil], ['true', true], ['false', false]],  {class: "form-control form-margin-bottom"} %>
+    <br /><br />
 
-  <div class="field">
-    <%= f.label "JB experiences are enjoyable" %>
-    <%= f.check_box :GQ1, class: "form-control form-margin-bottom"  %>
-  </div>
+    <%= f.label "JB experiences are enjoyable." %>
+    <br />
+    <%= f.select :GQ1, [['select', nil], ['true', true], ['false', false]],  {class: "form-control form-margin-bottom"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "There are positive and constructive dynamics between JBers." %>
-    <%= f.check_box :GQ2, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :GQ2, [['select', nil], ['true', true], ['false', false]],  {class: "form-control"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "People feel comfortable contributing ideas, opinions or suggestions." %>
-    <%= f.check_box :GQ3, class: "form-control form-margin-bottom" %>
-  </div>
+    <br />
+    <%= f.select :GQ3, [['select', nil], ['true', true], ['false', false]],  {class: "form-control"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "People feel comfortable taking part in JB events and activites at all levels." %>
-    <%= f.check_box :GQ4, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :GQ4, [['select', nil], ['true', true], ['false', false]],  {class: "form-control"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "There is widespread participation in brainstorming and visioning." %>
-    <%= f.check_box :GQ5, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :GQ5, [['select', nil], ['true', true], ['false', false]],  {class: "form-control"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "Diverse opinions are considered and valued." %>
-    <%= f.check_box :GQ6, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :GQ6, [['select', nil], ['true', true], ['false', false]],  {class: "form-control"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "There is a sense of fairness in decision-making." %>
-    <%= f.check_box :GQ7, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :GQ7, [['select', nil], ['true', true], ['false', false]],  {class: "form-control"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "JB activities are a source of successful recruitment." %>
-    <%= f.check_box :GQ8, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :GQ8, [['select', nil], ['true', true], ['false', false]],  {class: "form-control"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "Junior Branches benefit from being a part of International Junior Branch." %>
-    <%= f.check_box :GQ9, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :GQ9, [['select', nil], ['true', true], ['false', false]],  {class: "form-control"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "There are opportunities for all JBers to acquire and develop skills." %>
-    <%= f.check_box :G2Q1, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :G2Q1, [['select', nil], ['true', true], ['false', false]],  {class: "form-control"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "JBers are able to use a range of different tools and methods." %>
-    <%= f.check_box :G2Q2, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :G2Q2, [['select', nil], ['true', true], ['false', false]],  {class: "form-control"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "JBers communicate effectively." %>
-    <%= f.check_box :G2Q3, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :G2Q3, [['select', nil], ['true', true], ['false', false]],  {class: "form-control"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "There are opportunities for all JBers to take leadership." %>
-    <%= f.check_box :G2Q4, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :G2Q4, [['select', nil], ['true', true], ['false', false]],  {class: "form-control"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "Quality is maintained or imorved when leadership changes." %>
-    <%= f.check_box :G2Q5, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :G2Q5, [['select', nil], ['true', true], ['false', false]],  {class: "form-control"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "Leadership is approachable and communicative." %>
-    <%= f.check_box :G2Q6, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :G2Q6, [['select', nil], ['true', true], ['false', false]],  {class: "form-control"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "JBers apply what they learn in CISV in their day to day life." %>
-    <%= f.check_box :G3Q1, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :G3Q1, [['select', nil], ['true', true], ['false', false]],  {class: "form-control"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "JBers actively contribute to their communities outside of CISV." %>
-    <%= f.check_box :G3Q2, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :G3Q2, [['select', nil], ['true', true], ['false', false]],  {class: "form-control"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "Junior Branches work with other organizations to achieve common goals." %>
-    <%= f.check_box :G3Q3, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :G3Q3, [['select', nil], ['true', true], ['false', false]],  {class: "form-control"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "JBers participate in a sufficient number of activities based on the annual CISV educational content area." %>
-    <%= f.check_box :G3Q4, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :G3Q4, [['select', nil], ['true', true], ['false', false]],  {class: "form-control"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "Local and global issues are discussed within JB meetings or activities." %>
-    <%= f.check_box :G3Q5, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :G3Q5, [['select', nil], ['true', true], ['false', false]],  {class: "form-control"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "JBers feel comfortable taking an active role at any level of CISV." %>
-    <%= f.check_box :G4Q1, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :G4Q1, [['select', nil], ['true', true], ['false', false]],  {class: "form-control"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "JBers share ideas, tools, and best practices with CISV members outside of their Junior Branch." %>
-    <%= f.check_box :G4Q2, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :G4Q2, [['select', nil], ['true', true], ['false', false]],  {class: "form-control"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "Junior Branches collaborate constructively with other levels of CISV." %>
-    <%= f.check_box :G4Q3, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :G4Q3, [['select', nil], ['true', true], ['false', false]],  {class: "form-control"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "JBers positively challenge and build CISV programmes and structures." %>
-    <%= f.check_box :G4Q4, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :G4Q4, [['select', nil], ['true', true], ['false', false]], {class: "form-control"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "Do you think the JB Goals should be revised?" %>
-    <%= f.text_field :G4Q5, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :G4Q5, [['select', nil], ['yes', 'yes'], ['no', 'no']], {class: "form-control"} %>
+    <br /><br />
 
-  <div class="field">
     <%= f.label "Do you think the JB indicators in the JB goals should be revised?" %>
-    <%= f.text_field :G4Q6, class: "form-control form-margin-bottom"  %>
-  </div>
+    <br />
+    <%= f.select :G4Q6, [['select', nil], ['yes', 'yes'], ['no', 'no']], {class: "form-control"} %>
+    <br /><br /><br />
 
-  <div class="actions">
-    <%= f.submit "Submit", class: "btn btn-primary" %>
-  </div>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+  <%= link_to "Cancel", user_path(current_user.username), class: "btn btn-danger" %>
 <% end %>
-
-
-
-

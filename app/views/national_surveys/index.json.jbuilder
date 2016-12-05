@@ -1,0 +1,1 @@
+json.array! @national_surveys, partial: 'national_surveys/national_survey', as: :national_survey
