@@ -1,0 +1,68 @@
+var width = window.innerWidth,
+    height = window.innerHeight,
+    offset = 30;
+
+var velocity = .01,
+  t0 = Date.now();
+
+d3.select("#front-map").attr("width", window.innerWidth)
+  .attr("height", window.innerHeight);
+
+d3.select("header").attr("style", "height: "+ (window.innerHeight)+"px;");
+
+var projection = d3.geoWinkel3()
+    .scale(183)
+    .translate([width/2, height/2+offset]);
+
+var context = d3.select("#front-map").node().getContext("2d");
+
+
+var path = d3.geoPath()
+    .projection(projection)
+    .context(context);
+
+queue()
+  .defer(d3.json, "<%= image_url("world-110m.json") %>")
+  .defer(d3.tsv, "<%= image_url("world-country-names.tsv") %>")
+  .await(ready);
+
+function ready(error, world, names) {
+  if (error) throw error;
+
+  var land = topojson.feature(world, world.objects.land),
+    countries = topojson.feature(world, world.objects.countries).features;
+    borders = topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; }),
+   n = countries.length;
+
+  countries = countries.filter(function(d) {
+    return names.some(function(n) {
+      if (d.id == n.id) return d.name = n.name;
+    });
+  })
+
+  var countriesPresent = Array();
+  countries.forEach(function(country, index){
+    if(index%2==0 && country.name != "Antarctica")
+    countriesPresent.push(country);
+  });
+
+
+  d3.timer(function(){
+    var t = Date.now()-t0;
+    projection.rotate([width/2+velocity*t]);
+    context.fillStyle = "#FFF";
+    context.clearRect(0, 0, width ,height);
+    context.beginPath();
+    countriesPresent.forEach(function(country){
+      path(country);
+    });
+    context.fill();
+    context.strokeStyle = "#222";
+    context.lineWidth = .5;
+    context.beginPath();
+    path(borders);
+    context.stroke();
+
+  });
+
+}

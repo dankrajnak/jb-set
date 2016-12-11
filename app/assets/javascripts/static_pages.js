@@ -15,8 +15,14 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 
-//= require scrollreveal
-//= require jquery.magnific-popup.js
+
+//= require d3v4
+//= require d3queue
+//= requre d3geo
+//= require d3geoprojection
+//= require topojson
+
+//= require frontmap
 
 //= require creative
 
