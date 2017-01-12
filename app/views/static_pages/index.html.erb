@@ -5,7 +5,11 @@
     
         <div class="header-content">
             <div class="header-content-inner">
+                 <% if current_user.nil? %>
                 <h1 id="homeHeading">Welcome to the JB SET</h1>
+                <% else %>
+                <h1 id="homeHeading"> Welcome, <%= current_user.first_name %> </h1>
+                <% end %>
                 <hr>
                 <p>
                   <% if current_user.nil? %>
@@ -20,8 +24,9 @@
         </div>
     </header>
 
-<section class = "container-fluid bg-dark">
-  <canvas id="front-map"></canvas>
+<section class = "container-fluid bg-dark" style = "padding-top: 10px">
+
+  <canvas id="front-map" style = "width: 100%"></canvas>
   <div class = "row col-md-12">
  
       <div class="jumbotron">

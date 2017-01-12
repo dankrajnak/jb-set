@@ -21,9 +21,9 @@
 //= requre d3geo
 //= require d3geoprojection
 //= require topojson
-
 //= require frontmap
 
+//= require jquery.easing.min
 //= require creative
 
 

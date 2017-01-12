@@ -5,13 +5,13 @@ var width = window.innerWidth,
 var velocity = .01,
   t0 = Date.now();
 
-d3.select("#front-map").attr("width", window.innerWidth)
-  .attr("height", window.innerHeight);
+d3.select("#front-map").attr("width", width)
+  .attr("height", height);
 
 d3.select("header").attr("style", "height: "+ (window.innerHeight)+"px;");
 
 var projection = d3.geoWinkel3()
-    .scale(183)
+    .scale(height/Math.PI)
     .translate([width/2, height/2+offset]);
 
 var context = d3.select("#front-map").node().getContext("2d");
@@ -40,11 +40,21 @@ function ready(error, world, names) {
     });
   })
 
-  var countriesPresent = Array();
-  countries.forEach(function(country, index){
-    if(index%2==0 && country.name != "Antarctica")
-    countriesPresent.push(country);
+  var countriesPresent = countries.filter(function(country, index){
+    return (index%2==0 && country.name != "Antarctica");
   });
+
+  var cisvcolors = ["#336699", "#FF6633", "#FFCC33", "#CC0066", "#FF3333", "#FF9933", "#339933", "#009966"];
+  var colorIndex = 0;
+
+  countriesPresent = countriesPresent.map(function(d){
+    if(++colorIndex == cisvcolors.length){
+        colorIndex = 0;
+      }
+      d.color = cisvcolors[colorIndex];
+      return d;
+  })
+
 
 
   d3.timer(function(){
@@ -52,11 +62,13 @@ function ready(error, world, names) {
     projection.rotate([width/2+velocity*t]);
     context.fillStyle = "#FFF";
     context.clearRect(0, 0, width ,height);
-    context.beginPath();
+
     countriesPresent.forEach(function(country){
+      context.fillStyle = country.color;
+      context.beginPath();
       path(country);
+       context.fill();
     });
-    context.fill();
     context.strokeStyle = "#222";
     context.lineWidth = .5;
     context.beginPath();

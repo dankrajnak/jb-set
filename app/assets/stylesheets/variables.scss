@@ -1,0 +1,20 @@
+// Variables
+
+// Gray and Brand Colors for use across theme
+
+$theme-primary:    #FF6633;
+$cisv-blue:        #336699;
+$cisv-orange:      #FF6633;
+$cisv-yellow:      #FFCC33;
+$cisv-pink:        #CC0066;
+$cisv-red:         #FF3333;
+$cisv-light-orange: #FF9933;
+$cisv-green:       #339933;
+$cisv-light-blue:  #009966;
+
+$gray-base:        #000;
+$gray-darker:      lighten($gray-base, 13.5%); // #222
+$gray-dark:        lighten($gray-base, 20%);   // #333
+$gray:             lighten($gray-base, 33.5%); // #555
+$gray-light:       lighten($gray-base, 46.7%); // #777
+$gray-lighter:     lighten($gray-base, 93.5%); // #eee
