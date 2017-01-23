@@ -16,7 +16,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'dotenv-rails'
-  gem 'rspec-rails'
+  #gem 'rspec-rails'
   gem 'factory_girl_rails'
 end
 
@@ -30,12 +30,17 @@ group :development do
 end
 
 group :test do
+  # The basics
+  gem 'minitest'
+  gem 'minitest-rails'
+
+  # For better display
+  gem 'minitest-reporters'
+
+  # For managing testing data
+  gem 'factory_girl'
+  gem 'database_cleaner'
   gem 'faker'
-  gem 'capybara'
-  gem 'guard-rspec'
-  gem 'launchy'
-  gem "database_cleaner"
-  gem "selenium-webdriver"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

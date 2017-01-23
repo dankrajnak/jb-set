@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161204221622) do
+ActiveRecord::Schema.define(version: 20170122225138) do
 
   create_table "background_infos", force: :cascade do |t|
     t.integer  "user_id"
@@ -117,6 +117,15 @@ ActiveRecord::Schema.define(version: 20161204221622) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.index ["user_id"], name: "index_national_surveys_on_user_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "name"
+    t.string   "whichsurvey"
+    t.string   "type"
+    t.integer  "order"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "size_and_capacities", force: :cascade do |t|

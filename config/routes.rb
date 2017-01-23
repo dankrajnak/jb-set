@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'questions/new'
+
   # home/index/root page
   root 'static_pages#index'
 
