@@ -149,17 +149,17 @@ aside {
         background-color: transparent;
         border-color: rgba(white, .3);
         .navbar-header .navbar-brand {
-            color: rgba(white, .7);
+            color: rgba(black, .7);
             &:hover,
             &:focus {
-                color: white;
+                color: black;
             }
         }
         .nav > li > a,
         .nav > li > a:focus {
-            color: rgba(white, 70%);
+            color: rgba(black, .7);
             &:hover {
-                color: white;
+                color: black;
             }
         }
         &.affix {
@@ -194,16 +194,19 @@ header {
     background-position: center;
     background-image: url("<%= asset_url 'header' %>");
     background-attachment:fixed;
+    background-transparency: .5;
     text-align: center;
-    color: white;
+    color: rgba(black, .9);
     .header-content {
         position: relative;
         text-align: center;
         padding: 100px 15px 100px;
         width: 100%;
         .header-content-inner {
+
             h1 {
-                font-weight: 700;
+
+                font-weight: lighter;
                 text-transform: uppercase;
                 margin-top: 0;
                 margin-bottom: 0;
@@ -212,9 +215,10 @@ header {
             hr {
                 margin: 30px auto;
             }
-            p {
-                font-weight: 300;
-                color: rgba(white, .7);
+            p { 
+                font-weight: 200px;          
+                display: block;
+                color: black;
                 font-size: 16px;
                 margin-bottom: 50px;
             }

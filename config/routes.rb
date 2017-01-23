@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'questions/new'
+  
 
   # home/index/root page
   root 'static_pages#index'
@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   get '/logout' => 'sessions#destroy'
   get '/signup' => 'users#new'
-
+  get 'questions/new'
+  
   # POST requests
   post '/login' => 'sessions#create'
 

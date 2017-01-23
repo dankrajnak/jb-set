@@ -13,11 +13,11 @@
                 <hr>
                 <p>
                   <% if current_user.nil? %>
-                  Please <%= link_to "log in", login_path %> or <%= link_to "sign up", signup_path %>
+                  <%= link_to "Log in", login_path %> or <%= link_to "sign up", signup_path %>
                   <% else %>
                   Please visit <%= link_to "your profile", user_path(current_user.username) %>
                   <% end %>
-                  to take the SET! 
+                  to take the SET. 
                   </p>
                 <a href="#front-map" class="btn btn-primary btn-xl page-scroll">Who's Filled it Out?</a>
             </div>
