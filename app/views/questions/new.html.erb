@@ -1,6 +1,9 @@
 <% provide(:title, "Add a Question") %>
 
-<h1>Questions#new</h1>
+<h1>Add a Question</h1>
 
+<%= form_for (@question) do |f| %>
+	<%= f.label :name, "Enter in the question text"%>
+	<%= f.text_field :name %>
 
-<p>Find me in app/views/questions/new.html.erb</p>
+<% end %>
