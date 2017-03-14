@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     user = User.find_by_username params[:username]
 
     if user.destroy
-      flash[:success] = "Your account was successfull deleted."
+      flash[:success] = "Your account was successfully deleted."
       redirect_to root_path
     else
       flash[:error] = "We were unable to delete your account at this time."

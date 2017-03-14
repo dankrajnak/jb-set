@@ -5,7 +5,7 @@
 // Global Components
 html,
 body {
-   // height: 100%;
+    height: 100%;
     width: 100%;
 }
 
@@ -147,7 +147,7 @@ aside {
     }
     @media (min-width: 768px) {
         background-color: transparent;
-        border-color: rgba(white, .3);
+        border: none;
         .navbar-header .navbar-brand {
             color: rgba(black, .7);
             &:hover,
@@ -188,13 +188,10 @@ aside {
 
 header {
     position: relative;
-    width: 100%;
-    min-height: auto;
     @include background-cover;
     background-position: center;
     background-image: url("<%= asset_url 'header' %>");
     background-attachment:fixed;
-    background-transparency: .5;
     text-align: center;
     color: rgba(black, .9);
     .header-content {
@@ -206,21 +203,25 @@ header {
 
             h1 {
 
-                font-weight: lighter;
+                font-weight: 100;
                 text-transform: uppercase;
                 margin-top: 0;
                 margin-bottom: 0;
                 font-size: 30px;
+                color: white;
+                letter-spacing: 3px;
+
             }
             hr {
                 margin: 30px auto;
             }
             p { 
-                font-weight: 200px;          
+                font-weight: 300;
                 display: block;
-                color: black;
-                font-size: 16px;
+                color: white;
+                font-size: 18px;
                 margin-bottom: 50px;
+                letter-spacing: .5px;
             }
         }
     }
@@ -349,12 +350,16 @@ header {
 }
 
 .btn-primary {
-    @include button-variant(white,$theme-primary,$theme-primary);
+    @include button-variant(white, $theme-primary, $theme-primary);
+}
+
+.btn-front {
+  @include button-variant(white, transparent, white);
 }
 
 .btn {
     @include sans-serif-font;
-    border: none;
+    //border: none;
     border-radius: 300px;
     font-weight: 700;
     text-transform: uppercase;
