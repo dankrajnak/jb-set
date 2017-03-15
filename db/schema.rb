@@ -10,134 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170122225138) do
+ActiveRecord::Schema.define(version: 20170315064438) do
 
-  create_table "background_infos", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "jb_region"
-    t.string   "national_jb"
-    t.string   "local_jb"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["user_id"], name: "index_background_infos_on_user_id"
-  end
-
-  create_table "local_surveys", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "jb_region"
-    t.string   "national_jb"
-    t.string   "local_jb"
-    t.integer  "nun_local_events"
-    t.integer  "num_related"
-    t.integer  "age_group"
-    t.integer  "num_jbers"
-    t.string   "gender_ratio"
-    t.boolean  "represented"
-    t.boolean  "good_relationship"
-    t.boolean  "awareness_of_meetings"
-    t.integer  "num_local_attenders"
-    t.integer  "num_regional_attenders"
-    t.integer  "num_international_attenders"
-    t.boolean  "participates"
-    t.boolean  "knowGoals"
-    t.boolean  "GQ1"
-    t.boolean  "GQ2"
-    t.boolean  "GQ3"
-    t.boolean  "GQ4"
-    t.boolean  "GQ5"
-    t.boolean  "GQ6"
-    t.boolean  "GQ7"
-    t.boolean  "GQ8"
-    t.boolean  "GQ9"
-    t.boolean  "G2Q1"
-    t.boolean  "G2Q2"
-    t.boolean  "G2Q3"
-    t.boolean  "G2Q4"
-    t.boolean  "G2Q5"
-    t.boolean  "G2Q6"
-    t.boolean  "G3Q1"
-    t.boolean  "G3Q2"
-    t.boolean  "G3Q3"
-    t.boolean  "G3Q4"
-    t.boolean  "G3Q5"
-    t.boolean  "G4Q1"
-    t.boolean  "G4Q2"
-    t.boolean  "G4Q3"
-    t.boolean  "G4Q4"
-    t.string   "G4Q5"
-    t.string   "G4Q6"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.index ["user_id"], name: "index_local_surveys_on_user_id"
-  end
-
-  create_table "national_surveys", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "jb_region"
-    t.string   "jb_neighborhood"
-    t.integer  "num_chapters"
-    t.string   "national_jb"
-    t.string   "leadership_composition"
-    t.integer  "national_events"
-    t.integer  "num_active"
-    t.integer  "num_active_national"
-    t.string   "gender_ratio"
-    t.boolean  "S3Q1"
-    t.boolean  "S3Q2"
-    t.integer  "S3Q3"
-    t.boolean  "S3Q4"
-    t.integer  "S3Q5"
-    t.boolean  "S3P1Q1"
-    t.boolean  "S3P1Q2"
-    t.boolean  "S3P1Q3"
-    t.boolean  "S3P1Q4"
-    t.boolean  "S3P1Q5"
-    t.boolean  "S3P1Q6"
-    t.boolean  "S3P2Q1"
-    t.boolean  "S3P2Q2"
-    t.integer  "S3P2Q3"
-    t.string   "S3P2Q4"
-    t.string   "S3P2Q5"
-    t.boolean  "S4P1Q1"
-    t.string   "S4P1Q2"
-    t.boolean  "S4P2Q1"
-    t.boolean  "S4P2Q2"
-    t.boolean  "S4P3Q1"
-    t.boolean  "S4P3Q2"
-    t.boolean  "S4P3Q3"
-    t.boolean  "S4P3Q4"
-    t.boolean  "S4P4Q1"
-    t.boolean  "S4P4Q2"
-    t.boolean  "S4P4Q3"
-    t.string   "S4P4Q4"
-    t.boolean  "S5Q1"
-    t.boolean  "S5Q2"
-    t.string   "S6Q1"
-    t.string   "S6Q2"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.index ["user_id"], name: "index_national_surveys_on_user_id"
+  create_table "question_answers", force: :cascade do |t|
+    t.integer  "users_id"
+    t.integer  "questions_id"
+    t.text     "answer"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["questions_id"], name: "index_question_answers_on_questions_id"
+    t.index ["users_id"], name: "index_question_answers_on_users_id"
   end
 
   create_table "questions", force: :cascade do |t|
     t.string   "name"
-    t.string   "whichsurvey"
     t.string   "type"
     t.integer  "order"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "surveys_id"
+    t.index ["surveys_id"], name: "index_questions_on_surveys_id"
   end
 
-  create_table "size_and_capacities", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "num_events"
-    t.integer  "num_related_area"
-    t.string   "age_group"
-    t.integer  "involved"
-    t.string   "gender_info"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.index ["user_id"], name: "index_size_and_capacities_on_user_id"
+  create_table "survey_completions", force: :cascade do |t|
+    t.integer  "users_id"
+    t.integer  "surveys_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["surveys_id"], name: "index_survey_completions_on_surveys_id"
+    t.index ["users_id"], name: "index_survey_completions_on_users_id"
+  end
+
+  create_table "surveys", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "national"
+    t.boolean  "local"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "country"
   end
 
   create_table "users", force: :cascade do |t|
@@ -146,10 +56,10 @@ ActiveRecord::Schema.define(version: 20170122225138) do
     t.string   "first_name",      null: false
     t.string   "last_name",       null: false
     t.string   "email",           null: false
-    t.date     "date_of_birth",   null: false
     t.boolean  "is_national",     null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "position"
   end
 
 end

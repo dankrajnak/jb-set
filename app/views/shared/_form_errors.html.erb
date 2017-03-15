@@ -1,10 +1,16 @@
 <% if model.errors.any? %>
   <div class="alert alert-danger">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <p>Please correct the following errors before proceeded:</p>
+    <p>Please correct the following errors before proceeding:</p>
     <ul>
       <% model.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <li>
+          <% if msg != "Is national can't be blank" %>
+              <%= msg %>
+          <% else %>
+              <%= "Please select national or local" %>
+          <%end%>
+        </li>
       <% end %>
     </ul>
   </div>

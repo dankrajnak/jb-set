@@ -1,8 +1,6 @@
 <% provide(:title, "Home") %>
   <div class = "index">
   <header>
-
-    
         <div class="header-content">
             <div class="header-content-inner">
                  <% if current_user.nil? %>
@@ -16,10 +14,16 @@
                       <%= link_to "Log in", login_path, class: "btn btn-primary btn-xl"%>
                       <%= link_to "Sign up", signup_path, class: "btn btn-front btn-xl" %>
                   <% else %>
-                  Please visit <%= link_to "your profile", user_path(current_user.username) %>
+                  Visit <%= link_to "your profile", user_path(current_user.username) %> or
+                      <%= link_to "log out", logout_path %>
                   <% end %>
                   </p>
             </div>
+        </div>
+        <div id="homeResults">
+          <span class="glyphicon glyphicon-triangle-top" style="font-size: 30px;"></span>
+          <br/>
+          (scroll to view the results)
         </div>
     </header>
 

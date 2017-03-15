@@ -1,9 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-  has_one :background_info, :dependent => :destroy
-  has_one :size_and_capacity, :dependent => :destroy
-  has_one :local_survey, :dependent => :destroy
-  has_one :national_survey, :dependent => :destroy
+  has_many :question_answers, :class_name => "QuestionAnswer", :foreign_key => "users_id", :dependent => :destroy
 
   validates :username, :presence => true
   validates :username, :uniqueness => true
@@ -26,4 +23,7 @@ class User < ApplicationRecord
   validates :date_of_birth, :presence => true
   validates :password, :presence => true, :on => :new
   validates :password_confirmation, :presence => true, :on => :new
+  validates :is_national, presence: true
+  validates :country, presence: true, if: "is_national"
+
 end

@@ -1,36 +1,35 @@
 <% provide(:title, "Signup") %>
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-8 col-md-offset-2">
     <h1>Signup</h1>
-    <hr />
+    <hr style = "margin-left: 20px"/>
     <%= form_for @user, :url => users_path, :html => { :class => "form-group" } do |f| %>
       <%= render :partial => "shared/form_errors", :locals => { :model => @user } %>
-      <h4>Please create your login credentials</h4>
-      <%= f.label "Choose a username" %>
+
+      <h4 style="text-align: center">Create a Username and Password</h4>
+      <%= label_tag :username, "Username" %>
       <%= f.text_field :username, class: "form-control form-margin-bottom" %>
-      <%= f.label "Choose a password" %>
+      <%= f.label "Password" %>
       <%= f.password_field :password, class: "form-control form-margin-bottom" %>
       <%= f.label "Retype your password" %>
       <%= f.password_field :password_confirmation, class: "form-control form-margin-bottom" %>
 
-      <br />
-      <h4>Please provide some information about yourself</h4>
+      <br/>
+      <h4 style="text-align: center">General Information</h4>
       <%= f.label "First name" %>
       <%= f.text_field :first_name, class: "form-control form-margin-bottom" %>
       <%= f.label "Last name" %>
       <%= f.text_field :last_name, class: "form-control form-margin-bottom" %>
       <%= f.label "Your email" %>
       <%= f.text_field :email, class: "form-control form-margin-bottom" %>
-      <%= f.label "Your date of birth" %>
-      <%= f.date_field :date_of_birth, :start_year => Date.today.year - 100, :end_year => Date.today.year, class: "form-control form-margin-bottom" %>
+      <%= label_tag :position, "What is your JB Position? "%>
+        <h4 style = "display: inline;"><small>(If you have many, which one are you filling this out as?)</small></h4>
+      <%= f.text_field :position, class: "form-control" %>
 
-      <br />
-      <h4>Almost done!</h4>
-      <%= f.label :is_national, "Are you a LJR or a NJR?" %>
-      <%= f.select :is_national, [['Local', false], ['National', true]], {}, {class: "form-control"} %>
-
-      <br />
-      <%= f.submit "Signup!", class: "btn btn-primary" %>
+      <br/>
+        <hr/>
+      <%= f.submit "Sign Up!", class: "btn btn-primary btn-xl",
+                   style: "margin: 30px auto; display: block; text-align: center" %>
     <% end %>
   </div>
 </div>
