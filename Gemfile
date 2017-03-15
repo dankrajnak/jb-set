@@ -18,6 +18,7 @@ group :development, :test do
   gem 'dotenv-rails'
   #gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -40,7 +41,7 @@ group :test do
   # For managing testing data
   gem 'factory_girl'
   gem 'database_cleaner'
-  gem 'faker'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

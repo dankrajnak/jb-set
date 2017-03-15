@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-  has_many :question_answers, :class_name => "QuestionAnswer", :foreign_key => "users_id", :dependent => :destroy
+  has_many :survey_completions, :dependent => :destroy
 
   validates :username, :presence => true
   validates :username, :uniqueness => true
@@ -20,10 +20,8 @@ class User < ApplicationRecord
   }
   validates :first_name, :presence => true
   validates :last_name, :presence => true
-  validates :date_of_birth, :presence => true
+  validates :position, :presence => true
   validates :password, :presence => true, :on => :new
   validates :password_confirmation, :presence => true, :on => :new
-  validates :is_national, presence: true
-  validates :country, presence: true, if: "is_national"
 
 end

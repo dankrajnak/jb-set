@@ -1,8 +1,8 @@
 <% provide(:title, "Login") %>
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-8 col-md-offset-2">
     <h1>Login</h1>
-    <hr />
+    <hr style="margin-left: 20px"/>
     <%= form_for :user, :url => login_path, :html => { :class => "form-horizontal" } do |f| %>
       <%= f.label :username %>
       <%= f.text_field :username, :class => "form-control form-margin-bottom" %>

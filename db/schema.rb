@@ -10,35 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170315064438) do
+ActiveRecord::Schema.define(version: 20170315214350) do
 
   create_table "question_answers", force: :cascade do |t|
-    t.integer  "users_id"
-    t.integer  "questions_id"
     t.text     "answer"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["questions_id"], name: "index_question_answers_on_questions_id"
-    t.index ["users_id"], name: "index_question_answers_on_users_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "question_id"
+    t.integer  "survey_completion_id"
+    t.index ["question_id"], name: "index_question_answers_on_question_id"
+    t.index ["survey_completion_id"], name: "index_question_answers_on_survey_completion_id"
   end
 
   create_table "questions", force: :cascade do |t|
     t.string   "name"
-    t.string   "type"
-    t.integer  "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "surveys_id"
-    t.index ["surveys_id"], name: "index_questions_on_surveys_id"
+    t.integer  "survey_id"
+    t.string   "qtype"
+    t.integer  "qorder"
+    t.index ["survey_id"], name: "index_questions_on_survey_id"
   end
 
   create_table "survey_completions", force: :cascade do |t|
-    t.integer  "users_id"
-    t.integer  "surveys_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["surveys_id"], name: "index_survey_completions_on_surveys_id"
-    t.index ["users_id"], name: "index_survey_completions_on_users_id"
+    t.integer  "user_id"
+    t.integer  "survey_id"
+    t.string   "country"
+    t.index ["survey_id"], name: "index_survey_completions_on_survey_id"
+    t.index ["user_id"], name: "index_survey_completions_on_user_id"
   end
 
   create_table "surveys", force: :cascade do |t|
@@ -47,7 +48,6 @@ ActiveRecord::Schema.define(version: 20170315064438) do
     t.boolean  "local"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "country"
   end
 
   create_table "users", force: :cascade do |t|
@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 20170315064438) do
     t.string   "first_name",      null: false
     t.string   "last_name",       null: false
     t.string   "email",           null: false
-    t.boolean  "is_national",     null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "position"

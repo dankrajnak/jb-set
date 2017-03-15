@@ -54,10 +54,9 @@ class UsersController < ApplicationController
       :first_name,
       :last_name,
       :email,
-      :date_of_birth,
       :password,
       :password_confirmation,
-      :is_national
+      :position
     )
   end
 
@@ -66,8 +65,10 @@ class UsersController < ApplicationController
       :first_name,
       :last_name,
       :email,
-      :date_of_birth,
-      :is_national
+      :position,
+      :password,
+      :password_confirmation
+
     )
   end
 

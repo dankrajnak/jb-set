@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :survey_completion do
-    user ""
-    survey ""
+    user
+    survey
   end
 end

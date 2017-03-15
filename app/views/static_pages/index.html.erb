@@ -4,9 +4,9 @@
         <div class="header-content">
             <div class="header-content-inner">
                  <% if current_user.nil? %>
-                <h1 id="homeHeading">Welcome to the JB SET</h1>
+                <h1 id="homeHeading">Welcome to the JB SET.</h1>
                 <% else %>
-                <h1 id="homeHeading"> Welcome, <%= current_user.first_name %> </h1>
+                <h1 id="homeHeading"> Welcome, <%= current_user.first_name %>. </h1>
                 <% end %>
                 <hr>
                 <p>
@@ -14,7 +14,7 @@
                       <%= link_to "Log in", login_path, class: "btn btn-primary btn-xl"%>
                       <%= link_to "Sign up", signup_path, class: "btn btn-front btn-xl" %>
                   <% else %>
-                  Visit <%= link_to "your profile", user_path(current_user.username) %> or
+                  Visit <%= link_to "your profile", user_path(current_user.username) %>, or
                       <%= link_to "log out", logout_path %>
                   <% end %>
                   </p>

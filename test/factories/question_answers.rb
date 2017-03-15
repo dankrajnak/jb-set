@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :question_answer do
-    user ""
-    question ""
-    answer "MyText"
+    question
+    survey_completion
+    answer Faker::Lorem.sentence
   end
 end

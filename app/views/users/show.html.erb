@@ -1,15 +1,15 @@
 <% provide(:title, "Profile") %>
 <div class="row">
   <div class="col-md-12">
-    <h1><%= @user.first_name %>'s Profile</h1>
+    <h1><%= @user.first_name %> <%=@user.last_name %></h1>
 
     <hr/>
     <div class="no-padding container">
       <div class="no-padding col-md-6">
-        <h3>Your information <%= link_to (image_tag("/assets/pencil.jpg", width: "15px", height: "15px", :alt => "Edit profile")), edit_user_path(@user.username) %></h3>
+        <h3>Your Information: <%= link_to (image_tag("/assets/pencil.jpg", width: "15px", height: "15px", :alt => "Edit profile")), edit_user_path(@user.username) %></h3>
         <div class="table-responsive">
-        <table id="profile-info-table" class="table">
-          <tr class="info">
+        <table id="profile-info-table" class="table table-striped">
+          <tr>
             <td>First Name</td>
             <td><%= current_user.first_name %></td>
           </tr>
@@ -17,7 +17,7 @@
             <td>Last Name</td>
             <td><%= current_user.last_name %></td>
           </tr>
-          <tr class="info">
+          <tr>
             <td>Username</td>
             <td><%= current_user.username %></td>
           </tr>
@@ -31,19 +31,14 @@
       <div class="col-md-6">
         <h3>Surveys taken</h3>
         <table>
-          <% if !@user.local_survey && !@user.national_survey %>
+          <% if @user.survey_completions.length == 0 %>
             <tr>
               <td>None! Get started below.</td>
             </tr>
           <% else %>
-            <% if @user.local_survey %>
+            <% @user.survey_completions.each do |s| %>
               <tr>
-                <td>Local Survey</td>
-              </tr>
-            <% end %>
-            <% if @user.national_survey %>
-              <tr>
-                <td>National Survey</td>
+                <td><%= s.survey.name %></td>
               </tr>
             <% end %>
           <% end %>
@@ -53,17 +48,6 @@
 
     <hr />
     <h3>Surveys</h3>
-    <% if !@user.local_survey %>
-      <%= link_to "Take Local Survey", new_user_local_survey_path(@user.username), class: "btn btn-primary" %>
-    <% else %>
-      <%= link_to "Edit Local Survey", edit_local_survey_path(@user.local_survey), class: "btn btn-warning" %>
-    <% end %>
 
-    <br /><br />
-    <% if !@user.national_survey %>
-      <%= link_to "Take National Survey", new_user_national_survey_path(@user.username), class: "btn btn-primary" %>
-    <% else %>
-      <%= link_to "Edit National Survey", edit_national_survey_path(@user.national_survey), class: "btn btn-warning" %>
-    <% end %>
   </div>
 </div>
