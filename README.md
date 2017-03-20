@@ -4,7 +4,9 @@ We are creating a standard evaluational tool for a a branch of an international 
 
 ## TODO
 
-* Create Questions Model
+* Fix validation issue with questionAnswers.
+* (Create Admin User and Survey addition capabilities)
+* Create JSON builder for questionAnswers
 * Create graphs using d3.js
 * Generate excel spreadsheet from SQL
 * Deploy
