@@ -1,26 +1,27 @@
 <% provide(:title, "Edit Profile") %>
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-4 col-md-offset-4">
     <h1>Edit my profile</h1>
-    <hr />
-    <%= form_for @user, :url => user_path(@user.username), :html => { :class => "form-group" } do |f| %>
-      <%= render :partial => "shared/form_errors", :locals => { :model => @user } %>
+    <hr style="margin-left: 30px;"/>
+      <%= form_for @user, :url => user_path(@user.username), :html => { :class => "form-group" } do |f| %>
+        <%= render :partial => "shared/form_errors", :locals => { :model => @user } %>
 
-      <%= f.label "Edit first name" %>
-      <%= f.text_field :first_name, class: "form-control form-margin-bottom" %>
-      <%= f.label "Edit last name" %>
-      <%= f.text_field :last_name, class: "form-control form-margin-bottom" %>
-      <%= f.label "Edit your email" %>
-      <%= f.text_field :email, class: "form-control form-margin-bottom" %>
-      <%= f.label "Edit your date of birth" %>
-      <%= f.date_field :date_of_birth, :start_year => Date.today.year - 100, :end_year => Date.today.year, class: "form-control form-margin-bottom" %>
-      <%= f.label :is_national, "Are you a LJR or a NJR?" %>
-      <%= f.select :is_national, [['Local', false], ['National', true]], {}, {class: "form-control"} %>
+        <%= f.label "Edit your first name" %>
+        <%= f.text_field :first_name, class: "form-control form-margin-bottom" %>
+        <%= f.label "Edit your last name" %>
+        <%= f.text_field :last_name, class: "form-control form-margin-bottom" %>
+        <%= f.label "Edit your email" %>
+        <%= f.text_field :email, class: "form-control form-margin-bottom" %>
+        <%= f.label "Edit your position" %>
+        <%= f.text_field :position, class: "form-control form-margin-bottom" %>
 
-      <br />
-      <%= f.submit "Save", class: "btn btn-primary" %>
-      <%= link_to "Cancel", user_path(current_user.username), class: "btn btn-danger" %>
-
+        <br />
+  </div>
+</div>
+<div style = "margin: auto; text-align: center">
+  <%= f.submit "Save", class: "btn btn-primary", style: "margin-right: 10px" %>
+  <%= link_to "Cancel", user_path(current_user.username), class: "btn btn-cancel" %>
+</div>
     <% end %>
   </div>
 </div>

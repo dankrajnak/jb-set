@@ -6,7 +6,7 @@
       <% model.errors.full_messages.each do |msg| %>
         <li>
           <% if msg != "Is national can't be blank" %>
-              <%= msg %>
+              <%= msg%>
           <% else %>
               <%= "Please select national or local" %>
           <%end%>

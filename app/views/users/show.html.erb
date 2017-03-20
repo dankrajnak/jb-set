@@ -25,29 +25,97 @@
             <td>Email</td>
             <td><%= current_user.email %></td>
           </tr>
+          <tr>
+            <td>Position</td>
+            <td><%= current_user.position %></td>
+          </tr>
         </table>
         </div>
       </div>
       <div class="col-md-6">
         <h3>Surveys taken</h3>
-        <table>
+        <table class = "table">
           <% if @user.survey_completions.length == 0 %>
             <tr>
               <td>None! Get started below.</td>
             </tr>
           <% else %>
-            <% @user.survey_completions.each do |s| %>
+            <% @user.survey_completions.order(created_at: :desc).each do |s| %>
               <tr>
-                <td><%= s.survey.name %></td>
+
+                <td><%= s.survey.name %><small>&nbsp;(<%=time_ago_in_words(s.updated_at.to_s.to_time)%>&nbsp;ago)</small></td>
+                <td><%=link_to "Edit", edit_survey_completion_path(s), class: "btn btn-primary"%></td>
+                <td>
+                  <%= form_for s, :url =>  survey_completion_path(s), :html => { :method => :delete,} do |f|%>
+                    <input type="hidden" name="survey" value="<%= s.id%>">
+                    <input type = "submit" class = "btn btn-cancel" name="commit" value = "Delete">
+                  <%end%>
+                </td>
               </tr>
             <% end %>
           <% end %>
         </table>
       </div>
     </div>
+  </div>
+</div>
 
     <hr />
-    <h3>Surveys</h3>
+  <div class = "row">
+    <div class = "col-md-8">
+    <h3>Take a Survey</h3>
+    <table class = "table">
+      <tr>
+        <th>Local Surveys</th>
+        <th>National Surveys</th>
+        <th>Both National and Local Surveys</th>
+      </tr>
+      <%surveys = [[],[],[]] %>
+      <% Survey.all.each do |s|
+          if s.national
+            if s.local
+              surveys[2].push(s)
+            else
+              surveys[1].push(s)
+            end
+          else
+            surveys[0].push(s) if s.local
+          end
+        end
 
+        mostSurveys = 0;
+        mostSurveys = surveys[0].length if surveys[0].length > mostSurveys
+        mostSurveys = surveys[1].length if surveys[1].length > mostSurveys
+        mostSurveys = surveys[2].length if surveys[2].length > mostSurveys
+      %>
+      <%mostSurveys.times do |i| %>
+        <tr>
+          <td>
+            <% if !surveys[0][i].nil? %>
+              <form action = "<%= new_user_survey_completion_path(current_user.username)%>" method="get">
+                <input type="hidden" name="survey" value="<%= surveys[0][i].id%>">
+                <input type = "submit" class = "btn btn-primary" name="commit" value = "<%= surveys[0][i].name %>">
+              </form>
+            <%end %>
+          </td>
+          <td>
+            <% if !surveys[1][i].nil? %>
+                <form action = "<%= new_user_survey_completion_path(current_user.username)%>" method="get">
+                  <input type="hidden" name="survey" value="<%= surveys[1][i].id%>">
+                  <input type = "submit" class = "btn btn-primary" name="commit" value = "<%= surveys[1][i].name %>">
+                </form>
+            <%end %>
+          </td>
+          <td>
+            <% if !surveys[2][i].nil? %>
+                <form action = "<%= new_user_survey_completion_path(current_user.username)%>" method="get">
+                  <input type="hidden" name="survey" value="<%= surveys[2][i].id%>">
+                  <input type = "submit" class = "btn btn-primary" name="commit" value = "<%= surveys[2][i].name %>">
+                </form>
+            <%end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
   </div>
 </div>

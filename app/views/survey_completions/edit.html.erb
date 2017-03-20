@@ -1,0 +1,95 @@
+<%provide :title, "Edit"<<@survey_completion.survey.name %>
+<div class ="row">
+  <div class = "col-md-8 col-md-offset-2">
+    <h1>Edit <%= @survey_completion.survey.name%></h1>
+    <hr style = "margin-left: 30px"/>
+
+    <%= form_for @survey_completion, :html => {class: "form-group"} do |f| %>
+        <input type = "hidden" name = "survey_id" value = "<%= @survey_completion.survey.id%>">
+        <% if @survey_completion.survey.national %>
+            <%= label_tag :country, "About which country are you filling out this survey?" %>
+        <% else %>
+            <%= label_tag :country, "Which country is this chapter in?" %>
+        <% end %>
+        <%= f.text_field :country, class: "form-control form-margin-bottom" %>
+
+        <% @questionsAnswers.each do |a| %>
+            <%q = a.question%>
+            <%= label_tag(q.name) if q.qtype != 'mc' %>
+            <% case q.qtype %>
+            <% when 'lr' #longresponse %>
+                <textarea id="<%=q.id%>" name = "questionAnswer[<%=q.id%>]" rows ="5" class = "form-control form-margin-bottom" ><%=a.answer%></textarea>
+
+            <% when 'sr' #shortresponse %>
+                <input id="<%=q.id%>" value = "<%=a.answer%>" type="text" name = "questionAnswer[<%=q.id%>]" class = "form-control form-margin-bottom">
+
+            <% when 'mc' #multiple-choice %>
+                <%questionInfo = q.name.partition("[CHOICES]") %>
+                <%= label_tag questionInfo.first%>
+                <%questionInfo.last.split("|").each do |choice| %>
+                    <div class = "form-check">
+                      <label class="form-check-label">
+                        <input class = "form-check-input" checked = "<%= choice==a.answer%>" type = "radio" name = "questionAnswer[<%=q.id%>]" value="<%=choice%>">
+                        <%=choice%>
+                      </label>
+                    </div>
+                <%end%>
+                <div class = "form-check form-margin-bottom">
+                  <label class="form-check-label">
+                    <input class = "form-check-input" checked = "<%='/No Answer/' == a.answer%>" type = "radio" name = "questionAnswer[<%=q.id%>]" value="/No Answer/">
+                    No Answer
+                  </label>
+                </div>
+
+            <% when 'yn' #yes-no %>
+                <div class = "form-check">
+                  <label class ="form-check-label">
+                    <input class = "form-check-input" checked = "<%='Yes' == a.answer%>" type = "radio" name = "questionAnswer[<%=q.id%>]" value = "Yes">
+                    Yes
+                  </label>
+                </div>
+                <div class = "form-check">
+                  <label class ="form-check-label">
+                    <input class = "form-check-input" checked = "<%='No' == a.answer%>" type = "radio" name = "questionAnswer[<%=q.id%>]" value = "No">
+                    No
+                  </label>
+                </div>
+                <div class = "form-check form-margin-bottom">
+                  <label class ="form-check-label">
+                    <input class = "form-check-input" checked = "<%='/No Answer/' == a.answer%>" type = "radio" name = "questionAnswer[<%=q.id%>]" value = "/No Answer/">
+                    No Answer
+                  </label>
+                </div>
+
+            <% when 'tf' #true-false %>
+                <div class = "form-check">
+                  <label class ="form-check-label">
+                    <input class = "form-check-input" checked = "<%='True' == a.answer%>" type = "radio" name = "questionAnswer[<%=q.id%>]" value = "True">
+                    Yes
+                  </label>
+                </div>
+                <div class = "form-check">
+                  <label class ="form-check-label">
+                    <input class = "form-check-input" checked = "<%='False' == a.answer%>" type = "radio" name = "questionAnswer[<%=q.id%>]" value = "False">
+                    No
+                  </label>
+                  <div class = "form-check form-margin-bottom">
+                    <label class ="form-check-label">
+                      <input class = "form-check-input" checked = "<%='/No Answer/' == a.answer%>" type = "radio" name = "questionAnswer[<%=q.id%>]" value = "/No Answer/">
+                      No
+                    </label>
+                  </div>
+                </div>
+
+            <% when 'n' #number %>
+                <input id="<%=q.id%>" type="number" value = "<%= a.answer%>" name = "questionAnswer[<%=q.id%>]" class = "form-control form-margin-bottom" placeholder="Please enter a number">
+
+            <%end%>
+        <% end %>
+
+        <%= f.submit "Save and Submit!", class: "btn btn-primary btn-xl",
+                     style: "margin: 30px auto; display: block; text-align: center" %>
+    <% end %>
+
+  </div>
+</div>

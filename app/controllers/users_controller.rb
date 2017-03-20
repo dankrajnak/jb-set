@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   before_action :authenticate_user, :except => [:new, :create]
+  before_action :correct_user, :except => [:new, :create]
 
   def show
-    @user = User.find_by_username params[:username]
+    @user = User.find_by_username(params[:username])
   end
 
   def new
@@ -13,8 +14,9 @@ class UsersController < ApplicationController
     @user = User.new create_params
 
     if @user.save
-      flash[:success] = "Success! Please log in to get started."
-      redirect_to login_path
+      session[:user_id] = @user.id
+      flash[:success] = "This is your profile!  Click on survey below to take it."
+      redirect_to user_path(current_user.username)
     else
       render :new
     end
@@ -48,28 +50,33 @@ class UsersController < ApplicationController
   end
 
   private
-  def create_params
-    params.require(:user).permit(
-      :username,
-      :first_name,
-      :last_name,
-      :email,
-      :password,
-      :password_confirmation,
-      :position
-    )
-  end
+    def create_params
+      params.require(:user).permit(
+        :username,
+        :first_name,
+        :last_name,
+        :email,
+        :password,
+        :password_confirmation,
+        :position
+      )
+    end
 
-  def update_params
-    params.require(:user).permit(
-      :first_name,
-      :last_name,
-      :email,
-      :position,
-      :password,
-      :password_confirmation
+    def update_params
+      params.require(:user).permit(
+        :first_name,
+        :last_name,
+        :email,
+        :password,
+        :password_confirmation,
+        :position
+      )
+    end
 
-    )
-  end
+    def correct_user
+      @user = User.find_by_username(params[:username])
+      redirect_to root_url unless current_user? @user
+
+    end
 
 end
