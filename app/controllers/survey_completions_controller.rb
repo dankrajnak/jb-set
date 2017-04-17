@@ -20,7 +20,7 @@ class SurveyCompletionsController < ApplicationController
           questionAnswer.answer = answer
           questionAnswer.survey_completion = @survey_completion
           unless questionAnswer.save
-            flash[:danger] = "An answer was unable to be saved."
+            flash["alert-danger"] = "An answer was unable to be saved."
           end
         end
 
@@ -42,7 +42,7 @@ class SurveyCompletionsController < ApplicationController
   def update
     @survey_completion = SurveyCompletion.find(params[:id])
 
-    # a naive hack so that it updates the updated_at collumn every time
+    # a naive hack so that it updates the updated_at column every time
     @survey_completion.update country: "fake country"
     @survey_completion.update country: params[:survey_completion][:country]
     if @survey_completion.valid?
@@ -54,14 +54,14 @@ class SurveyCompletionsController < ApplicationController
         questionAnswer.answer = answer
         questionAnswer.survey_completion = @survey_completion
         unless  questionAnswer.save
-          flash[:danger] = "An answer was unable to be saved."
+          flash["alert-danger"] = "An answer was unable to be saved."
         end
       end
 
       flash[:success] = "Awesome. Your answers have been saved."
       redirect_to user_path(current_user.username)
     else
-      flash[:warning] = "Something went wrong, it didn't save."
+      flash["alert-danger"] = "Something went wrong, it didn't save."
     end
   end
 
@@ -72,11 +72,11 @@ class SurveyCompletionsController < ApplicationController
         flash[:success] = "Survey and answers successfully deleted"
         redirect_to user_path(current_user.username)
       else
-        flash[:danger] = "Something went wrong.  Survey not deleted."
+        flash["alert-danger"] = "Something went wrong.  Survey not deleted."
         redirect_to user_path(current_user.username)
       end
     else
-      flash[:danger] = "You don't have access to that page"
+      flash["alert-danger"] = "You don't have access to that page"
       redirect_to user_path(current_user.username)
     end
   end

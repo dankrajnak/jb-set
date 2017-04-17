@@ -29,14 +29,14 @@
                 <%questionInfo.last.split("|").each do |choice| %>
                     <div class = "form-check">
                       <label class="form-check-label">
-                        <input class = "form-check-input" checked = "<%= choice==a.answer%>" type = "radio" name = "questionAnswer[<%=q.id%>]" value="<%=choice%>">
+                        <input class = "form-check-input" <%= "checked = 'checked'" if choice==a.answer%> type = "radio" name = "questionAnswer[<%=q.id%>]" value="<%=choice%>">
                         <%=choice%>
                       </label>
                     </div>
                 <%end%>
                 <div class = "form-check form-margin-bottom">
                   <label class="form-check-label">
-                    <input class = "form-check-input" checked = "<%='/No Answer/' == a.answer%>" type = "radio" name = "questionAnswer[<%=q.id%>]" value="/No Answer/">
+                    <input class = "form-check-input" <%= "checked = 'checked'" if '/No Answer/' == a.answer%> type = "radio" name = "questionAnswer[<%=q.id%>]" value="/No Answer/">
                     No Answer
                   </label>
                 </div>
@@ -44,19 +44,19 @@
             <% when 'yn' #yes-no %>
                 <div class = "form-check">
                   <label class ="form-check-label">
-                    <input class = "form-check-input" checked = "<%='Yes' == a.answer%>" type = "radio" name = "questionAnswer[<%=q.id%>]" value = "Yes">
+                    <input class = "form-check-input" <%= "checked = 'checked'" if 'Yes' == a.answer%> type = "radio" name = "questionAnswer[<%=q.id%>]" value = "Yes">
                     Yes
                   </label>
                 </div>
                 <div class = "form-check">
                   <label class ="form-check-label">
-                    <input class = "form-check-input" checked = "<%='No' == a.answer%>" type = "radio" name = "questionAnswer[<%=q.id%>]" value = "No">
+                    <input class = "form-check-input" <%= "checked = 'checked'" if 'No' == a.answer%> type = "radio" name = "questionAnswer[<%=q.id%>]" value = "No">
                     No
                   </label>
                 </div>
                 <div class = "form-check form-margin-bottom">
                   <label class ="form-check-label">
-                    <input class = "form-check-input" checked = "<%='/No Answer/' == a.answer%>" type = "radio" name = "questionAnswer[<%=q.id%>]" value = "/No Answer/">
+                    <input class = "form-check-input" <%= "checked = 'checked'" if '/No Answer/' == a.answer%> type = "radio" name = "questionAnswer[<%=q.id%>]" value = "/No Answer/">
                     No Answer
                   </label>
                 </div>
@@ -64,18 +64,18 @@
             <% when 'tf' #true-false %>
                 <div class = "form-check">
                   <label class ="form-check-label">
-                    <input class = "form-check-input" checked = "<%='True' == a.answer%>" type = "radio" name = "questionAnswer[<%=q.id%>]" value = "True">
+                    <input class = "form-check-input" <%= "checked = 'checked'" if 'True' == a.answer%> type = "radio" name = "questionAnswer[<%=q.id%>]" value = "True">
                     Yes
                   </label>
                 </div>
                 <div class = "form-check">
                   <label class ="form-check-label">
-                    <input class = "form-check-input" checked = "<%='False' == a.answer%>" type = "radio" name = "questionAnswer[<%=q.id%>]" value = "False">
+                    <input class = "form-check-input" <%= "checked = 'checked'" if 'False' == a.answer%> type = "radio" name = "questionAnswer[<%=q.id%>]" value = "False">
                     No
                   </label>
                   <div class = "form-check form-margin-bottom">
                     <label class ="form-check-label">
-                      <input class = "form-check-input" checked = "<%='/No Answer/' == a.answer%>" type = "radio" name = "questionAnswer[<%=q.id%>]" value = "/No Answer/">
+                      <input class = "form-check-input" <%= "checked = 'checked'" if '/No Answer/' == a.answer%> type = "radio" name = "questionAnswer[<%=q.id%>]" value = "/No Answer/">
                       No
                     </label>
                   </div>
