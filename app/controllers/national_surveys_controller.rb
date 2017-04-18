@@ -3,7 +3,7 @@ class NationalSurveysController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @national_surveys = NationalSurvey.all
+    @national_surveys = Survey.all
   end
 
   def new
@@ -49,7 +49,7 @@ class NationalSurveysController < ApplicationController
 
   private
   def set_national_survey
-    @national_survey = NationalSurvey.find(params[:id])
+    @national_survey = Survey.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
