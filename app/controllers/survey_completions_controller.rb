@@ -34,6 +34,7 @@ class SurveyCompletionsController < ApplicationController
   def edit
     @survey_completion = SurveyCompletion.find(params[:id])
     @questionsAnswers = SurveyCompletion.find(params[:id]).question_answers.sort_by {|e| e.question.qorder}
+    @questions = SurveyCompletion.find(params[:id]).survey.questions.sort_by{|e| e.qorder}
     unless @survey_completion.user == current_user
       redirect_to user_path(current_user.username)
     end
@@ -41,7 +42,6 @@ class SurveyCompletionsController < ApplicationController
 
   def update
     @survey_completion = SurveyCompletion.find(params[:id])
-
     # a naive hack so that it updates the updated_at column every time
     @survey_completion.update country: "fake country"
     @survey_completion.update country: params[:survey_completion][:country]
@@ -58,7 +58,7 @@ class SurveyCompletionsController < ApplicationController
         end
       end
 
-      flash[:success] = "Awesome. Your answers have been saved."
+      flash[:success] = "Thanks! Your answers have been saved."
       redirect_to user_path(current_user.username)
     else
       flash["alert-danger"] = "Something went wrong, it didn't save."
@@ -69,10 +69,10 @@ class SurveyCompletionsController < ApplicationController
     survey_completion = SurveyCompletion.find(params[:survey])
     if survey_completion.user == current_user
       if SurveyCompletion.find(params[:survey]).destroy
-        flash[:success] = "Survey and answers successfully deleted"
+        flash[:success] = "Answers successfully deleted"
         redirect_to user_path(current_user.username)
       else
-        flash["alert-danger"] = "Something went wrong.  Survey not deleted."
+        flash["alert-danger"] = "Something went wrong. Answers not deleted."
         redirect_to user_path(current_user.username)
       end
     else
