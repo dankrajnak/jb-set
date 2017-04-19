@@ -23,38 +23,39 @@ var path = d3.geoPath()
 
 queue()
   .defer(d3.json, "<%= image_url("world-110m.json") %>")
-  .defer(d3.tsv, "<%= image_url("world-country-names.tsv") %>")
+  .defer(d3.tsv, "<%= image_url("jb-countries.tsv") %>")
+  .defer(d3.json, "/surveys/2.json")
   .await(ready);
 
-function ready(error, world, names) {
+function ready(error, world, jb, survey) {
   if (error) throw error;
 
-  var land = topojson.feature(world, world.objects.land),
-    countries = topojson.feature(world, world.objects.countries).features;
-    borders = topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; }),
-   n = countries.length;
+  var land = topojson.feature(world, world.objects.land);
+  var countries = topojson.feature(world, world.objects.countries).features;
+  var borders = topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; });
+  var n = countries.length;
 
   countries = countries.filter(function(d) {
-    return names.some(function(n) {
+    return jb.some(function(n) {
       if (d.id == n.id) return d.name = n.name;
     });
-  })
-
-  var countriesPresent = countries.filter(function(country, index){
-    return (index%2==0 && country.name != "Antarctica");
   });
 
   var cisvcolors = ["#336699", "#FF6633", "#FFCC33", "#CC0066", "#FF3333", "#FF9933", "#339933", "#009966"];
   var colorIndex = 0;
 
-  countriesPresent = countriesPresent.map(function(d){
-    if(++colorIndex == cisvcolors.length){
-        colorIndex = 0;
+  countries.forEach(function(country, index){
+      country.completed = false;
+      if(++colorIndex == cisvcolors.length){
+          colorIndex = 0;
       }
-      d.color = "rgb(240, 240, 240)";
-      return d;
-  })
+      country.color = cisvcolors[colorIndex];
 
+      survey.completions.some(function(e){
+          if(e.country == country.name && e.questions.every(function(q){return q.answer != "" && q.answer != "/No Answer/"}))
+              return country.completed = true;
+      })
+  });
 
 
   d3.timer(function(){
@@ -63,17 +64,23 @@ function ready(error, world, names) {
     context.fillStyle = "#FFF";
     context.clearRect(0, 0, width ,height);
 
-    countriesPresent.forEach(function(country){
-      context.fillStyle = country.color;
+    context.strokeStyle = "#FFF";
+    context.lineWidth = .5;
+    countries.forEach(function(country){
+      if(country.completed) {
+          context.fillStyle = country.color;
+          context.beginPath();
+          path(country);
+          context.fill()
+          context.stroke();
+      }
+
+
       context.beginPath();
       path(country);
-       context.fill();
+      context.stroke();
+
     });
-    context.strokeStyle = "#222";
-    context.lineWidth = .5;
-    context.beginPath();
-    path(borders);
-    context.stroke();
 
   });
 

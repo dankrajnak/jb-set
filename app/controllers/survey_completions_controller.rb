@@ -5,6 +5,14 @@ class SurveyCompletionsController < ApplicationController
     @survey_completion = current_user.survey_completions.new survey_id: params[:survey]
     @questions = Survey.find(params[:survey]).questions
     @questions = @questions.sort_by &:qorder
+    require 'csv'
+    @countryNames = Array.new
+    CSV.read("#{Rails.root}/app/assets/images/jb-countries.tsv", {:col_sep => "\t"}).each do |c|
+      @countryNames.push(c[1])
+    end
+    @countryNames.shift 4;
+    @countryNames.sort!
+
 
   end
 
@@ -35,6 +43,13 @@ class SurveyCompletionsController < ApplicationController
     @survey_completion = SurveyCompletion.find(params[:id])
     @questionsAnswers = SurveyCompletion.find(params[:id]).question_answers.sort_by {|e| e.question.qorder}
     @questions = SurveyCompletion.find(params[:id]).survey.questions.sort_by{|e| e.qorder}
+    @countryNames = Array.new
+    CSV.read("#{Rails.root}/app/assets/images/jb-countries.tsv", {:col_sep => "\t"}).each do |c|
+      @countryNames.push(c[1])
+    end
+    @countryNames.shift 4;
+    @countryNames.sort!
+
     unless @survey_completion.user == current_user
       redirect_to user_path(current_user.username)
     end

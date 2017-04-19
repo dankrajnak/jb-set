@@ -40,10 +40,14 @@
               <td>None! Get started below.</td>
             </tr>
           <% else %>
-            <% @user.survey_completions.order(created_at: :desc).each do |s| %>
+            <% @user.survey_completions.order(updated_at: :desc).each do |s| %>
               <tr>
 
-                <td><%= s.survey.name %><small>&nbsp;(<%=time_ago_in_words(s.updated_at.to_s.to_time)%>&nbsp;ago)</small></td>
+                <td><%= s.survey.name %><small>&nbsp;(<%=time_ago_in_words(s.updated_at.to_s.to_time)%>&nbsp;ago)</small>
+                  <% if s.question_answers.any? { |q| q.answer.blank? || q.answer == "/No Answer/" }%>
+                    <small>(Not Completed)</small>
+                  <% end%>
+                </td>
                 <td><%=link_to "Edit", edit_survey_completion_path(s), class: "btn btn-primary"%></td>
                 <td>
                   <%= form_for s, :url =>  survey_completion_path(s), :html => { :method => :delete,} do |f|%>

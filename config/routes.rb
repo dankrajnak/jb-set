@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   # home/index/root page
   root 'static_pages#index'
 
