@@ -1,24 +1,3 @@
-default: &default
-  adapter: sqlite3
-  encoding: unicode
-  pool: 5
-  timeout: 5000
-
-development:
-  <<: *default
-  adapter: postgresql
-  database: db/development.sqlite3
-
-test:
-  <<: *default
-  database: db/test.sqlite3
-
-production:
-  <<: *default
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
-
 # PostgreSQL. Versions 9.1 and up are supported.
 #
 # Install the pg driver:
