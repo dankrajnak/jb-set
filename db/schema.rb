@@ -12,14 +12,17 @@
 
 ActiveRecord::Schema.define(version: 20170420202900) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "question_answers", force: :cascade do |t|
     t.text     "answer"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
     t.integer  "question_id"
     t.integer  "survey_completion_id"
-    t.index ["question_id"], name: "index_question_answers_on_question_id"
-    t.index ["survey_completion_id"], name: "index_question_answers_on_survey_completion_id"
+    t.index ["question_id"], name: "index_question_answers_on_question_id", using: :btree
+    t.index ["survey_completion_id"], name: "index_question_answers_on_survey_completion_id", using: :btree
   end
 
   create_table "questions", force: :cascade do |t|
@@ -29,7 +32,7 @@ ActiveRecord::Schema.define(version: 20170420202900) do
     t.integer  "survey_id"
     t.string   "qtype"
     t.integer  "qorder"
-    t.index ["survey_id"], name: "index_questions_on_survey_id"
+    t.index ["survey_id"], name: "index_questions_on_survey_id", using: :btree
   end
 
   create_table "survey_completions", force: :cascade do |t|
@@ -38,8 +41,8 @@ ActiveRecord::Schema.define(version: 20170420202900) do
     t.integer  "user_id"
     t.integer  "survey_id"
     t.string   "country"
-    t.index ["survey_id"], name: "index_survey_completions_on_survey_id"
-    t.index ["user_id"], name: "index_survey_completions_on_user_id"
+    t.index ["survey_id"], name: "index_survey_completions_on_survey_id", using: :btree
+    t.index ["user_id"], name: "index_survey_completions_on_user_id", using: :btree
   end
 
   create_table "surveys", force: :cascade do |t|
