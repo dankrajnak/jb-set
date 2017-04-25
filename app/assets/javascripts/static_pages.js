@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require scrollreveal.js
 
 
 //= require d3v4
@@ -22,8 +23,10 @@
 //= require d3geoprojection
 //= require topojson
 //= require frontmap
+//= require generalGraph
 
 //= require jquery.easing.min
+
 //= require creative
 
 

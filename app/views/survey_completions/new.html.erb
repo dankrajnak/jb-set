@@ -16,7 +16,7 @@
       </select>
         <hr style = "margin-bottom: 10px">
       <% @questions.each do |q| %>
-            <%= label_tag(q.name) if q.qtype != 'mc' %>
+            <%= label_tag(q.name) if q.qtype != 'mc' && q.qtype != 'h' %>
             <% case q.qtype %>
              <% when 'lr' #longresponse %>
                 <textarea id="<%=q.id%>" name = "questionAnswer[<%=q.id%>]" rows ="5" class = "form-control form-margin-bottom" ></textarea>
@@ -63,23 +63,26 @@
                 <div class = "form-check">
                   <label class ="form-check-label">
                     <input class = "form-check-input" type = "radio" name = "questionAnswer[<%=q.id%>]" value = "Yes">
-                    Yes
+                    True
                   </label>
                 </div>
                 <div class = "form-check">
                   <label class ="form-check-label">
                     <input class = "form-check-input" type = "radio" name = "questionAnswer[<%=q.id%>]" value = "No">
-                    No
+                    False
                   </label>
                   <div class = "form-check form-margin-bottom">
                     <label class ="form-check-label">
                       <input class = "form-check-input" checked = "true" type = "radio" name = "questionAnswer[<%=q.id%>]" value = "/No Answer/">
-                      No
+                      No Answer
                     </label>
                   </div>
                 </div>
              <% when 'n' #number %>
                 <input id="<%=q.id%>" type="number" name = "questionAnswer[<%=q.id%>]" class = "form-control form-margin-bottom" placeholder="Please enter a number">
+            <% when 'h' #header %>
+              <h3 class = "text-center"><%=q.name%></h3>
+                <hr />
             <%end%>
       <% end %>
         <div style = "margin: 30px auto; display: block; text-align: center">

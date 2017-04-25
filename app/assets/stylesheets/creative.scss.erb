@@ -66,10 +66,19 @@ h6 {
     @include sans-serif-font;
 }
 
-p {
+.serif{
+  @include serif-font;
+}
+
+p:not(.lead) {
     font-size: 16px;
     line-height: 1.5;
     margin-bottom: 20px;
+}
+
+.thin{
+  letter-spacing: 1.1px;
+  font-weight: 200;
 }
 
 .bg-primary {
@@ -190,7 +199,7 @@ header {
     position: relative;
     @include background-cover;
     background-position: center;
-    background-image: url("<%= asset_url 'header' %>");
+    background-color: $gray-darker;
     background-attachment:fixed;
     text-align: center;
     color: rgba(black, .9);
@@ -224,7 +233,7 @@ header {
     }
     #homeResults{
       position: absolute;
-      bottom: 60px;
+      bottom: 20px;
       width: 100%;
       font-size: 20px;
       color: white;

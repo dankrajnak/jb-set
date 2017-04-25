@@ -6,7 +6,7 @@
         var $anchor = $(this);
         $('html, body').stop().animate({
             scrollTop: ($($anchor.attr('href')).offset().top - 50)
-        }, 1250, 'easeInOutExpo');
+        }, 1600, 'easeInOutExpo');
         event.preventDefault();
     });
 
@@ -16,6 +16,12 @@
                 offset: 51
         });
 
+    // Initialize and Configure Scroll Reveal Animation
+    window.sr = ScrollReveal();
+    sr.reveal('.sr-text', {
+        duration: 1500,
+        delay: 80,
+    });
 
 
     // Closes the Responsive Menu on Menu Item Click

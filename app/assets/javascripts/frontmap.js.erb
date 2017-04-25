@@ -1,87 +1,106 @@
-var width = window.innerWidth,
-    height = window.innerHeight,
-    offset = 30;
+createWorld();
 
-var velocity = .01,
-  t0 = Date.now();
+function createWorld() {
+    var width = window.innerWidth,
+        height = window.innerHeight,
+        offset = 30;
 
-d3.select("#front-map").attr("width", width)
-  .attr("height", height);
+    var velocity = .01,
+        t0 = Date.now();
 
-d3.select("header").attr("style", "height: "+ (window.innerHeight)+"px;");
+    d3.select("#front-map").attr("width", width)
+        .attr("height", height);
 
-var projection = d3.geoWinkel3()
-    .scale(height/Math.PI)
-    .translate([width/2, height/2+offset]);
+    d3.select("header").attr("style", "height: " + (window.innerHeight) + "px;");
 
-var context = d3.select("#front-map").node().getContext("2d");
+    var projection = d3.geoWinkel3()
+        .scale(height / Math.PI)
+        .translate([width / 2, height / 2 + offset]);
 
-
-var path = d3.geoPath()
-    .projection(projection)
-    .context(context);
-
-queue()
-  .defer(d3.json, "<%= image_url("world-110m.json") %>")
-  .defer(d3.tsv, "<%= image_url("jb-countries.tsv") %>")
-  .defer(d3.json, "/surveys/2.json")
-  .await(ready);
-
-function ready(error, world, jb, survey) {
-  if (error) throw error;
-
-  var land = topojson.feature(world, world.objects.land);
-  var countries = topojson.feature(world, world.objects.countries).features;
-  var borders = topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; });
-  var n = countries.length;
-
-  countries = countries.filter(function(d) {
-    return jb.some(function(n) {
-      if (d.id == n.id) return d.name = n.name;
-    });
-  });
-
-  var cisvcolors = ["#336699", "#FF6633", "#FFCC33", "#CC0066", "#FF3333", "#FF9933", "#339933", "#009966"];
-  var colorIndex = 0;
-
-  countries.forEach(function(country, index){
-      country.completed = false;
-      if(++colorIndex == cisvcolors.length){
-          colorIndex = 0;
-      }
-      country.color = cisvcolors[colorIndex];
-
-      survey.completions.some(function(e){
-          if(e.country == country.name && e.questions.every(function(q){return q.answer != "" && q.answer != "/No Answer/"}))
-              return country.completed = true;
-      })
-  });
+    var context = d3.select("#front-map").node().getContext("2d");
 
 
-  d3.timer(function(){
-    var t = Date.now()-t0;
-    projection.rotate([width/2+velocity*t]);
-    context.fillStyle = "#FFF";
-    context.clearRect(0, 0, width ,height);
+    var path = d3.geoPath()
+        .projection(projection)
+        .context(context);
 
-    context.strokeStyle = "#FFF";
-    context.lineWidth = .5;
-    countries.forEach(function(country){
-      if(country.completed) {
-          context.fillStyle = country.color;
-          context.beginPath();
-          path(country);
-          context.fill()
-          context.stroke();
-      }
+    queue()
+        .defer(d3.json, "<%= image_url("world-110m.json") %>")
+        .defer(d3.tsv, "<%= image_url("jb-countries.tsv") %>")
+        .defer(d3.json, "/surveys/1.json")
+        .await(ready);
+
+    function ready(error, world, jb, survey) {
+        if (error) throw error;
+
+        var land = topojson.feature(world, world.objects.land);
+        var countries = topojson.feature(world, world.objects.countries).features;
+        var borders = topojson.mesh(world, world.objects.countries, function (a, b) {
+            return a !== b;
+        });
+        var n = countries.length;
+
+        countries = countries.filter(function (d) {
+            return jb.some(function (n) {
+                if (d.id == n.id) return d.name = n.name;
+            });
+        });
+
+        var cisvcolors = ["#336699", "#FF6633", "#FFCC33", "#CC0066", "#FF3333", "#FF9933", "#339933"];
+        var colorIndex = 0;
+
+        countries.sort(function(a,b){
+          return a.geometry.coordinates[0][0] - b.geometry.coordinates[0][0];
+        })
+
+        countries.forEach(function (country) {
+            country.completed = false;
+
+            if (survey.completions != null)
+                survey.completions.some(function (e) {
+                    if (e.country == country.name && e.questions.every(function (q) {
+                            return q.answer != "" && q.answer != "/No Answer/"
+                        })) {
+                        country.completed = true;
+                        if (++colorIndex == cisvcolors.length) {
+                            colorIndex = 0;
+                        }
+                        country.color = cisvcolors[colorIndex];
+
+                    }
+                })
+        });
+
+        if (survey.lastCountry)
+            $('#lastUpdated').html("<small>Latest national completion: <strong>" + survey.lastCountry + "</strong> " +
+                survey.lastFilledOut + "</small>");
+        else
+            $('#lastUpdated').html("<small>No national completions yet.</small>");
+
+        d3.timer(function () {
+            var t = Date.now() - t0;
+            projection.rotate([width / 2 + velocity * t]);
+            context.fillStyle = "#FFF";
+            context.clearRect(0, 0, width, height);
+
+            context.strokeStyle = "#FFF";
+            context.lineWidth = .5;
+            countries.forEach(function (country) {
+                if (country.completed) {
+                    context.fillStyle = country.color;
+                    context.beginPath();
+                    path(country);
+                    context.fill()
+                    context.stroke();
+                }
 
 
-      context.beginPath();
-      path(country);
-      context.stroke();
+                context.beginPath();
+                path(country);
+                context.stroke();
 
-    });
+            });
+        });
 
-  });
-
+    }
 }

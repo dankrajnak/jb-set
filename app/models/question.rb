@@ -4,6 +4,6 @@ class Question < ApplicationRecord
 
   validates :name, presence: true;
   validates :qtype, presence: true;
-  validates :qorder, uniqueness: true;
+  validates :qorder, presence: true;
   validates :survey_id, presence: true;
 end

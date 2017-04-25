@@ -1,49 +1,76 @@
 <% provide(:title, "Home") %>
-  <div class = "index">
-  <header>
-        <div class="header-content">
-            <div class="header-content-inner">
-                 <% if current_user.nil? %>
-                <h1 id="homeHeading">Welcome to the JB SET.</h1>
-                <% else %>
-                <h1 id="homeHeading"> Welcome, <%= current_user.first_name %>. </h1>
-                <% end %>
-                <hr>
-                <p>
-                  <% if current_user.nil? %>
-                      <%= link_to "Log in", login_path, class: "btn btn-primary btn-xl"%>
-                      <%= link_to "Sign up", signup_path, class: "btn btn-front btn-xl" %>
-                  <% else %>
-                  Visit <%= link_to "your profile", user_path(current_user.username) %>, or
-                      <%= link_to "log out", logout_path %>
-                  <% end %>
-                  </p>
-            </div>
-        </div>
-        <div id="homeResults">
-          <span class="glyphicon glyphicon-triangle-top" style="font-size: 30px;"></span>
-          <br/>
-          (scroll to view the results)
-        </div>
-    </header>
+<div class = "index">
+<header>
+  <canvas id="front-map" style = "width: 100%; position: absolute; top: 0; left:0;">
+  </canvas>
+  <div class="header-content">
+      <div class="header-content-inner">
+           <% if current_user.nil? %>
+          <h1 id="homeHeading">Welcome to the JB SET.</h1>
+          <% else %>
+          <h1 id="homeHeading"> Welcome, <%= current_user.first_name %>. </h1>
+          <% end %>
+          <hr>
+          <p style = "margin-bottom: 20px;">
+            <% if current_user.nil? %>
+                <%= link_to "Log in", login_path, class: "btn btn-primary btn-xl"%>
+                <%= link_to "Sign up", signup_path, class: "btn btn-front btn-xl" %>
+            <% else %>
+            Visit <%= link_to "your profile", user_path(current_user.username) %>, or
+                <%= link_to "log out", logout_path %>
+            <% end %>
+            </p>
+          <p id = "lastUpdated"></p>
+      </div>
+  </div>
+  <div id="homeResults">
+    <a class ="page-scroll" href = "#beginning-info" style="color:white">
+    <span class="glyphicon glyphicon-triangle-top" style="font-size: 30px;"></span>
+    </a>
+  </div>
+  <img src="<%= image_path("logo.svg")%>" width="200" style="position: absolute; bottom: 0; right: 0; opacity: .7"> </img>
+</header>
 
-<section class = "container-fluid bg-dark" style = "padding-top: 10px">
+<section class = "bg-dark" id="beginning-info">
+  <div class = "container">
+    <div class = "row">
+      <div class = "col-md-10 col-md-offset-1">
+        <div class = "sr-text">
+          <body>
+          <p class = "lead">
+            Ok, <strong>show</strong> me the numbers.
+          </p>
+          <p class = "thin">
+            This year, the JB SET is a little different.  Want to see the results?  Check out the graphs below
+            or download the SET as an excel document (here).  All of the graphs are displayed in realtime.  You
+            always have the most up-to-date information.  Has your country not filled out the national SET yet?
+            Email your NJR and make sure that your country is represented.  Anyone can interact with and
+            learn from the JB SET instantly.  So, what does JB this year look like?
+          </p>
 
-  <canvas id="front-map" style = "width: 100%"></canvas>
-  <div class = "row col-md-12">
- 
-      <div class="jumbotron">
-      <p>Here's where the first graph will go </p>
+          </body>
+        </div>
+      </div>
     </div>
-    <div class="jumbotron">
-      <p>Here's where the second graph, or first table, will go</p>
+  </div>
+</section>
+
+<section class = "container bg-dark">
+  <div class = "col-md-10 col-md-offset-1">
+    <div class = "row">
+      <h4>Pick a survey:</h4>
+      <select id="general-graph-select" name= "survey_completion[country]"  class="form-control form-margin-bottom" >
+      </select>
+    </div>
+    <div class = "row" id ="graph-row">
+      <svg id="general-graph" class = "bg-dark" ></svg>
     </div>
   </div>
 </section>
 </div>
 
 <style>
-body, html{height: 100%;}
+body, html{height: 100%; background-color: #222}
 
 @media (min-width: 768px) {
   .navbar:not(.affix) a {
@@ -51,7 +78,20 @@ body, html{height: 100%;}
   }
 }
 
+#general-graph rect {
+  fill: steelblue;
+}
+
+#general-graph text {
+  fill: white;
+  font: 10px sans-serif;
+  text-anchor: middle;
+}
+
+
 </style>
+
+
 
 
 
