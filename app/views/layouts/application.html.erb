@@ -4,6 +4,7 @@
     <title>JB SET | <%= yield(:title) %></title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -15,6 +16,13 @@
     <div class= "container">
       <%= render :partial => "layouts/flashes" %>
       <%= yield %>
+    <div style = "width: 300px; margin: auto">
+      <h3>Because I love all of you and filling this out should be fun:</h3>
+      <iframe src="https://embed.spotify.com/?uri=spotify%3Auser%3A1241225324%3Aplaylist%3A2oZXu6fwEnctsOfKgViCJ9"
+              width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+      <h5 class="text-center">(by the way, you can totally add songs to this playlist. Add a song and we can all
+        jam together!)</h5>
+    </div>
     </div>
     <%= debug(params) if Rails.env.development? %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
