@@ -1,0 +1,59 @@
+wb = xlsx_package.workbook
+
+wb.styles do |style|
+  highlight_cell = style.add_style(bg_color: "EFC376")
+
+
+  @surveys.each do |survey|
+    wb.add_worksheet(name: survey.name) do |sheet|
+      firstRow = ["Country"] #array containing the first row
+
+      #array which stores which rows each question corresponds to
+      rowIndex = 0
+      question_row = []
+      rowIndex += 1
+
+
+      #add the questions unless the question is a header
+      survey.questions.order(:qorder).each do |q|
+        unless q.qtype == 'h'
+          if q.qtype == 'mc'
+            firstRow.push(q.name.partition("[CHOICES]").first)
+          else
+            firstRow.push(q.name)
+          end
+
+          question_row.push [q.id, rowIndex]
+          rowIndex += 1
+        end
+      end
+      sheet.add_row firstRow, style: [highlight_cell]
+
+      survey.survey_completions.order(:country).each do |completion|
+        row = [completion.country]
+        questionAnswers = []
+
+        #copy array so temporary deletion is possible
+        completion.question_answers.each {|qa| questionAnswers.push qa}
+
+        question_row.each do |qr|
+          qai = 0 #question_answer index
+          answer = ''
+          while qai < questionAnswers.length do
+            if questionAnswers[qai].question.id == qr[0]
+              answer = questionAnswers[qai].answer unless questionAnswers[qai].answer == "/No Answer/"
+              questionAnswers.delete_at qai
+              break
+            end
+            qai += 1
+          end
+          row[qr[1]] = answer
+        end
+        sheet.add_row row
+
+
+      end
+
+    end
+  end
+end

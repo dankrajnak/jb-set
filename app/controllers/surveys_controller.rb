@@ -2,6 +2,13 @@ class SurveysController < ApplicationController
 
   def index
     @surveys = Survey.all
+    respond_to do |format|
+      format.json
+      format.xlsx {
+        date = "#{Time.now.day}-#{Time.now.month}"
+        response.headers['Content-Disposition'] = "attachment; filename= \"JB_SET (#{date}).xlsx\""
+      }
+    end
   end
 
   def show
