@@ -27,7 +27,7 @@ function createWorld() {
     queue()
         .defer(d3.json, "<%= image_url("world-110m.json") %>")
         .defer(d3.tsv, "<%= image_url("jb-countries.tsv") %>")
-        .defer(d3.json, "/surveys/1.json")
+        .defer(d3.json, "/surveys/National%20JB%20SET.json")
         .await(ready);
 
     function ready(error, world, jb, survey) {
@@ -46,7 +46,7 @@ function createWorld() {
             });
         });
 
-        var cisvcolors = ["#336699", "#FF6633", "#FFCC33", "#CC0066", "#FF3333", "#FF9933", "#339933"];
+        var cisvcolors = ["#339933", "#336699", "#FF6633", "#FFCC33", "#CC0066", "#FF3333", "#FF9933"];
         var colorIndex = 0;
 
         countries.sort(function(a,b){
@@ -58,9 +58,7 @@ function createWorld() {
 
             if (survey.completions != null)
                 survey.completions.some(function (e) {
-                    if (e.country == country.name && e.questions.every(function (q) {
-                            return q.answer != "" && q.answer != "/No Answer/"
-                        })) {
+                    if (e.country == country.name && e.completed) {
                         country.completed = true;
                         if (++colorIndex == cisvcolors.length) {
                             colorIndex = 0;

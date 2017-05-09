@@ -15,28 +15,22 @@
 #  'n'    Number
 #  'h'    Header
 
-#Question Methods
-def longResponse (name, qorder, survey, save)
+# Question-creation Methods
+def longResponse (name)
   question = Question.new
   question.name = name
   question.qtype = 'lr'
-  question.qorder = qorder if qorder
-  question.survey = survey if survey
-  question.save if save
   return question
 end
 
-def shortResponse (name, qorder, survey, save)
+def shortResponse (name)
   question = Question.new
   question.name = name
   question.qtype = 'sr'
-  question.qorder = qorder if qorder
-  question.survey = survey if survey
-  question.save if save
   return question
 end
 
-def multipleChoice (name, choices, qorder, survey, save)
+def multipleChoice (name, choices)
   question = Question.new
   nameWithChoice = name
   if choices
@@ -48,54 +42,41 @@ def multipleChoice (name, choices, qorder, survey, save)
   end
   question.name = nameWithChoice
   question.qtype = 'mc'
-  question.qorder = qorder if qorder
-  question.survey = survey if survey
-  question.save if save
   return question
 end
 
-def yesNo (name, qorder, survey, save)
+def yesNo (name)
   question = Question.new
   question.name = name
   question.qtype = 'yn'
-  question.qorder = qorder if qorder
-  question.survey = survey if survey
-  question.save if save
   return question
 end
 
-def trueFalse (name, qorder, survey, save)
+def trueFalse (name)
   question = Question.new
   question.name = name
   question.qtype = 'tf'
-  question.qorder = qorder if qorder
-  question.survey = survey if survey
-  question.save if save
   return question
 end
 
-def number (name, qorder, survey, save)
+def number (name)
   question = Question.new
   question.name = name
   question.qtype = 'n'
-  question.qorder = qorder if qorder
-  question.survey = survey if survey
-  question.save if save
   return question
 end
 
-def header (name, qorder, survey, save)
+def header (name)
   question = Question.new
   question.name = name
   question.qtype = 'h'
-  question.qorder = qorder if qorder
-  question.survey = survey if survey
-  question.save if save
   return question
 end
 
+
+
 # Create Surveys
-Survey.find_by_name("Test Survey").destroy if Survey.find_by_name("Test Survey")
+# Survey.find_by_name("Test Survey").destroy if Survey.find_by_name("Test Survey")
 unless Survey.find_by_name("Test Survey")
   testSurvey = Survey.new
   testSurvey.name = "Test Survey"
@@ -103,12 +84,89 @@ unless Survey.find_by_name("Test Survey")
   testSurvey.national = true
   testSurvey.save
 
-  #Attatch some questions
-  longResponse "Long Response Test", 0, testSurvey, true
-  shortResponse "Short Response Test", 1, testSurvey, true
-  header "Test Header", 2, testSurvey, true
-  yesNo "Test Yes No", 3, testSurvey, true
-  number "Test Number", 4, testSurvey, true
-  multipleChoice "Test Multiple Choice", %w(A B C D), 5,testSurvey, true
-  trueFalse "Test True False", 6, testSurvey, true
+  q = []
+
+  # Make some questions
+  q.push longResponse "Long Response Test"
+  q.push shortResponse "Short Response Test"
+  q.push header "Test Header"
+  q.push yesNo "Test Yes No"
+  q.push number "Test Number"
+  q.push multipleChoice "Test Multiple Choice", %w(A B C D)
+  q.push trueFalse "Test True False"
+
+  # Attach and save the questions
+  q.each_with_index do |question, i|
+    question.qorder = i
+    question.survey = testSurvey
+    question.save
+  end
+
+end
+
+
+
+
+# Survey.find_by_name("National JB SET").destroy if Survey.find_by_name("National JB SET")
+unless Survey.find_by_name("National JB SET")
+  nSet = Survey.new
+  nSet.name = "National JB SET"
+  nSet.about =
+      "This document contains all the questions you’ll find on the survey for National JBs to be filled by the NJRs " +
+      "(if you are a NJR, feel free to discuss it with other JBers that are involved on the national level of your "+
+      "Junior Branch). It will take about 25 minutes to answer.  This survey is best filled out at a board meeting.  " +
+      "Sometimes the best result of the survey is discussion amongst your national board."
+  nSet.national = true
+  nSet.local = false
+  nSet.save
+
+  # Make the questions
+  q = []
+
+  # Background Information
+  q.push header 'Background Information'
+  q.push multipleChoice "Select your JB Region", ["Americas' JB", "Europe, Middle East and Africa JB", "Asia Pacific JB"]
+
+  neighborhoods = ['Andinos (AJB)', 'Anzac (APJB)', 'Cam (AJB)', 'Central Eastern (EJB)', 'JB North (AJB)',
+  'JB South (AJB)', 'Mediterranean (EJB)', 'Northern (EJB)', 'Tea (APJB)', 'Whip It (APJB)', 'Wild West (EJB)', 'N/A']
+  q.push multipleChoice "Select your JB Neighborhood", neighborhoods
+  q.push number 'How many chapters do you have?'
+  q.push longResponse 'Please describe the leadership/composition of your National JB Board, if you have one'
+
+  # Size and Capacity
+  q.push header 'Size and Capacity'
+  q.push number 'How many national JB events do you have per year?'
+  q.push number 'How many JBers, on average, are active participants in your JB?'
+  q.push number 'How many JBers, on average, are active participants in your national JB?'
+  q.push multipleChoice 'Would you say your National JB is composed of more:', ['Male', 'Female', 'Balanced ratio of genders']
+
+  # JB Relationship with NA, Neighborhood, Region, and IJB
+  q.push header 'JB Relationship with NA, Neighborhood, Region, and IJB'
+
+  q.push trueFalse"The relationship between my JB and my CISV NA/PA's board is good"
+  q.push trueFalse 'My JB participates in neighborhood projects'
+  q.push number 'How many JBers from your NA have attended your most recent neighborhood workshop?'
+  q.push trueFalse 'How many JBers from you NA attended your most recent regional meeting?'
+
+
+  # JB Development TODO These questions suck
+  q.push trueFalse 'As NJRs, we constantly communicate with the LJRs'
+  q.push longResponse 'What are the most effective methods of communication you use to keep in touch with the LJRs?'
+
+  # Risk Management
+  q.push header 'Risk Management'
+  q.push yesNo 'Do you know who your National Risk Manager is?'
+  q.push trueFalse 'Our national Risk Manager is aware of all of the activities organized by the JB.'
+
+  # JB SET
+
+
+
+  #Attach and save the questions
+  q.each_with_index do |question, index|
+    question.survey = nSet
+    question.qorder = index
+    question.save
+  end
+
 end

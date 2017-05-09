@@ -1,95 +1,102 @@
 <% provide(:title, "Home") %>
-<div class = "index">
+
 <header>
-  <canvas id="front-map" style = "width: 100%; position: absolute; top: 0; left:0;">
-  </canvas>
+  <canvas id="front-map" style = "position:absolute; top: 0; left:0"></canvas>
   <div class="header-content">
-      <div class="header-content-inner">
-           <% if current_user.nil? %>
+    <div class="header-content-inner">
+      <% if current_user.nil? %>
           <h1 id="homeHeading">Welcome to the JB SET.</h1>
-          <% else %>
+      <% else %>
           <h1 id="homeHeading"> Welcome, <%= current_user.first_name %>. </h1>
-          <% end %>
-          <hr>
-          <p style = "margin-bottom: 20px;">
-            <% if current_user.nil? %>
-                <%= link_to "Log in", login_path, class: "btn btn-primary btn-xl"%>
-                <%= link_to "Sign up", signup_path, class: "btn btn-front btn-xl" %>
-            <% else %>
+      <% end %>
+      <hr>
+      <p style = "margin-bottom: 20px;">
+        <% if current_user.nil? %>
+            <%= link_to "Log in", login_path, class: "btn btn-primary btn-xl"%>
+            <%= link_to "Sign up", signup_path, class: "btn btn-front btn-xl" %>
+        <% else %>
             Visit <%= link_to "your profile", user_path(current_user.username) %>, or
-                <%= link_to "log out", logout_path %>
-            <% end %>
-            </p>
-          <p id = "lastUpdated"></p>
-      </div>
+            <%= link_to "log out", logout_path %>
+        <% end %>
+      </p>
+      <p id = "lastUpdated"></p>
+    </div>
   </div>
   <div id="homeResults">
     <a class ="page-scroll" href = "#beginning-info" style="color:white">
-    <span class="glyphicon glyphicon-triangle-top" style="font-size: 30px;"></span>
+      <span class="glyphicon glyphicon-triangle-top" style="font-size: 30px;"></span>
     </a>
   </div>
   <img src="<%= image_path("logo.svg")%>" width="200" style="position: absolute; bottom: 0; right: 0; opacity: .7"> </img>
+
 </header>
+
 
 <section class = "bg-dark" id="beginning-info">
   <div class = "container">
     <div class = "row">
       <div class = "col-md-10 col-md-offset-1">
         <div class = "sr-text">
-          <body>
           <p class = "lead">
             Ok, <strong>show</strong> me the numbers.
           </p>
           <p class = "thin">
-            This year, the JB SET is a little different.  Want to see the results?  Check out the graphs below
-            or download the SET as an excel document (here).  All of the graphs are displayed in realtime.  You
-            always have the most up-to-date information.  Has your country not filled out the national SET yet?
-            Email your NJR and make sure that your country is represented.  Anyone can interact with and
-            learn from the JB SET instantly.  So, what does JB this year look like?
+            This year, the JB SET is a little different.  Below you'll find a set of graphs displaying
+            the data from the SET in real time.  Over the summer, more graphs and ways of viewing the data will be added.
+            If you would like to download the data and do some calculations of your own, you can download both the
+            Local SET and the National SET by clicking <a href="/surveys.xlsx">here</a>.
           </p>
-
-          </body>
+          <p class = "thin">
+            Have an idea for a graph?  Want to pull the data to use on your site?  Want to use this site for another
+            survey? Are you a coder and want to help out?  Contact Daniel Krajnak at daniel.krajnak (at) us.cisv.org.
+          </p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class = "container bg-dark">
-  <div class = "col-md-10 col-md-offset-1">
-    <div class = "row">
-      <h4>Pick a survey:</h4>
-      <select id="general-graph-select" name= "survey_completion[country]"  class="form-control form-margin-bottom" >
-      </select>
-    </div>
-    <div class = "row" id ="graph-row">
-      <svg id="general-graph" class = "bg-dark" ></svg>
+<section class = "bg-dark">
+  <div class = "container">
+    <div class = "col-md-10 col-md-offset-1">
+      <div class = "row">
+        <h4>Pick a survey:</h4>
+        <select id="general-graph-select" name= "survey_completion[country]"  class="form-control form-margin-bottom" >
+        </select>
+      </div>
+      <div class = "row" id ="graph-row">
+        <svg id="general-graph" class = "bg-dark" ></svg>
+      </div>
     </div>
   </div>
 </section>
-</div>
+
 
 <style>
-body, html{height: 100%; background-color: #222}
+  body, html{height: 100%; background-color: #222}
 
-@media (min-width: 768px) {
-  .navbar:not(.affix) a {
-    display: none;
+  @media (min-width: 768px) {
+    .navbar:not(.affix) a {
+      display: none;
+    }
   }
-}
 
-#general-graph rect {
-  fill: steelblue;
-}
+  #general-graph rect {
+    fill: steelblue;
+  }
 
-#general-graph text {
-  fill: white;
-  font: 10px sans-serif;
-  text-anchor: middle;
-}
+  #general-graph text {
+    fill: white;
+    font: 10px sans-serif;
+    text-anchor: middle;
+  }
 
 
 </style>
+
+<script>
+  console.log(document.body.clientWidth);
+</script>
 
 
 

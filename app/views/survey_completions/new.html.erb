@@ -14,9 +14,9 @@
       <select id="survey_completion_country" name= "survey_completion[country]"  class="form-control form-margin-bottom" >
         <%= options_for_select(@countryNames)%>
       </select>
-        <hr style = "margin-bottom: 10px">
       <% @questions.each do |q| %>
-            <%= label_tag(q.name) if q.qtype != 'mc' && q.qtype != 'h' %>
+            <div class = "question">
+            <label for="<%=q.id%>"><%= q.name  if q.qtype != 'mc' && q.qtype != 'h'%></label>
             <% case q.qtype %>
              <% when 'lr' #longresponse %>
                 <textarea id="<%=q.id%>" name = "questionAnswer[<%=q.id%>]" rows ="5" class = "form-control form-margin-bottom" ></textarea>
@@ -24,10 +24,10 @@
                 <input id="<%=q.id%>" type="text" name = "questionAnswer[<%=q.id%>]" class = "form-control form-margin-bottom">
              <% when 'mc' #multiple-choice %>
                 <%questionInfo = q.name.partition("[CHOICES]") %>
-                <%= label_tag questionInfo.first%>
+                   <label for="<%=q.id%>"><%= questionInfo.first%></label>
                 <%questionInfo.last.split("|").each do |choice| %>
                     <div class = "form-check">
-                        <label class="form-check-label">
+                        <label class="form-check-label thin">
                           <input class = "form-check-input" type = "radio" name = "questionAnswer[<%=q.id%>]" value="<%=choice%>">
                           <%=choice%>
                         </label>
@@ -81,9 +81,10 @@
              <% when 'n' #number %>
                 <input id="<%=q.id%>" type="number" name = "questionAnswer[<%=q.id%>]" class = "form-control form-margin-bottom" placeholder="Please enter a number">
             <% when 'h' #header %>
-              <h3 class = "text-center"><%=q.name%></h3>
+              <h3 class = "text-center question-header"><%=q.name%></h3>
                 <hr />
             <%end%>
+            </div>
       <% end %>
         <div style = "margin: 30px auto; display: block; text-align: center">
         <%= f.submit "Save and Submit!", class: "btn btn-primary" %>

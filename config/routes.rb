@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :survey_completions
 
   # For JSON
-  resources :surveys, :only => [:index, :show]
+  resources :surveys, :only => [:index, :show], :param => :name
   resources :questions, :only => [:show]
 
   resources :users, :only => [:show], :param => :username do

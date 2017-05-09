@@ -44,6 +44,7 @@ class SurveyCompletionsController < ApplicationController
     @questionsAnswers = SurveyCompletion.find(params[:id]).question_answers.sort_by {|e| e.question.qorder}
     @questions = SurveyCompletion.find(params[:id]).survey.questions.sort_by{|e| e.qorder}
     @countryNames = Array.new
+    require 'csv'
     CSV.read("#{Rails.root}/app/assets/images/jb-countries.tsv", {:col_sep => "\t"}).each do |c|
       @countryNames.push(c[1])
     end

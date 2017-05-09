@@ -2,17 +2,16 @@
 @import "bootstrap";
 @import "sessions";
 @import "creative";
+@import "survey_completions";
 
 @import "users";
 
 /* Sticky footer */
 html {
-  position: relative;
-  min-height: 100%;
+
 }
 
 body {
-  margin-bottom: 60px;
 }
 
 .footer {
@@ -52,7 +51,7 @@ code {
 }
 
 .footer-text {
-  padding: 0px;
+  padding: 20px;
 }
 
 .field_with_errors {
@@ -61,24 +60,24 @@ code {
 }
 
 /*No Padding or Margins*/
-  .no-padding{
-      padding: 0;
-  }
+.no-padding{
+  padding: 0;
+}
 
-  .no-margins{
-      margins: 0;
-  }
-
-
-  #front-map{
-    position: absolute;
-    top: 0px;
-    left:0px;
-    z-index: -1;
-  }
+.no-margins{
+  margins: 0;
+}
 
 
-  @mixin box_sizing {
+#front-map{
+  position: absolute;
+  top: 0px;
+  left:0px;
+  z-index: -1;
+}
+
+
+@mixin box_sizing {
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;

@@ -12,7 +12,7 @@ class SurveysController < ApplicationController
   end
 
   def show
-    @survey = Survey.find(params[:id])
+    @survey = Survey.find_by_name(params[:name])
     @lastCompletionTime;
     @lastCompletionCountry;
     @survey.survey_completions.order(updated_at: :desc).any? do |s|

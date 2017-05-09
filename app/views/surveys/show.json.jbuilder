@@ -9,15 +9,21 @@ if @survey.survey_completions.length > 0
 
   json.set! :completions do
     json.array! @survey.survey_completions do |c|
+      surveyComplete = true
       json.country c.country
       json.questions do
         json.array! c.question_answers do |a|
-          json.id a.question.id
-          json.name a.question.name
-          json.type a.question.qtype
-          json.answer a.answer
+          if a.answer.empty? || a.answer == "/No Answer/"
+            surveyComplete = false
+          else
+            json.id a.question.id
+            json.name a.question.name
+            json.type a.question.qtype
+            json.answer a.answer
+          end
         end
       end
+      json.completed surveyComplete
     end
   end
 end
