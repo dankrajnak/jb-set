@@ -17,8 +17,9 @@
         <hr style = "margin-bottom: 10px">
 
         <% @questionsAnswers.each do |a| %>
+            <div class = "question">
             <%q = a.question%>
-            <%= label_tag(q.name) if q.qtype != 'mc' && q.qtype != 'h' %>
+              <label for="<%=q.id%>"><%= q.name if q.qtype != 'mc' && q.qtype != 'h' %></label>
             <% case q.qtype %>
             <% when 'lr' #longresponse %>
                 <textarea id="<%=q.id%>" name = "questionAnswer[<%=q.id%>]" rows ="5" class = "form-control form-margin-bottom" ><%=a.answer%></textarea>
@@ -28,17 +29,17 @@
 
             <% when 'mc' #multiple-choice %>
                 <%questionInfo = q.name.partition("[CHOICES]") %>
-                <%= label_tag questionInfo.first%>
+                  <label for="<%=q.id%>"><%=questionInfo.first%></label>
                 <%questionInfo.last.split("|").each do |choice| %>
                     <div class = "form-check">
-                      <label class="form-check-label">
+                      <label class="form-check-label thin">
                         <input class = "form-check-input" <%= "checked = 'checked'" if choice==a.answer%> type = "radio" name = "questionAnswer[<%=q.id%>]" value="<%=choice%>">
                         <%=choice%>
                       </label>
                     </div>
                 <%end%>
                 <div class = "form-check form-margin-bottom">
-                  <label class="form-check-label">
+                  <label class="form-check-label ">
                     <input class = "form-check-input" <%= "checked = 'checked'" if '/No Answer/' == a.answer%> type = "radio" name = "questionAnswer[<%=q.id%>]" value="/No Answer/">
                     No Answer
                   </label>
@@ -46,13 +47,13 @@
 
             <% when 'yn' #yes-no %>
                 <div class = "form-check">
-                  <label class ="form-check-label">
+                  <label class ="form-check-label thin">
                     <input class = "form-check-input" <%= "checked = 'checked'" if 'Yes' == a.answer%> type = "radio" name = "questionAnswer[<%=q.id%>]" value = "Yes">
                     Yes
                   </label>
                 </div>
                 <div class = "form-check">
-                  <label class ="form-check-label">
+                  <label class ="form-check-label thin">
                     <input class = "form-check-input" <%= "checked = 'checked'" if 'No' == a.answer%> type = "radio" name = "questionAnswer[<%=q.id%>]" value = "No">
                     No
                   </label>
@@ -66,13 +67,13 @@
 
             <% when 'tf' #true-false %>
                 <div class = "form-check">
-                  <label class ="form-check-label">
+                  <label class ="form-check-label thin">
                     <input class = "form-check-input" <%= "checked = 'checked'" if 'True' == a.answer%> type = "radio" name = "questionAnswer[<%=q.id%>]" value = "True">
                     True
                   </label>
                 </div>
                 <div class = "form-check">
-                  <label class ="form-check-label">
+                  <label class ="form-check-label thin">
                     <input class = "form-check-input" <%= "checked = 'checked'" if 'False' == a.answer%> type = "radio" name = "questionAnswer[<%=q.id%>]" value = "False">
                     False
                   </label>
@@ -90,6 +91,7 @@
                 <h3 class = "text-center"><%=q.name%></h3>
                 <hr />
             <%end%>
+            </div>
         <% end %>
         <div style = "margin: 30px auto; display: block; text-align: center">
           <%= f.submit "Save Edits", class: "btn btn-primary" %>
