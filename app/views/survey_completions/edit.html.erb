@@ -101,3 +101,20 @@
 
   </div>
 </div>
+
+<script>
+    boldChoice();
+    window.addEventListener('click', boldChoice);
+    function boldChoice(){
+        var inputs = document.getElementsByClassName('form-check-input');
+        for(var i = 0; i<inputs.length; i++){
+            e = inputs.item(i);
+            if(e.checked){
+                e.parentNode.classList.remove('thin');
+            }
+            else{
+                e.parentNode.classList.add('thin')
+            }
+        }
+    }
+</script>
