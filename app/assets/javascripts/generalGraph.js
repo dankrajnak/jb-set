@@ -14,17 +14,19 @@ function createGeneralGraph() {
             $('#general-graph-select').append("<option value = \"" + e.name + "\"> " + e.name + "</option>");
         });
 
-        drawGraph(graph, data[0].id, width, height, margin);
+        drawGraph(graph, data[0].name, width, height, margin);
     });
+    console.log("RAN!");
+    $('#general-graph-select').change(drawGraph(graph, $('#general-graph-select').find(":selected").text(), width, height, margin))
 
 
 }
 
-function drawGraph(chart, dataId, width, height, margin) {
+function drawGraph(chart, dataName, width, height, margin) {
     var y = d3.scaleLinear().range([height, 0]);
 
-    d3.json("/surveys/" + dataId + ".json", function (error, data) {
-        console.log(data);
+    console.log("/surveys/" + encodeURI(dataName) + ".json");
+    d3.json("/surveys/" + encodeURI(dataName) + ".json", function (error, data) {
         var questionData = getQuestionResponses(data);
         data = [];
         questionData[3].answers.forEach(function(e){
@@ -69,6 +71,7 @@ function drawGraph(chart, dataId, width, height, margin) {
 
 function getQuestionResponses(surveyData){
     questionResponses = [];
+    if(surveyData.completions.length === 0) return null;
     surveyData.completions[0].questions.forEach(function(q,i){
         questionResponses.push({
             id: q.id,

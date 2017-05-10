@@ -139,6 +139,7 @@ unless Survey.find_by_name("National JB SET")
   q.push number 'How many JBers, on average, are active participants in your JB?'
   q.push number 'How many JBers, on average, are active participants in your national JB?'
   q.push multipleChoice 'Would you say your National JB is composed of more:', ['Male', 'Female', 'Balanced ratio of genders']
+  q.push number 'How many JB events did you plan and hold from ? to ?'
 
   # JB Relationship with NA, Neighborhood, Region, and IJB
   q.push header 'JB Relationship with NA, Neighborhood, Region, and IJB'

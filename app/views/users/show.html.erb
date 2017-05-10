@@ -6,7 +6,7 @@
     <hr/>
     <div class="no-padding container">
       <div class="no-padding col-md-6">
-        <h3>Your Information: <%= link_to (image_tag("/assets/pencil.jpg", width: "15px", height: "15px", :alt => "Edit profile")), edit_user_path(@user.username) %></h3>
+        <h3>Your Information: &nbsp; <%= link_to fa_icon("pencil-square-o"), edit_user_path(@user.username) %></h3>
         <div class="table-responsive">
         <table id="profile-info-table" class="table table-striped">
           <tr>
