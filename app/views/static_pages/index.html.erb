@@ -60,13 +60,17 @@
   <div class = "container">
     <div class = "col-md-10 col-md-offset-1">
       <div class = "row">
-        <h4>Pick a survey:</h4>
-        <select id="general-graph-select" name= "survey_completion[country]"  class="form-control form-margin-bottom" >
-        </select>
-      </div>
-      <div class = "row" id ="graph-row">
-        <svg id="general-graph" class = "bg-dark" ></svg>
-      </div>
+				<div class = "general-survey-wrapper">
+					<h4>Pick a survey:</h4>
+					<select id="general-graph-select" name= "survey_completion[country]"  class="form-control form-margin-bottom" >
+					</select>
+				  	<h4> Pick a question:</h4>
+				  	<select id="general-graph-question-select" class="form-control form-margin-bottom"></select>
+				</div>
+				<div class = "row" id ="graph-row">
+					<svg id="general-graph" class = "bg-dark" ></svg>
+				</div>
+			</div>
     </div>
   </div>
 </section>

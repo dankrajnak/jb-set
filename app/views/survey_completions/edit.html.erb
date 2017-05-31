@@ -19,7 +19,14 @@
         <% @questionsAnswers.each do |a| %>
             <div class = "question">
             <%q = a.question%>
-              <label for="<%=q.id%>"><%= q.name if q.qtype != 'mc' && q.qtype != 'h' %></label>
+		    <%if q.qtype != 'mc' && q.qtype != 'h'%>
+				<label for="<%=q.id%>">
+					<%= q.name%>
+					<%if q.required %>
+					<span class = "required-text">*Required</span>
+					<%end%>
+				</label>
+			<%end%>
             <% case q.qtype %>
             <% when 'lr' #longresponse %>
                 <textarea id="<%=q.id%>" name = "questionAnswer[<%=q.id%>]" rows ="5" class = "form-control form-margin-bottom" ><%=a.answer%></textarea>
@@ -29,7 +36,11 @@
 
             <% when 'mc' #multiple-choice %>
                 <%questionInfo = q.name.partition("[CHOICES]") %>
-                  <label for="<%=q.id%>"><%=questionInfo.first%></label>
+                   <label for="<%=q.id%>"><%= questionInfo.first%>
+					<%if q.required %>
+						<span class = "required-text">*Required</span>
+					<%end%>
+					</label>
                 <%questionInfo.last.split("|").each do |choice| %>
                     <div class = "form-check">
                       <label class="form-check-label thin">

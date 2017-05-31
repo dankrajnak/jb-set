@@ -44,7 +44,7 @@
               <tr>
 
                 <td><%= s.survey.name %><small>&nbsp;(<%=time_ago_in_words(s.updated_at.to_s.to_time)%>&nbsp;ago)</small>
-                  <% if s.question_answers.any? { |q| q.answer.blank? || q.answer == "/No Answer/" }%>
+                  <% if s.question_answers.any? { |q| q.question.required && (q.answer.blank? || q.answer == "/No Answer/") }%>
                     <small>(Not Completed)</small>
                   <% end%>
                 </td>

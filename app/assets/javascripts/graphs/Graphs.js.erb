@@ -1,0 +1,19 @@
+function Graph() {
+	Graph.prototype.jbcountries = "loading..."
+
+	//Get JB Countries, which each graph will reference
+	queue()
+		.defer(d3.tsv, "<%= image_url('jb-countries.tsv') %>")
+		.defer(d3.tsv, "<%= image_url('jb-regions.tsv') %>")
+		.await(defineCountries)
+
+}
+
+function defineCountries(error, countries, regions) {
+	if (error) throw error;
+
+	console.log("Countries loaded!")
+	Graph.prototype.jbcountries = countries;
+	console.log(Graph.prototype.jbcountries);
+
+}

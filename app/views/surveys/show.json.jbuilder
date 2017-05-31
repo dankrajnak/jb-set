@@ -13,7 +13,7 @@ if @survey.survey_completions.length > 0
       json.country c.country
       json.questions do
         json.array! c.question_answers do |a|
-          if a.answer.empty? || a.answer == "/No Answer/"
+          if a.question.required && (a.answer.empty? || a.answer == "/No Answer/")
             surveyComplete = false
           else
             json.id a.question.id

@@ -1,0 +1,190 @@
+/**
+ * Created by danielkrajnak on 4/20/17.
+ */
+
+//Temporary global variable which I'll erase I promise
+jbcountries = [];
+jbregions = [];
+
+function GeneralGraph(width, height, margin) {
+
+	var margin = (typeof margin === 'undefined') ? {
+		top: 20,
+		right: 30,
+		bottom: 30,
+		left: 40
+	} : margin;
+	var width = (typeof width === 'undefined') ? $("#graph-row").width() : width;
+	var height = (typeof height === 'undefined') ? window.innerHeight / 2 : height;
+
+	width -= margin.left + margin.right;
+	height -= margin.top + margin.bottom;
+
+	this.graph = d3.select("#general-graph").attr("height", height + margin.top + margin.bottom).attr("width", width + margin.left + margin.right);
+
+	var questionsData = [];
+
+	queue()
+		.defer(d3.tsv, "<%= image_url('jb-countries.tsv') %>")
+		.defer(d3.tsv, "<%= image_url('jb-regions.tsv') %>")
+		.defer(d3.json, "/surveys.json")
+		.await(ready);
+
+	function ready(error, countries, regions, data) {
+		jbcountries = countries;
+		jbregions = regions;
+		if (error) throw error;
+
+		data.forEach(function (e) {
+			$('#general-graph-select').append("<option value = \"" + e.name + "\"> " + e.name + "</option>");
+		});
+
+		drawGraph(graph, data[0].name, width, height, margin);
+
+		$('#general-graph-select').change(function () {
+			var selected = $('#general-graph-select option').filter(":selected");
+
+			d3.json("/surveys/" + encodeURI(selected.text().trim()) + ".json", function (error, data) {
+				if (error) throw error;
+				questionsData = getQuestionResponses(data);
+
+				$('#general-graph-question-select option').remove();
+				questionsData.forEach(function (q) {
+					$('#general-graph-question-select').append("<option value = \"" + q.id + "\"> " + q.name + "</option>");
+				});
+
+				drawGraph(graph, $('#general-graph-select').find(":selected").text(), width, height, margin);
+			});
+		});
+
+		$('#general-graph-question-select').change(function () {
+			var selected = parseInt($('#general-graph-question-select option').filter(":selected").val());
+			var question = questionsData.find(function (e) {
+				return e.id === selected;
+			});
+			console.log(graph, question, width, height, margin);
+			drawGraph(graph, question, width, height, margin);
+		});
+	}
+}
+
+function drawGraph(chart, question, width, height, margin) {
+	switch (question.type) {
+		case 'n':
+			var y = d3.scaleLinear().range([height, 0]);
+			var x = d3.scaleBand().range([0, width]).round(.1);
+
+			console.log(question);
+
+			var xAxis = d3.axisBottom().scale(x);
+
+			/*---		Dependent on data		---*/
+
+			y.domain([0, d3.max(question.answers, function (d) {
+				return d.value;
+			})]);
+
+			//attach regions to answers.  Ugh, there's a better way to do this.
+			question.answers.forEach(function (a) {
+				a.region = jbregions.find(function (region) {
+					return (jbcountries.find(function (country) {
+						return (country.name === a.country);
+					}).region === region.id);
+				})
+			});
+
+			console.log(question.answers);
+
+			//sort countries alphabetically, then by region
+			x.domain(question.answers.sort(function (a, b) {
+				if (+a.region.id === +b.region.id) {
+					return a.country.localeCompare(b.country);
+				}
+				return +a.region.id - b.region.id;
+			}).map(function (c) {
+				return c.county
+			}));
+
+			chart.append("g").attr("class", "x-axis")
+				.attr("transform", "translate(0," + height + ")")
+				.call(xAxis);
+
+			var barWidth = width / question.answers.length;
+
+			var bar = chart.selectAll("g")
+				.data(question.answers)
+				.enter().append("g")
+				.attr("transform", function (d) {
+					return "translate("
+					x(d.country)
+					")";
+				});
+
+			bar.append("rect")
+				.attr("y", function (d) {
+					return y(d.value);
+				})
+				.attr("height", function (d) {
+					return height - y(d.value);
+				})
+				.attr("width", barWidth - 1);
+
+			bar.append("text")
+				.attr("x", barWidth / 2)
+				.attr("y", function (d) {
+					return y(d.value) + 3;
+				})
+				.attr("dy", ".75em")
+				.text(function (d) {
+					return d.value;
+				});
+			/*
+			-------------------------------------
+			*/
+
+
+			break;
+		default:
+			break;
+	}
+}
+
+function getQuestionResponses(surveyData) {
+	questionResponses = [];
+	if (!surveyData.completions) return null;
+	surveyData.completions[0].questions.forEach(function (q, i) {
+		var questionName = q.name;
+		if (q.type === 'mc') {
+			questionName = q.name.split("[CHOICES]")[0];
+		}
+		questionResponses.push({
+			id: q.id,
+			type: q.type,
+			name: questionName,
+			answers: []
+		});
+	});
+
+	questionResponses.sort(function (a, b) {
+		return a.id - b.id;
+	})
+
+	surveyData.completions.forEach(function (c) {
+		c.questions.forEach(function (q) {
+			for (var i = 0; i < questionResponses.length; i++) {
+				if (q.id === questionResponses[i].id) {
+					questionResponses[i].answers.push({
+						country: c.country,
+						value: q.answer,
+					});
+					break;
+				}
+			}
+		});
+	});
+
+	return questionResponses
+}
+
+
+GeneralGraph();

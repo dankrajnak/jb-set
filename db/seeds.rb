@@ -76,7 +76,7 @@ end
 
 
 # Create Surveys
-# Survey.find_by_name("Test Survey").destroy if Survey.find_by_name("Test Survey")
+Survey.find_by_name("Test Survey").destroy if Survey.find_by_name("Test Survey")
 unless Survey.find_by_name("Test Survey")
   testSurvey = Survey.new
   testSurvey.name = "Test Survey"
@@ -98,6 +98,7 @@ unless Survey.find_by_name("Test Survey")
   # Attach and save the questions
   q.each_with_index do |question, i|
     question.qorder = i
+	question.required = (i % 2 == 0)
     question.survey = testSurvey
     question.save
   end

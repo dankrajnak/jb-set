@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170420202900) do
+ActiveRecord::Schema.define(version: 20170531032651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20170420202900) do
     t.integer  "survey_id"
     t.string   "qtype"
     t.integer  "qorder"
+    t.boolean  "required"
     t.index ["survey_id"], name: "index_questions_on_survey_id", using: :btree
   end
 

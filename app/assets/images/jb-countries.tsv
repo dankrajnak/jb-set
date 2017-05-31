@@ -1,69 +1,69 @@
-id	name
-12	Algeria
-32	Argentina
-36	Australia
-40	Austria
-112	Belarus
-76	Brazil
-100	Bulgaria
-116	Cambodia
-124	Canada
-152	Chile
-156	China
-170	Colombia
-188	Costa Rica
-191	Croatia
-203	Czech Republic
-208	Denmark
-218	Ecuador
-818	Egypt
-222	El Salvador
-233	Estonia
-234	Faroe Islands
-246	Finland
-250	France
-268	Georgia
-276	Germany
-826	Great Britain
-300	Greece
-304	Greenland
-320	Guatemala
-340	Honduras
-344	Hong Kong
-348	Hungary
-352	Iceland
-356	India
-360	Indonesia
-376	Israel
-380	Italy
-384	Côte d'Ivoire
-392	Japan
-400	Jordan
-428	Latvia
-422	Lebanon
-440	Lithuania
-442	Luxembourg
-807	Macedonia, the former Yugoslav Republic of
-458	Malaysia
-104	Myanmar
-484	Mexico
-496	Mongolia
-528	Netherlands
-554	New Zealand
-578	Norway
-604	Peru
-608	Philippines
-616	Poland
-620	Portugal
-642	Romania
-643	Russian Federation
-702	Singapore
-703	Slovakia
-410	South Korea
-724	Spain
-752	Sweden
-756	Switzerland
-764	Thailand
-792	Turkey
-840	United States
-704	Viet Nam
+id	name	region
+12	Algeria	2
+32	Argentina	1
+36	Australia	3
+40	Austria	2
+112	Belarus	2
+76	Brazil	1
+100	Bulgaria	2
+116	Cambodia	2
+124	Canada	1
+152	Chile	1
+156	China	3
+170	Colombia	1
+188	Costa Rica	1
+191	Croatia	2
+203	Czech Republic	2
+208	Denmark	2
+218	Ecuador	1
+818	Egypt	2
+222	El Salvador	1
+233	Estonia	2
+234	Faroe Islands	2
+246	Finland	2
+250	France	2
+268	Georgia	2
+276	Germany	2
+826	Great Britain	2
+300	Greece	2
+304	Greenland	2
+320	Guatemala	1
+340	Honduras	1
+344	Hong Kong	3
+348	Hungary	2
+352	Iceland	2
+356	India	3
+360	Indonesia	3
+376	Israel	2
+380	Italy	2
+384	Côte d'Ivoire	2
+392	Japan	3
+400	Jordan	2
+428	Latvia	2
+422	Lebanon	2
+440	Lithuania	2
+442	Luxembourg	2
+807	Macedonia, the former Yugoslav Republic of	3
+458	Malaysia	3
+104	Myanmar	3
+484	Mexico	1
+496	Mongolia	3
+528	Netherlands	2
+554	New Zealand	3
+578	Norway	2
+604	Peru	2
+608	Philippines	3
+616	Poland	2
+620	Portugal	2
+642	Romania	2
+643	Russian Federation	2
+702	Singapore	3
+703	Slovakia	2
+410	South Korea	3
+724	Spain	2
+752	Sweden	2
+756	Switzerland	2
+764	Thailand	3
+792	Turkey	2
+840	United States	1
+704	Viet Nam	3

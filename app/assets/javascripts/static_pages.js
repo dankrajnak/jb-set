@@ -23,12 +23,10 @@
 //= require d3geoprojection
 //= require topojson
 //= require frontmap
-//= require generalGraph
+
+//= require graphs/Graphs
+//= require graphs/generalGraph
 
 //= require jquery.easing.min
 
 //= require creative
-
-
-
-
