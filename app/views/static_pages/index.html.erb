@@ -60,46 +60,48 @@
   <div class = "container">
     <div class = "col-md-10 col-md-offset-1">
       <div class = "row">
-				<div class = "general-survey-wrapper">
-					<h4>Pick a survey:</h4>
-					<select id="general-graph-select" name= "survey_completion[country]"  class="form-control form-margin-bottom" >
-					</select>
-				  	<h4> Pick a question:</h4>
-				  	<select id="general-graph-question-select" class="form-control form-margin-bottom"></select>
-				</div>
-				<div class = "row" id ="graph-row">
-					<svg id="general-graph" class = "bg-dark" ></svg>
-				</div>
-			</div>
+		  <div class = "jumbotron">
+		  <h4 style="color: #222">There aren't enough SET completions for graphs yet... but check back soon!</h4>
+		  </div>
+<!--
+		<div class = "general-graph-wrapper">
+			<h4>Pick a survey:</h4>
+			<select id="general-graph-select" name= "survey_completion[country]"  class="form-control form-margin-bottom" >
+			</select>
+			<h4> Pick a question:</h4>
+			<select id="general-graph-question-select" class="form-control form-margin-bottom"></select>
+		</div>
+		<div class = "row" id ="graph-row">
+			<svg id="general-graph" class = "bg-dark" ></svg>
+		</div>
+-->
+	  </div>
     </div>
   </div>
 </section>
 
 
 <style>
-  body, html{height: 100%; background-color: #222}
+ body,
+html {
+	height: 100%;
+	background-color: #222
+}
 
-  @media (min-width: 768px) {
-    .navbar:not(.affix) a {
-      display: none;
-    }
-  }
-
-  #general-graph rect {
-    fill: steelblue;
-  }
-
-  #general-graph text {
-    fill: white;
-    font: 10px sans-serif;
-    text-anchor: middle;
-  }
-
-
+@media (min-width: 768px) {
+	.navbar:not(.affix) a {
+		display: none;
+	}
+}
 </style>
 
 <script>
-  console.log(document.body.clientWidth);
+document.addEventListener('DOMContentLoaded', function() {
+	GeneralGraph();
+	createWorld();
+}, false);
+
+	
 </script>
 
 
