@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   # home/index/root page
-  root 'static_pages#index'
+  root 'front_page#index'
 
   # GET requests
   get '/about' => 'static_pages#about'

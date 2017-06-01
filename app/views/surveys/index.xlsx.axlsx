@@ -27,7 +27,7 @@ wb.styles do |style|
           rowIndex += 1
         end
       end
-      sheet.add_row firstRow, style: [highlight_cell]
+      sheet.add_row firstRow
 
       survey.survey_completions.order(:country).each do |completion|
         row = [completion.country]

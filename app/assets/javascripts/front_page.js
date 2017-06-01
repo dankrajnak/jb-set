@@ -1,4 +1,4 @@
-// This is a manifest file that'll be compiled into static_pages.js, which will include all the files
+// This is a manifest file that'll be compiled into front_page.js, which will include all the files
 // listed below.
 //
 // Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
@@ -15,6 +15,17 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require scrollreveal.js
+
+
+//= require d3v4
+//= require d3queue
+//= requre d3geo
+//= require d3geoprojection
+//= require topojson
+//= require frontmap
+
+//= require graphs/Graphs
+//= require graphs/generalGraph
 
 //= require jquery.easing.min
 

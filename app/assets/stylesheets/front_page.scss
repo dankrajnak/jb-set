@@ -1,0 +1,85 @@
+// Place all the styles related to the static_pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "creative";
+@import "variables";
+
+/* Custom page CSS */
+
+body>.container {
+	padding: 70px 15px 60px;
+}
+
+.container .text-muted {
+	margin: 20px 0;
+}
+
+.footer>.container {
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+code {
+	font-size: 80%;
+}
+
+.row-bottom {
+	position: relative;
+}
+
+.bottom-align {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+.footer-text {
+	padding: 0px;
+}
+
+.field_with_errors {
+	display: inline;
+	@extend .has-error;
+}
+
+
+/*No Padding or Margins*/
+
+.no-padding {
+	padding: 0;
+}
+
+.no-margins {
+	margin: 0;
+}
+
+
+/* Graph styles */
+
+#general-graph {
+	.AJB {
+		fill: $cisv-orange;
+	}
+	.EJB {
+		fill: $cisv-pink;
+	}
+	.APJB {
+		fill: $cisv-green;
+	}
+}
+
+#general-graph .AJB {
+	fill: $cisv-orange;
+}
+
+#general-graph text {
+	fill: white;
+	font: 10px sans-serif;
+	text-anchor: middle;
+}
+
+.y-axis {
+	color: white;
+}

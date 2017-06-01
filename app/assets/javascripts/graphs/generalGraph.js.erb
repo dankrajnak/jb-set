@@ -56,7 +56,7 @@ function GeneralGraph(width, height, margin) {
 
 		$('#general-graph-select').change(function () {
 			selected = $('#general-graph-select option').filter(":selected");
-			console.log(encodeURI(selected.text().trim()));
+
 			d3.json("/surveys/" + encodeURI(selected.text().trim()) + ".json", function (error, data) {
 				if (error) throw error;
 				questionsData = getQuestionResponses(data);

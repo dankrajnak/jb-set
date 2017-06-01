@@ -6,7 +6,7 @@ class SurveysController < ApplicationController
       format.json
       format.xlsx {
         date = "#{Time.now.day}-#{Time.now.month}"
-        response.headers['Content-Disposition'] = "attachment; filename= \"JB_SET (#{date}).xlsx\""
+        response.headers['Content-Disposition'] = "attachment; filename= \"JB SET (#{date}).xlsx\""
       }
     end
   end
