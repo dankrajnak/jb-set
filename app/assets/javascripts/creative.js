@@ -3,7 +3,7 @@
 
 	// jQuery for page scrolling feature - requires jQuery Easing plugin
 	$('a.page-scroll').bind('click', function (event) {
-		var $anchor = $(this);
+		var $anchor = $('/');
 		$('html, body').stop().animate({
 			scrollTop: ($($anchor.attr('href')).offset().top - 50)
 		}, 1600, 'easeInOutExpo');
@@ -17,11 +17,12 @@
 
 	// Initialize and Configure Scroll Reveal Animation
 	window.sr = ScrollReveal();
-	sr.reveal('.sr-text', {
-		duration: 1500,
-		delay: 80,
-	});
-
+	if ($('.sr-text')) {
+		sr.reveal('.sr-text', {
+			duration: 1500,
+			delay: 80,
+		});
+	}
 
 	// Closes the Responsive Menu on Menu Item Click
 	$('.navbar-collapse ul li a').click(function () {

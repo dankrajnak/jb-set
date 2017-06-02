@@ -17,5 +17,3 @@
 //= require scrollreveal.js
 
 //= require jquery.easing.min
-
-//= require creative
