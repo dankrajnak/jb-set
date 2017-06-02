@@ -123,7 +123,7 @@ unless Survey.find_by_name("National JB SET")
       "This document contains all the questions you’ll find on the survey for National JBs to be filled by the NJRs " +
       "(if you are a NJR, feel free to discuss it with other JBers that are involved on the national level of your "+
       "Junior Branch). It will take about 25 minutes to answer.  This survey is best filled out at a board meeting.  " +
-      "Sometimes the best result of the survey is discussion amongst your national board."
+      "Sometimes the best result of the survey is discussion amongst your national board.  "+ "Although you can submit and save your answers at anytime, you need to fill out quesitons marked *Required in order for your survey to be marked as complete.  As long as you submit your survey, even if your survey is not complete, your answers will be used in the graphs on the front page, and will be available for download.  If you do not wish to answer a multiple choice question, please select the \"No Answer\" option."
   nSet.national = true
   nSet.local = false
   nSet.save
@@ -200,6 +200,106 @@ unless Survey.find_by_name("National JB SET")
     question.survey = nSet
     question.qorder = index
     question.save
-  end
+	end
+		
+end
+	
+Survey.find_by_name("Local JB SET").destroy if Survey.find_by_name("Local JB SET")
+unless Survey.find_by_name("Local JB SET")
+  nSet = Survey.new
+  nSet.name = "Local JB SET"
+  nSet.about =
+      "Welcome to the Local JB SET! All the questions you’ll find on the survey are for Local JBs to be filled by the LJRs " +
+      "(if you are a LJR, feel free to discuss it with other JBers that are involved on the local level of your "+
+      "Junior Branch). It will take about 25 minutes to answer.  This survey is best filled out at a board meeting.  " +
+      "Sometimes the best result of the survey is discussion amongst your local board.  " + "Although you can submit and save your answers at anytime, you need to fill out quesitons marked *Required in order for your survey to be marked as complete.  As long as you submit your survey, even if your survey is not complete, your answers will be used in the graphs on the front page, and will be available for download.  If you do not wish to answer a multiple choice question, please select the \"No Answer\" option."
+  nSet.national = false
+  nSet.local = true
+  nSet.save
 
+  # Make the questions
+  q = []
+	
+	# Background Question
+	q.push header "Background Information"
+	q.push multipleChoice 'Which age group is most highly represented on the national level in your JB?', ['11-14', '15-18', '19-23', '23-25', 'It is very balanced'], true
+	q.push number "How many JBers do you have in leadership positions in your chapter?", true
+	q.push multipleChoice "Our JB leadership falls into the following category:", ["Only LJRs", 'LRs and JB Board / Local JB Team', 'Other'], true
+	
+	# Size and Capacity
+	q.push header "Size and Capacity"
+	q.push number "How many JB events did you have this past year (roughy since June 2016) that you felt were successful?", true
+	q.push number "How many JB events did you have this past year (roughy since June 2016) that you felt were unsuccessful?", true
+	q.push number "How many JBers are active participants in your JB?", true
+	q.push number "How many new members did your JB add this year?", true
+	
+	q.push number "What percentage of your JB has the gender \"Male\" (give your best estimate, not required if you wish not to answer).", false
+	q.push number "What percentage of your JB has the gender \"Male\" (give your best estimate, not required if you wish not to answer).", false
+	q.push number "What percentage of your JB has a gender that does not fall into the category Male or Female? (give your best estimate, not required if you wish not to answer).", false
+	q.push longResponse "Other comments:", false
+		
+	# JB Relationship with NA, Neighborhood, Region, and IJB
+	q.push header "JB Relationship with NA, Neighborhood, Region, and IJB"
+	q.push yesNo "Do you know how your National JB is organized?", true
+	q.push yesNo "Do you know how Internatinal JB is organized?", true
+	q.push yesNo "Are you aware of neighborhood/regional meetings?", true
+	q.push number "How many Jbers from your local JB have attended your most recent neighborhood workshop?", true
+	q.push number "How many Jbers from your local JB attended your region's most recent annual meeting? (AJBM, EJBM, or JASPARC).", true
+	q.push number "How many JBers from your local JB attended the last IJBC (International Junior Branch Conference) in Colombia?", true
+	q.push number "How many JBers will attend the IJBC 2017 in Portugal?", true
+	q.push trueFalse "My local JB participates in neighborhood/regional/international projects or projects with other JBs", true
+	q.push longResponse "Other comments:", false
+		
+	# JB Relationship with the Chapter
+	q.push header "JB Relationship with the Chapter"
+	q.push trueFalse "My JB always collaborates with my Chapter in matters of planning", true
+	q.push trueFalse "My JB always collaborates with my Chapter in matters of facilitation of activities", true
+	q.push trueFalse "My Jb always collaborates with my Chapter in matters of programmes (camps, Mosaics, or IPPs)", true
+	q.push trueFalse "The chapter plays an important part in the running of the JB", true
+	q.push longResponse "Other comments:", false
+		
+	# Activities, Planning, and Evaluation
+	q.push header "Activities, Planning, and Evaluation"
+	q.push shortResponse "Which activity had the largest attendance?", true
+	q.push number "How many people attended?", true
+	q.push shortResponse "Which activity had the lowest attendance?", true
+	q.push number "How many people attended?", true
+	q.push trueFalse "My JB evaluates itself regularly (your JB in general, not activities) not including the JB SET", true
+	q.push trueFalse "MY JB evaluates its JB activities regularly", true
+	q.push longResponse "How do you do it? (optional)", false
+	q.push trueFalse "My JB plans and runs good and consistent activities", true
+	q.push trueFalse "My JB has a good and consistent communication strategy", true
+	q.push longResponse "Other comments:", false
+	
+	# JB Development
+	q.push header "JB Development"
+	q.push trueFalse "Most of the activities, projects, and events planned and run by my JB are aligned with CISV’s  four content areas (Human Rights, Diversity, Sustainable Development, and Conflict & Resolution).", true
+	q.push trueFalse "I feel that JBers in my chapter are waare of the JB Gaols.", true
+	q.push shortResponse "Write three words to describe what you feel makes JB activities succesful", true
+	q.push longResponse "What is the event that you planned that you were most proud of this year?", true
+	q.push longResponse "What do you believe is the purpose of JB?", true
+		
+	# Training
+	q.push header "Training"
+	q.push yesNo "Does your local chapter (not your JB) provide training to yoru JBers?", true
+	q.push yesNo "Do you benefit from training at the national level?", true
+	q.push longResponse "What do you wish you received more training on?", true
+	q.push longResponse "Other comments", false
+	
+	# Mosaic/Service/Local Impact
+	q.push header "Mosaic / Service / Local Impact"
+	q.push number "How many local impact activities did you organize this year?", true
+	q.push number "How many participants were there? (add all the activities up, or write 0 if you did not have any service activities).", false
+	q.push longResponse "Please list any like-minded organizations that your JB has worked with.", false
+	q.push yesNo "Is Mosaic/Local Service a priority to your JB?", true
+	q.push longResponse "Other comments?", false
+	
+	 #Attach and save the questions
+  q.each_with_index do |question, index|
+    question.survey = nSet
+    question.qorder = index
+    question.save
+	end
+
+		
 end
