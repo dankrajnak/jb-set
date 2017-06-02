@@ -84,33 +84,34 @@ end
 
 # Create Surveys
 Survey.find_by_name("Test Survey").destroy if Survey.find_by_name("Test Survey")
-unless Survey.find_by_name("Test Survey")
-  testSurvey = Survey.new
-  testSurvey.name = "Test Survey"
-  testSurvey.about = "Just a test survey to test that all the different qtypes and submissions are working."
-  testSurvey.national = true
-  testSurvey.save
 
-  q = []
-
-  # Make some questions
-  q.push longResponse "Long Response Test", false
-  q.push shortResponse "Short Response Test", false
-  q.push header "Test Header"
-  q.push yesNo "Test Yes No", false
-  q.push number "Test Number", false
-  q.push multipleChoice "Test Multiple Choice", %w(A B C D), false
-  q.push trueFalse "Test True False", false
-
-  # Attach and save the questions
-  q.each_with_index do |question, i|
-    question.qorder = i
-	question.required = (i % 2 == 0)
-    question.survey = testSurvey
-    question.save
-  end
-
-end
+#unless Survey.find_by_name("Test Survey")
+#  testSurvey = Survey.new
+#  testSurvey.name = "Test Survey"
+#  testSurvey.about = "Just a test survey to test that all the different qtypes and submissions are working."
+#  testSurvey.national = true
+#  testSurvey.save
+#
+#  q = []
+#
+#  # Make some questions
+#  q.push longResponse "Long Response Test", false
+#  q.push shortResponse "Short Response Test", false
+#  q.push header "Test Header"
+#  q.push yesNo "Test Yes No", false
+#  q.push number "Test Number", false
+#  q.push multipleChoice "Test Multiple Choice", %w(A B C D), false
+#  q.push trueFalse "Test True False", false
+#
+#  # Attach and save the questions
+#  q.each_with_index do |question, i|
+#    question.qorder = i
+#	question.required = (i % 2 == 0)
+#    question.survey = testSurvey
+#    question.save
+#  end
+#
+#end
 
 
 
