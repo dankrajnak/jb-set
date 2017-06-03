@@ -3,12 +3,13 @@
   <div class = "col-md-8 col-md-offset-2">
     <h1><%= @survey_completion.survey.name%></h1>
     <hr style = "margin-left: 30px"/>
+		<p class = 'about'><%=@survey_completion.survey.about%></p>
     <%= form_for @survey_completion, :url => user_survey_completions_path, :html => {class: "form-group"} do |f| %>
         <input type = "hidden" name = "survey_id" value = "<%= @survey_completion.survey.id%>">
       <% if @survey_completion.survey.national %>
           <%= label_tag :country, "About which country are you filling out this survey?" %>
       <% else %>
-          <%= label_tag :country, "Which country is this chapter in?" %>
+          <%= label_tag :country, "Which country is your chapter in?" %>
       <% end %>
 
       <select id="survey_completion_country" name= "survey_completion[country]"  class="form-control form-margin-bottom" >
@@ -47,7 +48,7 @@
                 <div class = "form-check form-margin-bottom">
                   <label class="form-check-label">
                     <input class = "form-check-input" checked = "true" type = "radio" name = "questionAnswer[<%=q.id%>]" value="/No Answer/">
-                    No Answer
+                   (Leave Blank)
                   </label>
                 </div>
 
@@ -67,7 +68,7 @@
                 <div class = "form-check form-margin-bottom">
                   <label class ="form-check-label">
                     <input class = "form-check-input" checked = "true" type = "radio" name = "questionAnswer[<%=q.id%>]" value = "/No Answer/">
-                    No Answer
+                   (Leave Blank)
                   </label>
                 </div>
              <% when 'tf' #true-false %>
@@ -85,7 +86,7 @@
                   <div class = "form-check form-margin-bottom">
                     <label class ="form-check-label">
                       <input class = "form-check-input" checked = "true" type = "radio" name = "questionAnswer[<%=q.id%>]" value = "/No Answer/">
-                      No Answer
+                     (Leave Blank)
                     </label>
                   </div>
                 </div>

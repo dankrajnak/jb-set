@@ -121,10 +121,10 @@ unless Survey.find_by_name("National JB SET")
   nSet = Survey.new
   nSet.name = "National JB SET"
   nSet.about =
-      "This document contains all the questions you’ll find on the survey for National JBs to be filled by the NJRs " +
+      "Welcome to the Local JB SET! All the questions you’ll find on this survey are for National JBs to be filled by the NJRs " +
       "(if you are a NJR, feel free to discuss it with other JBers that are involved on the national level of your "+
       "Junior Branch). It will take about 25 minutes to answer.  This survey is best filled out at a board meeting.  " +
-      "Sometimes the best result of the survey is discussion amongst your national board.  "+ "Although you can submit and save your answers at anytime, you need to fill out quesitons marked *Required in order for your survey to be marked as complete.  As long as you submit your survey, even if your survey is not complete, your answers will be used in the graphs on the front page, and will be available for download.  If you do not wish to answer a multiple choice question, please select the \"No Answer\" option."
+      "Sometimes the best result of the survey is discussion amongst your national board.  "+ "Although you can submit and save your answers at anytime, you need to fill out quesitons marked *Required in order for your survey to be marked as complete.  As long as you submit your survey, even if your survey is not complete, your answers will be used in the graphs on the front page, and will be available for download.  If you do not wish to answer a multiple choice question, please select the \"(Leave Blank)\" option.  Feel free to save your answers and come back to finish the survey later!  Thank you for taking the time to be a part of the JB SET this year!"
   nSet.national = true
   nSet.local = false
   nSet.save
@@ -152,7 +152,7 @@ unless Survey.find_by_name("National JB SET")
   q.push number 'How many JBers, on average, are active participants on the national level in your JB?', true
   
 	q.push number "What percentage of your JB has the gender \"Male\" (give your best estimate, not required if you wish not to answer).", false
-	q.push number "What percentage of your JB has the gender \"Male\" (give your best estimate, not required if you wish not to answer).", false
+	q.push number "What percentage of your JB has the gender \"Female\" (give your best estimate, not required if you wish not to answer).", false
 	q.push number "What percentage of your JB has a gender that does not fall into the category Male or Female? (give your best estimate, not required if you wish not to answer).", false
 	q.push longResponse "Other comments:", false
 	
@@ -168,7 +168,7 @@ unless Survey.find_by_name("National JB SET")
 	q.push number 'How many JBers from your NA will attend IJBC 2017 in Portugal?', true
 	q.push longResponse "What do you need from IJB that you aren\'t getting?", true
 	
-	q.push longResponse "What Regional Team of IJB Team initiatives did you use in your JB? (For example: Dig In, the IJB Bot, the EJB Blog, direct support from a member of a regional team).", true
+	q.push longResponse "What Regional Team or IJB Team initiatives did you use in your JB? (For example: Dig In, the IJB Bot, the EJB Blog, direct support from a member of a regional team).", true
 		
 	q.push longResponse "Other comments:", false
 		
@@ -176,22 +176,23 @@ unless Survey.find_by_name("National JB SET")
 
   # JB Training
 	q.push header 'JB Training'
-  q.push trueFalse "As NJRs, we feel that we received the appropriate training and support to function in our role.", true
+  q.push trueFalse "As NJRs, we feel that we have received the appropriate training and support to function in our role.", true
 	q.push multipleChoice "The majority of the useful training for our role we received from:", ['IJB', 'Our National JB', 'Regional Teams', 'NA Board', 'Other'], true
 	q.push number "How many JBers were trained by the NJRs or another JBer with a national position?", true
-	q.push yesNo "Did the NJRs received \"Train the Trainer\" training as part of their roles as NJRs?", true
+	q.push yesNo "Do NJRs received \"Train the Trainer\" training as part of their roles as NJRs?", true
 	q.push yesNo "Do NJRs deliver training to other JBers", true
 	q.push yesNo "Is your NA aware of the training you deliver?", true
 	q.push longResponse "How do you measure the success of the training you deliver, and its impact?", false
 	q.push longResponse "Other comments:", false
 		
 	# Best Practices
+	q.push header 'Best Practices'
 	q.push longResponse "What was the JB event you planned were most proud of? (2016-2017)", true
 	q.push longResponse "What do you think is the purpose of JB?", true
 
   # Mosaic / Service Projects
   q.push header 'Mosaic / Service Projects'
-	q.push multipleChoice 'How important are service/local impact/Mosaic projects to your National JB?', ["Not important at all.", "Talked about, but no chapter plan service proejcts/Mosaics.", "Somewhat important, some chapters do service projects/Mosaics.", "Very important.  Chapters frequently do service projects/Mosaics."], true
+	q.push multipleChoice 'How important are service/local impact/Mosaic projects to your National JB?', ["Not important at all.", "Talked about, but no chapter planned local impact projects/Mosaics.", "Somewhat important, some chapters do local impact projects/Mosaics.", "Very important.  Chapters frequently do local impact projects/Mosaics."], true
 	q.push multipleChoice "Do you train your JBers on Mosaic?", ["Not at all.", "We emphasize local service, but don\'t train on how to make these projects into Mosaics.", "We train our JBers on Mosaic."], true
   q.push longResponse "Other comments:", false
 		
@@ -210,10 +211,10 @@ unless Survey.find_by_name("Local JB SET")
   nSet = Survey.new
   nSet.name = "Local JB SET"
   nSet.about =
-      "Welcome to the Local JB SET! All the questions you’ll find on the survey are for Local JBs to be filled by the LJRs " +
-      "(if you are a LJR, feel free to discuss it with other JBers that are involved on the local level of your "+
+      "Welcome to the Local JB SET! All the questions you’ll find on this survey are for Local JBs to be filled by the LJRs " +
+      "(if you are a LJR, feel free to discuss it with other JBers that are involved in your "+
       "Junior Branch). It will take about 25 minutes to answer.  This survey is best filled out at a board meeting.  " +
-      "Sometimes the best result of the survey is discussion amongst your local board.  " + "Although you can submit and save your answers at anytime, you need to fill out quesitons marked *Required in order for your survey to be marked as complete.  As long as you submit your survey, even if your survey is not complete, your answers will be used in the graphs on the front page, and will be available for download.  If you do not wish to answer a multiple choice question, please select the \"No Answer\" option."
+      "Sometimes the best result of the survey is discussion amongst your local board.  " + "Although you can submit and save your answers at anytime, you need to fill out quesitons marked *Required in order for your survey to be marked as complete.  As long as you submit your survey, even if your survey is not complete, your answers will be used in the graphs on the front page, and will be available for download.  If you do not wish to answer a multiple choice question, please select the \"(Leave Blank)\" option. Feel free to save your answers and come back to finish the survey later!  Thank you for taking the time to be a part of the JB SET this year!"
   nSet.national = false
   nSet.local = true
   nSet.save
@@ -229,13 +230,13 @@ unless Survey.find_by_name("Local JB SET")
 	
 	# Size and Capacity
 	q.push header "Size and Capacity"
-	q.push number "How many JB events did you have this past year (roughy since June 2016) that you felt were successful?", true
-	q.push number "How many JB events did you have this past year (roughy since June 2016) that you felt were unsuccessful?", true
+	q.push number "How many JB events did you have this past year (roughly since June 2016) that you felt were successful?", true
+	q.push number "How many JB events did you have this past year (roughly since June 2016) that you felt were unsuccessful?", true
 	q.push number "How many JBers are active participants in your JB?", true
 	q.push number "How many new members did your JB add this year?", true
 	
 	q.push number "What percentage of your JB has the gender \"Male\" (give your best estimate, not required if you wish not to answer).", false
-	q.push number "What percentage of your JB has the gender \"Male\" (give your best estimate, not required if you wish not to answer).", false
+	q.push number "What percentage of your JB has the gender \"Female\" (give your best estimate, not required if you wish not to answer).", false
 	q.push number "What percentage of your JB has a gender that does not fall into the category Male or Female? (give your best estimate, not required if you wish not to answer).", false
 	q.push longResponse "Other comments:", false
 		
@@ -246,7 +247,7 @@ unless Survey.find_by_name("Local JB SET")
 	q.push yesNo "Are you aware of neighborhood/regional meetings?", true
 	q.push number "How many Jbers from your local JB have attended your most recent neighborhood workshop?", true
 	q.push number "How many Jbers from your local JB attended your region's most recent annual meeting? (AJBM, EJBM, or JASPARC).", true
-	q.push number "How many JBers from your local JB attended the last IJBC (International Junior Branch Conference) in Colombia?", true
+	q.push number "How many JBers from your local JB will attend the next IJBC (International Junior Branch Conference) in Colombia?", true
 	q.push number "How many JBers will attend the IJBC 2017 in Portugal?", true
 	q.push trueFalse "My local JB participates in neighborhood/regional/international projects or projects with other JBs", true
 	q.push longResponse "Other comments:", false
@@ -255,7 +256,7 @@ unless Survey.find_by_name("Local JB SET")
 	q.push header "JB Relationship with the Chapter"
 	q.push trueFalse "My JB always collaborates with my Chapter in matters of planning", true
 	q.push trueFalse "My JB always collaborates with my Chapter in matters of facilitation of activities", true
-	q.push trueFalse "My Jb always collaborates with my Chapter in matters of programmes (camps, Mosaics, or IPPs)", true
+	q.push trueFalse "My JB always collaborates with my Chapter in matters of programmes (camps, Mosaics, or IPPs)", true
 	q.push trueFalse "The chapter plays an important part in the running of the JB", true
 	q.push longResponse "Other comments:", false
 		
@@ -266,7 +267,7 @@ unless Survey.find_by_name("Local JB SET")
 	q.push shortResponse "Which activity had the lowest attendance?", true
 	q.push number "How many people attended?", true
 	q.push trueFalse "My JB evaluates itself regularly (your JB in general, not activities) not including the JB SET", true
-	q.push trueFalse "MY JB evaluates its JB activities regularly", true
+	q.push trueFalse "My JB evaluates its JB activities regularly", true
 	q.push longResponse "How do you do it? (optional)", false
 	q.push trueFalse "My JB plans and runs good and consistent activities", true
 	q.push trueFalse "My JB has a good and consistent communication strategy", true
@@ -275,14 +276,14 @@ unless Survey.find_by_name("Local JB SET")
 	# JB Development
 	q.push header "JB Development"
 	q.push trueFalse "Most of the activities, projects, and events planned and run by my JB are aligned with CISV’s  four content areas (Human Rights, Diversity, Sustainable Development, and Conflict & Resolution).", true
-	q.push trueFalse "I feel that JBers in my chapter are waare of the JB Gaols.", true
+	q.push trueFalse "I feel that JBers in my chapter are aware of the JB Goals.", true
 	q.push shortResponse "Write three words to describe what you feel makes JB activities succesful", true
 	q.push longResponse "What is the event that you planned that you were most proud of this year?", true
 	q.push longResponse "What do you believe is the purpose of JB?", true
 		
 	# Training
 	q.push header "Training"
-	q.push yesNo "Does your local chapter (not your JB) provide training to yoru JBers?", true
+	q.push yesNo "Does your local chapter (not your JB) provide training to your JBers?", true
 	q.push yesNo "Do you benefit from training at the national level?", true
 	q.push longResponse "What do you wish you received more training on?", true
 	q.push longResponse "Other comments", false
@@ -290,9 +291,9 @@ unless Survey.find_by_name("Local JB SET")
 	# Mosaic/Service/Local Impact
 	q.push header "Mosaic / Service / Local Impact"
 	q.push number "How many local impact activities did you organize this year?", true
-	q.push number "How many participants were there? (add all the activities up, or write 0 if you did not have any service activities).", false
+	q.push number "How many participants were there? (add all the activities up, or write 0 if you did not have any local impact activities).", false
 	q.push longResponse "Please list any like-minded organizations that your JB has worked with.", false
-	q.push yesNo "Is Mosaic/Local Service a priority to your JB?", true
+	q.push yesNo "Is Mosaic/Local Impact a priority to your JB?", true
 	q.push longResponse "Other comments?", false
 	
 	 #Attach and save the questions

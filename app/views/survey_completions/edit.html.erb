@@ -2,6 +2,7 @@
 <div class ="row">
   <div class = "col-md-8 col-md-offset-2">
     <h1>Edit <%= @survey_completion.survey.name%></h1>
+		<p class = "about"> <%=@survey_completion.survey.about%></p>
     <hr style = "margin-left: 30px"/>
 
     <%= form_for @survey_completion, :html => {class: "form-group"} do |f| %>
@@ -52,7 +53,7 @@
                 <div class = "form-check form-margin-bottom">
                   <label class="form-check-label ">
                     <input class = "form-check-input" <%= "checked = 'checked'" if '/No Answer/' == a.answer%> type = "radio" name = "questionAnswer[<%=q.id%>]" value="/No Answer/">
-                    No Answer
+                   (Leave Blank)
                   </label>
                 </div>
 
@@ -72,7 +73,7 @@
                 <div class = "form-check form-margin-bottom">
                   <label class ="form-check-label">
                     <input class = "form-check-input" <%= "checked = 'checked'" if '/No Answer/' == a.answer%> type = "radio" name = "questionAnswer[<%=q.id%>]" value = "/No Answer/">
-                    No Answer
+                   (Leave Blank)
                   </label>
                 </div>
 
@@ -91,7 +92,7 @@
                   <div class = "form-check form-margin-bottom">
                     <label class ="form-check-label">
                       <input class = "form-check-input" <%= "checked = 'checked'" if '/No Answer/' == a.answer%> type = "radio" name = "questionAnswer[<%=q.id%>]" value = "/No Answer/">
-                      No Answer
+                     (Leave Blank)
                     </label>
                   </div>
                 </div>
