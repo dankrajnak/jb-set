@@ -83,40 +83,40 @@ end
 
 
 # Create Surveys
-Survey.find_by_name("Test Survey").destroy if Survey.find_by_name("Test Survey")
+if Rails.env.development?
+	Survey.find_by_name("Test Survey").destroy if Survey.find_by_name("Test Survey")
+	unless Survey.find_by_name("Test Survey")
+		testSurvey = Survey.new
+		testSurvey.name = "Test Survey"
+		testSurvey.about = "Just a test survey to test that all the different qtypes and submissions are working."
+		testSurvey.national = true
+		testSurvey.save
 
-#unless Survey.find_by_name("Test Survey")
-#  testSurvey = Survey.new
-#  testSurvey.name = "Test Survey"
-#  testSurvey.about = "Just a test survey to test that all the different qtypes and submissions are working."
-#  testSurvey.national = true
-#  testSurvey.save
-#
-#  q = []
-#
-#  # Make some questions
-#  q.push longResponse "Long Response Test", false
-#  q.push shortResponse "Short Response Test", false
-#  q.push header "Test Header"
-#  q.push yesNo "Test Yes No", false
-#  q.push number "Test Number", false
-#  q.push multipleChoice "Test Multiple Choice", %w(A B C D), false
-#  q.push trueFalse "Test True False", false
-#
-#  # Attach and save the questions
-#  q.each_with_index do |question, i|
-#    question.qorder = i
-#	question.required = (i % 2 == 0)
-#    question.survey = testSurvey
-#    question.save
-#  end
-#
-#end
+		q = []
 
+		# Make some questions
+		q.push longResponse "Long Response Test", false
+		q.push shortResponse "Short Response Test", false
+		q.push header "Test Header"
+		q.push yesNo "Test Yes No", false
+		q.push number "Test Number", false
+		q.push multipleChoice "Test Multiple Choice", %w(A B C D), false
+		q.push trueFalse "Test True False", false
 
+		# Attach and save the questions
+		q.each_with_index do |question, i|
+			question.qorder = i
+		question.required = (i % 2 == 0)
+			question.survey = testSurvey
+			question.save
+		end
+	end
+end
 
 
-Survey.find_by_name("National JB SET").destroy if Survey.find_by_name("National JB SET")
+
+
+#Survey.find_by_name("National JB SET 2017").destroy if Survey.find_by_name("National JB SET 2017")
 unless Survey.find_by_name("National JB SET 2017")
   nSet = Survey.new
   nSet.name = "National JB SET 2017"
@@ -148,8 +148,8 @@ unless Survey.find_by_name("National JB SET 2017")
   # Size and Capacity
   q.push header 'Size and Capacity'
   q.push number 'How many national JB events do you have per year?', true
-  q.push number 'How many JBers, on average, are active participants in all local JBs in your country? (Give your best estimate).', true
-  q.push number 'How many JBers, on average, are active participants on the national level in your JB?', true
+  q.push number 'How many JBers are active participants in all local JBs combined in your country? (Give your best estimate).', true
+  q.push number 'How many JBers are active participants on the national level in your JB?', true
   
 	q.push number "What percentage of your JB has the gender \"Male\" (give your best estimate, not required if you wish not to answer).", false
 	q.push number "What percentage of your JB has the gender \"Female\" (give your best estimate, not required if you wish not to answer).", false
@@ -206,7 +206,7 @@ unless Survey.find_by_name("National JB SET 2017")
 		
 end
 	
-Survey.find_by_name("Local JB SET").destroy if Survey.find_by_name("Local JB SET")
+#Survey.find_by_name("Local JB SET 2017").destroy if Survey.find_by_name("Local JB SET 2017")
 unless Survey.find_by_name("Local JB SET 2017")
   nSet = Survey.new
   nSet.name = "Local JB SET 2017"
@@ -301,6 +301,13 @@ unless Survey.find_by_name("Local JB SET 2017")
     question.survey = nSet
     question.qorder = index
     question.save
+	end
+	
+	# Clean up old questions
+	Question.all.each do |q|
+		if q.survey.nil?
+			q.destroy
+		end
 	end
 
 		
