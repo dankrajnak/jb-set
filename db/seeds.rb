@@ -117,9 +117,9 @@ Survey.find_by_name("Test Survey").destroy if Survey.find_by_name("Test Survey")
 
 
 Survey.find_by_name("National JB SET").destroy if Survey.find_by_name("National JB SET")
-unless Survey.find_by_name("National JB SET")
+unless Survey.find_by_name("National JB SET 2017")
   nSet = Survey.new
-  nSet.name = "National JB SET"
+  nSet.name = "National JB SET 2017"
   nSet.about =
       "Welcome to the Local JB SET! All the questions you’ll find on this survey are for National JBs to be filled by the NJRs " +
       "(if you are a NJR, feel free to discuss it with other JBers that are involved on the national level of your "+
@@ -207,9 +207,9 @@ unless Survey.find_by_name("National JB SET")
 end
 	
 Survey.find_by_name("Local JB SET").destroy if Survey.find_by_name("Local JB SET")
-unless Survey.find_by_name("Local JB SET")
+unless Survey.find_by_name("Local JB SET 2017")
   nSet = Survey.new
-  nSet.name = "Local JB SET"
+  nSet.name = "Local JB SET 2017"
   nSet.about =
       "Welcome to the Local JB SET! All the questions you’ll find on this survey are for Local JBs to be filled by the LJRs " +
       "(if you are a LJR, feel free to discuss it with other JBers that are involved in your "+

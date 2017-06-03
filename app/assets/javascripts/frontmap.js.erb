@@ -27,7 +27,7 @@ function createWorld() {
 	queue()
 		.defer(d3.json, "<%= image_url('world-110m.json') %>")
 		.defer(d3.tsv, "<%= image_url('jb-countries.tsv') %>")
-		.defer(d3.json, "/surveys/National%20JB%20SET.json")
+		.defer(d3.json, "/surveys/National%20JB%20SET%202017.json")
 		.await(ready);
 
 	function ready(error, world, jb, survey) {
