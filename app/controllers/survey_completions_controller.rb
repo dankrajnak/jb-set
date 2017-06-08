@@ -10,7 +10,7 @@ class SurveyCompletionsController < ApplicationController
     CSV.read("#{Rails.root}/app/assets/images/jb-countries.tsv", {:col_sep => "\t"}).each do |c|
       @countryNames.push(c[1])
     end
-    @countryNames.shift 4;
+    @countryNames.shift 1;
     @countryNames.sort!
 
 
@@ -48,7 +48,7 @@ class SurveyCompletionsController < ApplicationController
     CSV.read("#{Rails.root}/app/assets/images/jb-countries.tsv", {:col_sep => "\t"}).each do |c|
       @countryNames.push(c[1])
     end
-    @countryNames.shift 4;
+    @countryNames.shift 1;
     @countryNames.sort!
 
     unless @survey_completion.user == current_user
