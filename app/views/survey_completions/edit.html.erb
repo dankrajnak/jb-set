@@ -2,8 +2,9 @@
 <div class ="row">
   <div class = "col-md-8 col-md-offset-2">
     <h1>Edit <%= @survey_completion.survey.name%></h1>
+		 <hr style = "margin-left: 30px"/>
+
 		<p class = "about"> <%=@survey_completion.survey.about%></p>
-    <hr style = "margin-left: 30px"/>
 
     <%= form_for @survey_completion, :html => {class: "form-group"} do |f| %>
         <input type = "hidden" name = "survey_id" value = "<%= @survey_completion.survey.id%>">
@@ -15,7 +16,6 @@
         <select id="survey_completion_country" name= "survey_completion[country]"  class="form-control form-margin-bottom" >
           <%= options_for_select(@countryNames, @survey_completion.country)%>
         </select>
-        <hr style = "margin-bottom: 10px">
 
         <% @questionsAnswers.each do |a| %>
             <div class = "question">
@@ -96,11 +96,12 @@
                     </label>
                   </div>
                 </div>
-
             <% when 'n' #number %>
                 <input id="<%=q.id%>" type="number" value = "<%= a.answer%>" name = "questionAnswer[<%=q.id%>]" class = "form-control form-margin-bottom" placeholder="Please enter a number">
             <% when 'h' #header %>
                 <h3 class = "text-center"><%=q.name%></h3>
+								<input id="<%=q.id%>" name = "questionAnswer[<%=q.id%>]" style="display: none;"> 
+
                 <hr />
             <%end%>
             </div>

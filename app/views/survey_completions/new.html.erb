@@ -94,6 +94,7 @@
                 <input id="<%=q.id%>" type="number" name = "questionAnswer[<%=q.id%>]" class = "form-control form-margin-bottom" placeholder="Please enter a number">
             <% when 'h' #header %>
               <h3 class = "text-center question-header"><%=q.name%></h3>
+							<input id="<%=q.id%>" name = "questionAnswer[<%=q.id%>]" style="display: none;"> 
                 <hr />
             <%end%>
             </div>
