@@ -31,24 +31,25 @@ function GeneralGraph(width, height, margin) {
 		.defer(d3.json, "/surveys.json")
 		.await(ready);
 
-	function ready(error, countries, regions, data) {
+	function ready(error, countries, regions, surveys) {
 		jbcountries = countries;
 		jbregions = regions;
 		if (error) throw error;
 
-		data.forEach(function (e) {
+		surveys.forEach(function (e) {
 			$('#general-graph-select').append("<option value = \"" + e.name + "\"> " + e.name + "</option>");
 		});
 		var selected = $('#general-graph-select option').filter(":selected");
 
 
-		d3.json("/surveys/" + encodeURI(selected.text().trim()) + ".json", function (error, data) {
+		d3.json("/surveys/" + encodeURI(selected.text().trim()) + ".json", function (error, survey) {
 			if (error) throw error;
-			questionsData = getQuestionResponses(data);
 
 			$('#general-graph-question-select option').remove();
-			questionsData.forEach(function (q) {
-				$('#general-graph-question-select').append("<option value = \"" + q.id + "\"> " + q.name + "</option>");
+			survey.questions.forEach(function (q) {
+				var name = (q.qtype === 'mc') ? q.name.split('[CHOICES]')[0] : q.name;
+				var disabled = (q.qtype === 'h') ? "class=\"general-graph-header-option\" disabled" : '';
+				$('#general-graph-question-select').append("<option value = \"" + q.id + "\" " + disabled + "> " + name + "</option>");
 			});
 
 			drawGraph(graph, $('#general-graph-select').find(":selected").text(), width, height, margin);
@@ -59,24 +60,26 @@ function GeneralGraph(width, height, margin) {
 
 			d3.json("/surveys/" + encodeURI(selected.text().trim()) + ".json", function (error, data) {
 				if (error) throw error;
-				questionsData = getQuestionResponses(data);
 
 				$('#general-graph-question-select option').remove();
-				questionsData.forEach(function (q) {
-					$('#general-graph-question-select').append("<option value = \"" + q.id + "\"> " + q.name + "</option>");
+				data.questions.forEach(function (q) {
+					var name = (q.qtype === 'mc') ? q.name.split('[CHOICES]')[0] : q.name;
+					var disabled = (q.qtype === 'h') ? "class=\"general-graph-header-option\" disabled" : '';
+					$('#general-graph-question-select').append("<option value = \"" + q.id + "\" " + disabled + "> " + name + "</option>");
 				});
 
-				drawGraph(graph, $('#general-graph-select').find(":selected").text(), width, height, margin);
+				drawGraph(this.graph, $('#general-graph-select').find(":selected").text(), width, height, margin);
 			});
 		});
 
 		$('#general-graph-question-select').change(function () {
 			var selected = parseInt($('#general-graph-question-select option').filter(":selected").val());
-			var question = questionsData.find(function (e) {
-				return e.id === selected;
+			d3.json('/questions/' + selected + '.json', function (error, question) {
+				if (error) throw error;
+				console.log(question);
+				drawGraph(this.graph, question, width, height, margin);
 			});
-			console.log(graph, question, width, height, margin);
-			drawGraph(graph, question, width, height, margin);
+
 		});
 	}
 }
@@ -97,11 +100,11 @@ function drawGraph(chart, question, width, height, margin) {
 			/*---		Dependent on data		---*/
 
 			y.domain([0, d3.max(question.answers, function (d) {
-				return +d.value; //coerce to number
+				return +d.answer; //coerce to number
 			})]);
 
 			console.log(d3.max(question.answers, function (d) {
-				return d.value;
+				return d.answer;
 			}))
 			console.log(question.answers);
 
@@ -146,10 +149,10 @@ function drawGraph(chart, question, width, height, margin) {
 					return x(d.name);
 				})
 				.attr("y", function (d) {
-					return y(d.value);
+					return y(d.answer);
 				})
 				.attr("height", function (d) {
-					return height - y(+d.value);
+					return height - y(+d.answer);
 				})
 				.attr("width", x.bandwidth());
 			/*
@@ -160,43 +163,6 @@ function drawGraph(chart, question, width, height, margin) {
 		default:
 			break;
 	}
-}
-
-function getQuestionResponses(surveyData) {
-	questionResponses = [];
-	if (!surveyData.completions) return null;
-	surveyData.completions[0].questions.forEach(function (q, i) {
-		var questionName = q.name;
-		if (q.type === 'mc') {
-			questionName = q.name.split("[CHOICES]")[0];
-		}
-		questionResponses.push({
-			id: q.id,
-			type: q.type,
-			name: questionName,
-			answers: []
-		});
-	});
-
-	questionResponses.sort(function (a, b) {
-		return a.id - b.id;
-	})
-
-	surveyData.completions.forEach(function (c) {
-		c.questions.forEach(function (q) {
-			for (var i = 0; i < questionResponses.length; i++) {
-				if (q.id === questionResponses[i].id) {
-					questionResponses[i].answers.push({
-						country: c.country,
-						value: q.answer,
-					});
-					break;
-				}
-			}
-		});
-	});
-
-	return questionResponses
 }
 
 //GeneralGraph();

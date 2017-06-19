@@ -121,7 +121,7 @@ unless Survey.find_by_name("National JB SET 2017")
   nSet = Survey.new
   nSet.name = "National JB SET 2017"
   nSet.about =
-      "Welcome to the Local JB SET! All the questions you’ll find on this survey are for National JBs to be filled by the NJRs " +
+      "Welcome to the National JB SET! All the questions you’ll find on this survey are for National JBs to be filled by the NJRs " +
       "(if you are a NJR, feel free to discuss it with other JBers that are involved on the national level of your "+
       "Junior Branch). It will take about 25 minutes to answer.  This survey is best filled out at a board meeting.  " +
       "Sometimes the best result of the survey is discussion amongst your national board.  "+ "Although you can submit and save your answers at anytime, you need to fill out quesitons marked *Required in order for your survey to be marked as complete.  As long as you submit your survey, even if your survey is not complete, your answers will be used in the graphs on the front page, and will be available for download.  If you do not wish to answer a multiple choice question, please select the \"(Leave Blank)\" option.  Feel free to save your answers and come back to finish the survey later!  Thank you for taking the time to be a part of the JB SET this year!"

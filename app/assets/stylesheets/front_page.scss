@@ -1,4 +1,4 @@
-// Place all the styles related to the static_pages controller here.
+// Place all the styles related to the front_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap-sprockets";
@@ -58,7 +58,7 @@ code {
 
 /* Graph styles */
 
-#general-graph {
+#general-graph-number {
 	.AJB {
 		fill: $cisv-orange;
 	}
@@ -68,18 +68,105 @@ code {
 	.APJB {
 		fill: $cisv-green;
 	}
+	text {
+		fill: white;
+		font: 10px sans-serif;
+		text-anchor: middle;
+	}
+	y-axis {
+		color: white;
+	}
 }
 
-#general-graph .AJB {
-	fill: $cisv-orange;
+.general-graph {
+	display: none;
 }
 
-#general-graph text {
-	fill: white;
-	font: 10px sans-serif;
-	text-anchor: middle;
+option {
+	color: $cisv-orange !important;
+	text-align: center !important;
 }
 
-.y-axis {
-	color: white;
+.axis text {
+	@include sans-serif-font();
+	font-size: 10px;
+}
+
+.x-axis path,
+.x-axis line {
+	fill: none;
+}
+
+.y-axis path,
+.y-axis line {
+	fill: none;
+	stroke: #FFF;
+	shape-rendering: crispEdges;
+}
+
+
+/* Graph Animations */
+
+@-webkit-keyframes fadeIn {
+	from {
+		-webkit-transform: perspective(400) scaleZ(.1) rotate3d(1, 0, 0, -20deg);
+		transform: perspective(400) scale3d(.8, .8, .8) rotate3d(1, 0, 0, -20deg);
+		opacity: 0;
+	}
+	to {
+		-webkit-transform: perspective(400px);
+		transform: perspective(400px);
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		-webkit-transform: perspective(400) scaleZ(.1) rotate3d(1, 0, 0, -20deg);
+		transform: perspective(400) scale3d(.8, .8, .8) rotate3d(1, 0, 0, -20deg);
+		opacity: 0;
+	}
+	to {
+		-webkit-transform: perspective(400px);
+		transform: perspective(400px);
+	}
+}
+
+.fadeIn {
+	-webkit-animation-name: fadeIn;
+	animation-name: fadeIn;
+	animation-timing-function: ease;
+	-webkit-animation-duration: .7s;
+	animation-duration: .7s;
+}
+
+@-webkit-keyframes fadeOut {
+	from {
+		-webkit-transform: perspective(400px);
+		transform: perspective(400px);
+	}
+	to {
+		-webkit-transform: perspective(400) scaleZ(.1) rotate3d(1, 0, 0, -20deg);
+		transform: perspective(400) scale3d(.8, .8, .8) rotate3d(1, 0, 0, -20deg);
+		opacity: 0;
+	}
+}
+
+@keyframes fadeOut {
+	from {
+		-webkit-transform: perspective(400px);
+		transform: perspective(400px);
+	}
+	to {
+		-webkit-transform: perspective(400) scaleZ(.1) rotate3d(1, 0, 0, -20deg);
+		transform: perspective(400) scale3d(.8, .8, .8) rotate3d(1, 0, 0, -20deg);
+		opacity: 0;
+	}
+}
+
+.fadeOut {
+	-webkit-animation-name: fadeOut;
+	animation-name: fadeOut;
+	animation-timing-function: ease-out;
+	-webkit-animation-duration: .7s;
+	animation-duration: .7s;
 }

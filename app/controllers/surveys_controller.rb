@@ -15,16 +15,18 @@ class SurveysController < ApplicationController
     @survey = Survey.find_by_name(params[:name])
     @lastCompletionTime;
     @lastCompletionCountry;
+		
+		# List of countres that have completed this survey
+		@countries = []
+		
     if @survey
-			@survey.survey_completions.order(updated_at: :desc).any? do |s|
-				if s.question_answers.any? {|q| q.question.required && (q.answer.blank? || q.answer == "/No Answer/")}
-					false
-				else
-					@lastCompletionTime = s.updated_at
-					@lastCompletionCountry = s.country
-					true
+			@survey.survey_completions.order(:updated_at).each do |sc|
+				unless sc.question_answers.any? {|q| q.question.required && (q.answer.blank? || q.answer == "/No Answer/")}
+					@countries.push sc.country
+					@lastCompletionTime = sc.updated_at
+					@lastCompletionCountry = sc.country
 				end
 			end
 		end
-  end
+	end
 end

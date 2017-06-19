@@ -1,4 +1,4 @@
-createWorld();
+//createWorld();
 
 function createWorld() {
 	var width = window.innerWidth,
@@ -55,18 +55,13 @@ function createWorld() {
 
 		countries.forEach(function (country) {
 			country.completed = false;
-
-			if (survey.completions != null)
-				survey.completions.some(function (e) {
-					if (e.country == country.name && e.completed) {
-						country.completed = true;
-						if (++colorIndex == cisvcolors.length) {
-							colorIndex = 0;
-						}
-						country.color = cisvcolors[colorIndex];
-
-					}
-				})
+			if (survey.countries != null)
+				country.completed = survey.countries.some(function (c) {
+					return c === country.name;
+				});
+			if (country.completed) {
+				country.color = cisvcolors[colorIndex++ % cisvcolors.length];
+			}
 		});
 
 		if (survey.lastCountry)

@@ -17,7 +17,7 @@
 //= require scrollreveal.js
 
 
-//= require d3v4
+//= require d3v3
 //= require d3queue
 //= requre d3geo
 //= require d3geoprojection
@@ -26,6 +26,7 @@
 
 //= require graphs/Graphs
 //= require graphs/generalGraph
+//= require graphs/graphGeneral
 
 //= require jquery.easing.min
 
