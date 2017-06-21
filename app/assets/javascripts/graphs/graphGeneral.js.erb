@@ -332,16 +332,31 @@ function createGeneralGraph(graphWidth, graphHeight, graphMargins) {
 	}
 
 	function drawLongResponse(graph) {
-		console.log(longResponseGraph[0][0]);
 		return graph;
 	}
 
 	function updateLongResponse(gData) {
-		var graph = longResponseGraph;
+		var graph = longResponseGraph.select(".carousel-inner");
 		var question = gData;
-		var items = longResponseGraph.selectAll('.carousel-item').data(question.answers)
 
-		console.log(longResponseGraph);
+		var items = graph.selectAll('.carousel-item').data(question.answers, function (d) {
+			if (question.keys) {
+				d.identifier = d.keyAnswers[0];
+				return d.keyAnswers[0];
+			} else {
+				d.identifier = d.country;
+				return d.country;
+			}
+		});
+
+		var itemsEnter = items.enter().insert("div")
+			.attr("class", "carousel-item");
+
+		itemsEnter.append("p").attr("class", "d-block").html(function (d) {
+			return d.answer
+		});
+
+		var itemsExt = bar.exit().remove();
 
 	}
 
