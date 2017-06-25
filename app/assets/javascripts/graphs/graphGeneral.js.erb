@@ -116,7 +116,7 @@ function createGeneralGraph(graphWidth, graphHeight, graphMargins) {
 
 		var questionID = questionInfo.split(',')[0];
 		var questionType = questionInfo.split(',')[1];
-		var drawFunction, updateFunction, graph;
+		var updateFunction, graph;
 
 		switch (questionType) {
 			case 'n':
@@ -125,7 +125,7 @@ function createGeneralGraph(graphWidth, graphHeight, graphMargins) {
 				graph = numberGraph;
 				break;
 			case 'mc':
-				updateFunction = function () {}
+				updateFunction = updateMultipleChoice;
 				currentGraphData = multiplceChoiceGraphData;
 				graph = d3.select("#general-graph-multiple-choice");
 				break;
@@ -162,7 +162,8 @@ function createGeneralGraph(graphWidth, graphHeight, graphMargins) {
 			if (error) throw error;
 			currentGraphData.question = question;
 			d3.transition()
-				.duration(900)
+				.duration(1200)
+				.ease("quad")
 				.each(function () {
 					updateFunction(currentGraphData);
 				});
@@ -194,6 +195,16 @@ function createGeneralGraph(graphWidth, graphHeight, graphMargins) {
 		graph.style('display', "block");
 		graph.classed("fadeOut", false);
 	}
+
+
+	/*--------------- Draw and Update Functions ---------------*/
+
+	/*
+	Each type of graph has an draw and an update function.  The draw function is for setup
+	and is called only once at the beginning of this script.  The update function is called
+	each time a graph of this type is viewed and updates the graph with the data from the question
+	being viewed.
+	*/
 
 	function drawNumber(graph) {
 
@@ -322,8 +333,174 @@ function createGeneralGraph(graphWidth, graphHeight, graphMargins) {
 	}
 
 	function drawMultipleChoice(graph) {
-		graph.append("div").attr("class", "jumbotron").append("h5").style("color", "#222").html("Multiple choice questions aren't supported yet :(  Try another question!");
-		return graph;
+
+		graph.attr("height", height + margin.top + margin.bottom).attr("width", width + margin.left + margin.right);
+
+		var graphBase = graph.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+		var radius = Math.min(height / 2, width / 4);
+		var pie = d3.layout.pie()
+			.sort(null)
+			.value(function (d) {
+				return d.value;
+			});
+
+		var path = d3.svg.arc()
+			.outerRadius(radius - 10)
+			.innerRadius(0);
+
+		var label = d3.svg.arc()
+			.outerRadius(radius - 40)
+			.innerRadius(radius - 40);
+
+		var colors = ["#336699", "#FF6633", "#CC0066", "#FFCC33", "#FF3333", "#FF9933", "#009966", "#339933"];
+
+		var defaultArc = d3.svg.arc().outerRadius(radius - 10).innerRadius(0); //margin of 10.
+
+		return {
+			graphBase: graphBase,
+			radius: radius,
+			pie: pie,
+			path: path,
+			label: label,
+			colors: colors,
+			defaultArc: defaultArc,
+		};
+	}
+
+	function updateMultipleChoice(gData) {
+		var graphBase = gData.graphBase;
+		var radius = gData.radius;
+		var question = gData.question;
+		var pie = gData.pie;
+		var path = gData.path;
+		var label = gData.label;
+		var colors = gData.colors;
+		var defaultArc = gData.defaultArc;
+		var colorIndex = 0;
+
+		//Format data
+		//Get choices.
+		var choices = [];
+		question.name.split("[CHOICES]")[1].split("|").forEach(function (choice, index) {
+			if (choice !== "") {
+				choices[index] = {
+					name: choice,
+					count: 0
+				};
+			}
+		});
+
+		//Count responses.
+		question.answers.forEach(function (response) {
+			choices.some(function (choice, index) {
+				if (response.answer === choice.name) {
+					choices[index].count++;
+					return true;
+				}
+				return false;
+			});
+		});
+
+		var total = choices.reduce(function (tot, choice) {
+			return tot + choice.count;
+		}, 0);
+
+		choices.forEach(function (choice) {
+			choice.value = choice.count / total;
+		});
+		choices = choices.filter(function (choice) {
+			return (choice.value !== 0);
+		})
+
+		//Sort
+		choices.sort(function (a, b) {
+			return b.value - a.value;
+		})
+		var arc = graphBase.selectAll(".arc")
+			.data(pie(choices), function (d) {
+				return d.data.name;
+			});
+
+		var arcEnter = arc.enter().append("g").attr("class", "arc").style("fill-opacity", 0);
+
+		arcEnter.append("path").attr("d", defaultArc).attr("fill", function (d) {
+			return colors[colorIndex++ % colors.length];
+		});
+
+		var textSpace = 15
+		var textArea = arcEnter.append("g").attr("class", "pie-text-area")
+			.attr("transform", function (d) {
+				return "translate(" + label.centroid(d) + ")";
+			})
+			.attr("dy", "2.4em")
+			.style("max-width", radius)
+			.attr("title", function (d) {
+				return d.data.name + ", " + Math.round(d.data.value * 100) + "%";
+			})
+
+		textArea.append("text")
+			.attr("class", "pie-info")
+			.text(function (d) {
+				return d.data.name;
+			})
+
+		textArea.append("text")
+			.attr("class", "pie-value").attr("dy", "1em")
+			.text(function (d) {
+				return Math.round(d.data.value * 100) + "%";
+			});
+
+
+		//Update
+		var arcUpdate = d3.transition(arc).style("fill-opacity", 1);
+		arcUpdate.select("path").attrTween("d", function (arc) {
+				return tweenPie(defaultArc, {
+						startAngle: 0,
+						endAngle: 0
+					},
+					arc);
+			}).style("fill-opacity", 1)
+			.duration(3000)
+			.ease("elastic")
+
+		arcUpdate.select(".pie-text-area").attr("transform", function (d) {
+			return "translate(" + label.centroid(d) + ")";
+		}).attr("title", function (d) {
+			return d.data.name + ", " + Math.round(d.data.value * 100) + "%";
+		});
+
+		arcUpdate.select(".pie-info")
+			.text(function (d) {
+				return d.data.name;
+			})
+
+		arcUpdate.select(".pie-value").text(function (d) {
+			return Math.round(d.data.value * 100) + "%";
+		});
+
+
+		//exit
+		var arcExit = d3.transition(arc.exit())
+			.style("fill-opacity", 0)
+			.remove();
+
+		arcExit.select("path")
+			.attrTween("d", function (arc) {
+				return tweenPie(defaultArc, arc, {
+					startAngle: 0,
+					endAngle: 0,
+				});
+			})
+
+		arc.exit().select(".pie-text-area").remove();
+
+	}
+
+	function tweenPie(arc, from, to) {
+		var interp = d3.interpolate(from, to);
+		return function (t) {
+			return arc(interp(t))
+		}
 	}
 
 	function drawShortResponse(graph) {
@@ -332,6 +509,7 @@ function createGeneralGraph(graphWidth, graphHeight, graphMargins) {
 	}
 
 	function drawLongResponse(graph) {
+		graph.append("div").attr("class", "jumbotron").append("h5").style("color", "#222").html("Long response questions aren't supported yet :(  Try another question!");
 		return graph;
 	}
 

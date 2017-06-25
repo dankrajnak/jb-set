@@ -78,6 +78,19 @@ code {
 	}
 }
 
+#general-graph-multiple-choice {
+	text {
+		fill: white;
+		@include sans-serif-font();
+		font-weight: 300;
+		text-anchor: middle;
+	}
+	.pie-info {
+		font-size: 1em;
+		font-weight: bold;
+	}
+}
+
 .general-graph {
 	display: none;
 }
