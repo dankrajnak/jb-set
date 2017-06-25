@@ -19,8 +19,8 @@
 
 //= require d3v3
 //= require d3queue
-//= requre d3geo
 //= require d3geoprojection
+//= requre d3geo
 //= require topojson
 //= require frontmap
 

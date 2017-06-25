@@ -13,14 +13,14 @@ function createWorld() {
 
 	d3.select("header").attr("style", "height: " + (window.innerHeight) + "px;");
 
-	var projection = d3.geoWinkel3()
+	var projection = d3.geo.winkel3()
 		.scale(height / Math.PI)
 		.translate([width / 2, height / 2 + offset]);
 
 	var context = d3.select("#front-map").node().getContext("2d");
 
 
-	var path = d3.geoPath()
+	var path = d3.geo.path()
 		.projection(projection)
 		.context(context);
 
