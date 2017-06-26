@@ -208,16 +208,16 @@ end
 	
 #Survey.find_by_name("Local JB SET 2017").destroy if Survey.find_by_name("Local JB SET 2017")
 unless Survey.find_by_name("Local JB SET 2017")
-  nSet = Survey.new
-  nSet.name = "Local JB SET 2017"
-  nSet.about =
+  lSet = Survey.new
+  lSet.name = "Local JB SET 2017"
+  lSet.about =
       "Welcome to the Local JB SET! All the questions you’ll find on this survey are for Local JBs to be filled by the LJRs " +
       "(if you are a LJR, feel free to discuss it with other JBers that are involved in your "+
       "Junior Branch). It will take about 25 minutes to answer.  This survey is best filled out at a board meeting.  " +
       "Sometimes the best result of the survey is discussion amongst your local board.  " + "Although you can submit and save your answers at anytime, you need to fill out quesitons marked *Required in order for your survey to be marked as complete.  As long as you submit your survey, even if your survey is not complete, your answers will be used in the graphs on the front page, and will be available for download.  If you do not wish to answer a multiple choice question, please select the \"(Leave Blank)\" option. Feel free to save your answers and come back to finish the survey later!  Thank you for taking the time to be a part of the JB SET this year!"
-  nSet.national = false
-  nSet.local = true
-  nSet.save
+  lSet.national = false
+  lSet.local = true
+  lSet.save
 
   # Make the questions
   q = []
@@ -298,10 +298,16 @@ unless Survey.find_by_name("Local JB SET 2017")
 	
 	 #Attach and save the questions
   q.each_with_index do |question, index|
-    question.survey = nSet
+    question.survey = lSet
     question.qorder = index
     question.save
 	end
+	
+	#Push on beginning question
+	question = shortResponse "What is your chapter?", true
+	question.survey = lSet
+	questions.qorder = -1
+	question.save
 	
 	# Clean up old questions
 	Question.all.each do |q|
