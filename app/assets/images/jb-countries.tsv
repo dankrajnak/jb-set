@@ -4,7 +4,7 @@ id	name	region
 36	Australia	3
 40	Austria	2
 112	Belarus	2
-56	Belgium
+56	Belgium 2
 76	Brazil	1
 100	Bulgaria	2
 116	Cambodia	3
@@ -60,6 +60,7 @@ id	name	region
 643	Russian Federation	2
 702	Singapore	3
 703	Slovakia	2
+705	Slovenia 2
 410	South Korea	3
 724	Spain	2
 752	Sweden	2

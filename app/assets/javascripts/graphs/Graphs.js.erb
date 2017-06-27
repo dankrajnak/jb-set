@@ -1,19 +1,44 @@
-function Graph() {
-	Graph.prototype.jbcountries = "loading..."
+(function (global) {
+	"use strict";
 
-	//Get JB Countries, which each graph will reference
+	var graph = global.graph;
+	if (!graph) {
+		graph = {};
+		global.graph = graph;
+	}
+
+	var module = graph.generalGraph = {};
+
+
+	//Constructor
+	module.jbCountries;
+	module.jbRegions;
+	module.loaded = false;
+	/*
+	This public member contains all the graphs defined in other modules.  Each graph has a draw function
+	which can run automatically, or via this member.
+	*/
+	module.graphs = []
+
+
+	var ready = function (error, countries, regions) {
+		if (error) {
+			module.jbCountries = [];
+			module.jbRegions = [];
+		}
+		throw error;
+		module.jbCountries = countries;
+		module.jbRegions = regions;
+		module.loaded = true;
+
+		module.graphs.forEach(function (gph) {
+			grph.draw();
+		});
+	}
+
 	queue()
 		.defer(d3.tsv, "<%= image_url('jb-countries.tsv') %>")
-		.defer(d3.tsv, "<%= image_url('jb-regions.tsv') %>")
-		.await(defineCountries)
+		.defer(d3.tsv, "<%= image_url('jb-regions.tsv;) %>")
+		.await(ready);
 
-}
-
-function defineCountries(error, countries, regions) {
-	if (error) throw error;
-
-	console.log("Countries loaded!")
-	Graph.prototype.jbcountries = countries;
-	console.log(Graph.prototype.jbcountries);
-
-}
+})(this);
