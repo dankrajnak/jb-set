@@ -58,6 +58,14 @@ code {
 
 /* Graph styles */
 
+#general-graph-question-select {
+	margin-bottom: 10px;
+}
+
+.general-graph {
+	display: none;
+}
+
 #general-graph-number {
 	.AJB {
 		fill: $cisv-orange;
@@ -91,13 +99,51 @@ code {
 	}
 }
 
-.general-graph {
-	display: none;
-}
-
-option {
-	color: $cisv-orange !important;
-	text-align: center !important;
+#general-graph-long-response {
+	background-color: $gray-lighter;
+	padding: 20px;
+	color: $gray-darker;
+	.long-response-card {
+		background-color: $gray-lighter;
+		border-radius: 2px;
+		box-shadow: 0px 3px 3px 2px rgba(0, 0, 0, .2);
+		margin: 10px;
+		padding: 10px;
+	}
+	.long-response-text::before {
+		content: "\201c";
+		font-size: 20px;
+	}
+	.long-response-text::after {
+		content: "\201d";
+		font-size: 20px;
+	}
+	.long-response-text {
+		@include cool-serif-font();
+		font-size: 15px;
+	}
+	.long-response-next {
+		float: right;
+	}
+	.long-response-previous {
+		float: left
+	}
+	.long-response-label::before,
+	.long-response-label::after {
+		content: " — ";
+	}
+	.long-response-label {
+		color: $theme-primary;
+		font-weight: 200;
+		margin: auto;
+		text-align: center;
+	}
+	button {
+		background-color: $gray-lighter;
+		border: solid $gray 1px;
+		border-radius: 4px;
+		padding: 5px;
+	}
 }
 
 .axis text {
@@ -119,6 +165,104 @@ option {
 
 
 /* Graph Animations */
+
+$transformAmount: 100px;
+$transformDuration: .3s;
+@-webkit-keyframes fadeLeft {
+	from {}
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes fadeLeft {
+	from {}
+	to {
+		opacity: 0;
+	}
+}
+
+.fadeLeft {
+	-webkit-animation-name: fadeLeft;
+	animation-name: fadeLeft;
+	animation-timing-function: ease;
+	-webkit-animation-duration: $transformDuration;
+	animation-duration: $transformDuration;
+}
+
+@-webkit-keyframes fadeRight {
+	from {}
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes fadeRight {
+	from {}
+	to {
+		opacity: 0;
+	}
+}
+
+.fadeRight {
+	-webkit-animation-name: fadeRight;
+	animation-name: fadeRight;
+	animation-timing-function: ease;
+	-webkit-animation-duration: $transformDuration;
+	animation-duration: $transformDuration;
+}
+
+@-webkit-keyframes showRight {
+	from {
+		-webkit-transform: perspective(1000) translate($transformAmount, 0) rotate3d(0, 1, 0, 60deg);
+		transform: perspective(1000) translate($transformAmount, 0) rotate3d(0, 1, 0, 60deg);
+		opacity: 0;
+	}
+	to {}
+}
+
+@keyframes showRight {
+	from {
+		-webkit-transform: perspective(1000) translate($transformAmount, 0) rotate3d(0, 1, 0, 60deg);
+		transform: perspective(1000) translate($transformAmount, 0) rotate3d(0, 1, 0, 60deg);
+		opacity: 0;
+	}
+	to {}
+}
+
+.showRight {
+	-webkit-animation-name: showRight;
+	animation-name: showRight;
+	animation-timing-function: ease;
+	-webkit-animation-duration: $transformDuration;
+	animation-duration: $transformDuration;
+}
+
+@-webkit-keyframes showLeft {
+	from {
+		-webkit-transform: perspective(1000) translate(-$transformAmount, 0) rotate3d(0, 1, 0, 300deg);
+		transform: perspective(1000) translate(-$transformAmount, 0) rotate3d(0, 1, 0, 300deg);
+		opacity: 0;
+	}
+	to {}
+}
+
+@keyframes showLeft {
+	from {
+		-webkit-transform: perspective(1000) translate(-$transformAmount, 0) rotate3d(0, 1, 0, 300deg);
+		transform: perspective(1000) translate(-$transformAmount, 0) rotate3d(0, 1, 0, 300deg);
+		opacity: 0;
+	}
+	to {}
+}
+
+.showLeft {
+	-webkit-animation-name: showLeft;
+	animation-name: showLeft;
+	animation-timing-function: ease;
+	-webkit-animation-duration: $transformDuration;
+	animation-duration: $transformDuration;
+}
 
 @-webkit-keyframes fadeIn {
 	from {

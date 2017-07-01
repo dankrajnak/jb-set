@@ -24,9 +24,11 @@
 //= require topojson
 //= require frontmap
 
-//= require graphs/Graphs
 //= require graphs/generalGraph
-//= require graphs/graphGeneral
+//= require graphs/generalGraphs/number
+//= require graphs/generalGraphs/multipleChoice
+//= require graphs/generalGraphs/longResponse
+//= require graphs/Graphs
 
 //= require jquery.easing.min
 
