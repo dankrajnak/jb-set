@@ -27,7 +27,10 @@
 //= require graphs/generalGraph
 //= require graphs/generalGraphs/number
 //= require graphs/generalGraphs/multipleChoice
+//= require graphs/generalGraphs/yesNo
+//= require graphs/generalGraphs/trueFalse
 //= require graphs/generalGraphs/longResponse
+//= require graphs/generalGraphs/shortResponse
 //= require graphs/Graphs
 
 //= require jquery.easing.min

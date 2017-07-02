@@ -84,7 +84,9 @@
 		}
 	}
 	
-	#general-graph-multiple-choice {
+	#general-graph-multiple-choice,
+	#general-graph-yes-no,
+	#general-graph-true-false {
 		text {
 			fill: white;
 			@include sans-serif-font();
@@ -97,7 +99,8 @@
 		}
 	}
 	
-	#general-graph-long-response {
+	#general-graph-long-response,
+	#general-graph-short-response {
 		background-color: $gray-lighter;
 		padding: 20px;
 		color: $gray-darker;

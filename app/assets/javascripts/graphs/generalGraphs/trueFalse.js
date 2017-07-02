@@ -19,7 +19,7 @@
 		glbGraphs.generalGraph = generalGraph;
 	}
 
-	var module = generalGraph.multipleChoice = {};
+	var module = generalGraph.trueFalse = {};
 
 	var question;
 	var graph;
@@ -89,15 +89,13 @@
 	module.update = function () {
 		//Format data
 		//Get choices.
-		var choices = [];
-		question.name.split("[CHOICES]")[1].split("|").forEach(function (choice, index) {
-			if (choice !== "") {
-				choices[index] = {
-					name: choice,
-					count: 0
-				};
-			}
-		});
+		var choices = [{
+			name: "True",
+			count: 0
+		}, {
+			name: "False",
+			count: 0
+		}];
 
 		//Count responses.
 		question.answers.forEach(function (response) {
@@ -124,22 +122,21 @@
 			return b.value - a.value;
 		})
 
-		for (var i = 0; i < choices.length; i++) {
-			choices[i].index = i;
-		}
-
 		d3.selectAll("path").property("__oldData__", function (d) {
 			return d;
 		});
 		var arc = graphBase.selectAll(".arc")
 			.data(pie(choices), function (d) {
-				return d.data.index;
+				return d.data.name;
 			});
 
 		var arcEnter = arc.enter().append("g").attr("class", "arc").style("fill-opacity", 0);
 
 		arcEnter.append("path").attr("d", defaultArc).attr("fill", function (d) {
-			return colors[d.data.index % colors.length];
+			if (d.data.name === "True") {
+				return colors[0]
+			}
+			return colors[1];
 		}).property("__oldData__", function (d) {
 			return {
 				startAngle: Math.PI * 2,
