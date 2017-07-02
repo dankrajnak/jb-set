@@ -1,168 +1,289 @@
-/**
- * Created by danielkrajnak on 4/20/17.
+/*
+ * Created by danielkrajnak on 6/07/17.
  */
+(function (global) {
+	"use strict";
 
-//Temporary global variable which I'll erase I promise
-jbcountries = [];
-jbregions = [];
+	var graph = global.graph;
+	if (!graph) {
+		graph = {};
+		global.graph = graph;
+	}
 
-function GeneralGraph(width, height, margin) {
+	var graphs = graph.graphs;
+	if (!graphs) {
+		graphs = {}
+		graph.graphs = graphs;
+	}
 
-	var margin = (typeof margin === 'undefined') ? {
+	var module = graphs.generalGraph = {};
+
+	var width = $("#graph-row").width();
+	var height = window.innerHeight * .7;
+
+	//Private members
+	var margin = {
 		top: 20,
 		right: 30,
 		bottom: 30,
 		left: 40
-	} : margin;
-	var width = (typeof width === 'undefined') ? $("#graph-row").width() : width;
-	var height = (typeof height === 'undefined') ? window.innerHeight / 2 : height;
+	};
 
-	width -= margin.left + margin.right;
-	height -= margin.top + margin.bottom;
+	var oldQuestionType = '';
+	var oldGraph = '';
 
+	module.animationDuration = 700;
 
-	this.graph = d3.select("#general-graph").attr("height", height + margin.top + margin.bottom).attr("width", width + margin.left + margin.right);
+	var hideGraph = function (graph) {
+		graph.classed("fadeOut", true);
+		setTimeout(function () {
+			graph.style('display', 'none');
+		}, module.animationDuration)
+	}
 
-	var questionsData = [];
-
-	queue()
-		.defer(d3.tsv, "<%= image_url('jb-countries.tsv') %>")
-		.defer(d3.tsv, "<%= image_url('jb-regions.tsv') %>")
-		.defer(d3.json, "/surveys.json")
-		.await(ready);
-
-	function ready(error, countries, regions, surveys) {
-		jbcountries = countries;
-		jbregions = regions;
-		if (error) throw error;
-
-		surveys.forEach(function (e) {
-			$('#general-graph-select').append("<option value = \"" + e.name + "\"> " + e.name + "</option>");
-		});
-		var selected = $('#general-graph-select option').filter(":selected");
+	var showGraph = function (graph) {
+		d3.select(".general-graph").style("display", "none");
+		graph.style('display', "block");
+		graph.classed("fadeOut", false);
+	}
 
 
-		d3.json("/surveys/" + encodeURI(selected.text().trim()) + ".json", function (error, survey) {
+	var drawGraph = function (questionInfo) {
+		if (!questionInfo) return;
+
+		var questionID = questionInfo.split(',')[0];
+		var questionType = questionInfo.split(',')[1];
+		var graphModule, graph;
+
+		switch (questionType) {
+			case 'n':
+				graphModule = module.number;
+				graph = d3.select("#general-graph-number");
+				break;
+			case 'mc':
+				graphModule = module.multipleChoice;
+				graph = d3.select("#general-graph-multiple-choice");
+				break;
+			case 'sr':
+				graphModule = module.shortResponse;
+				graph = d3.select("#general-graph-short-response");
+				break;
+			case 'lr':
+				graphModule = module.longResponse;
+				graph = d3.select("#general-graph-long-response");
+				break;
+			case 'tf':
+				graphModule = module.trueFalse;
+				graph = d3.select("#general-graph-true-false");
+				break;
+			case 'yn':
+				graphModule = module.yesNo;
+				graph = d3.select("#general-graph-yes-no");
+				break;
+			default:
+				graphModule = module.longResponse;
+				graph = d3.select("#general-graph-long-response");
+				break;
+		}
+
+		d3.json('/questions/' + questionID + '.json', function (error, question) {
 			if (error) throw error;
 
+			//Draw appropriate graph
+			if (graphModule && graphModule.draw) {
+				graphModule.draw(graph, question);
+			}
+			oldGraph = graph;
+			oldQuestionType = questionType;
+		});
+
+		//Transistion graphs out and in if the type of question changes
+		if (oldQuestionType !== questionType) {
+			if (oldGraph) {
+				hideGraph(oldGraph);
+
+				setTimeout(function () {
+					showGraph(graph);
+				}, module.animationDuration);
+			} else {
+				showGraph(graph);
+			}
+		}
+	}
+
+	var populateQuestions = function (survey) {
+		d3.json("/surveys/" + encodeURI(survey.trim()) + ".json", function (error, survey) {
+			if (error) throw error;
+
+			//Remove current questions 
 			$('#general-graph-question-select option').remove();
+
+			//Add new quesitons
 			survey.questions.forEach(function (q) {
+				//Format multiple choice questions
 				var name = (q.qtype === 'mc') ? q.name.split('[CHOICES]')[0] : q.name;
+				//Disable headers
 				var disabled = (q.qtype === 'h') ? "class=\"general-graph-header-option\" disabled" : '';
-				$('#general-graph-question-select').append("<option value = \"" + q.id + "\" " + disabled + "> " + name + "</option>");
+				$('#general-graph-question-select').append("<option value = \"" + q.id + ',' + q.qtype + "\" " + disabled + "> " + name + "</option>");
 			});
 
-			drawGraph(graph, $('#general-graph-select').find(":selected").text(), width, height, margin);
-		});
+			var questionSelected = $('#general-graph-question-select option').filter(":selected").val();
+			drawGraph(questionSelected);
 
+		});
+	}
+
+	var handler = function (error, surveys) {
+		if (error) throw error;
+
+		// Populate survey select
+		surveys.forEach(function (survey) {
+			$('#general-graph-select').append("<option value = \"" + survey.name + "\"> " + survey.name + "</option>");
+		});
+		var surveySelected = $('#general-graph-select option').filter(":selected").text();
+
+		// Populate Question Select and Draw Graph
+		populateQuestions(surveySelected);
+
+		//Listen for change in survey
 		$('#general-graph-select').change(function () {
-			selected = $('#general-graph-select option').filter(":selected");
-
-			d3.json("/surveys/" + encodeURI(selected.text().trim()) + ".json", function (error, data) {
-				if (error) throw error;
-
-				$('#general-graph-question-select option').remove();
-				data.questions.forEach(function (q) {
-					var name = (q.qtype === 'mc') ? q.name.split('[CHOICES]')[0] : q.name;
-					var disabled = (q.qtype === 'h') ? "class=\"general-graph-header-option\" disabled" : '';
-					$('#general-graph-question-select').append("<option value = \"" + q.id + "\" " + disabled + "> " + name + "</option>");
-				});
-
-				drawGraph(this.graph, $('#general-graph-select').find(":selected").text(), width, height, margin);
-			});
+			populateQuestions($('#general-graph-select option').filter(':selected').text())
 		});
 
+		//Listen for change in question
 		$('#general-graph-question-select').change(function () {
-			var selected = parseInt($('#general-graph-question-select option').filter(":selected").val());
-			d3.json('/questions/' + selected + '.json', function (error, question) {
-				if (error) throw error;
-				console.log(question);
-				drawGraph(this.graph, question, width, height, margin);
-			});
-
+			console.log("--------Question Change ---------");
+			drawGraph($('#general-graph-question-select option').filter(':selected').val())
 		});
 	}
-}
 
-function drawGraph(chart, question, width, height, margin) {
-	switch (question.type) {
-		case 'n':
-			var g = chart.append("g")
-				.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-			var y = d3.scaleLinear().range([height, 0]);
-			var x = d3.scaleBand().range([0, width]).paddingInner(0.01);
+	//Draw function
+	module.draw = function (graphWidth, graphHeight, graphMargins) {
+		width = graphWidth ? graphWidth : width;
+		height = graphHeight ? graphHeight : height;
+		margin = graphMargins ? graphMargins : margin;
 
+		width -= margin.left + margin.right;
+		height -= margin.top + margin.bottom;
 
+		module.width = width;
+		module.height = height;
+		module.margin = margin;
 
-			var xAxis = d3.axisBottom().scale(x);
-			var yAxis = d3.axisLeft().scale(y);
-
-			/*---		Dependent on data		---*/
-
-			y.domain([0, d3.max(question.answers, function (d) {
-				return +d.answer; //coerce to number
-			})]);
-
-			console.log(d3.max(question.answers, function (d) {
-				return d.answer;
-			}))
-			console.log(question.answers);
-
-			//attach regions to answers.  Ugh, there's a better way to do this.
-			question.answers.forEach(function (a) {
-				a.region = jbregions.find(function (region) {
-					return (jbcountries.find(function (country) {
-						return (country.name === a.country);
-					}).region === region.id);
-				})
-			});
-
-
-
-			//sort countries alphabetically, then by region
-			x.domain(question.answers.sort(function (a, b) {
-				if (+a.region.id === +b.region.id) {
-					return a.country.localeCompare(b.country);
-				}
-				return +a.region.id - b.region.id;
-			}).map(function (c) {
-				return c.country;
-			}));
-
-			g.append("g").attr("class", "x-axis")
-				.attr("transform", "translate(0," + height + ")")
-				.call(xAxis);
-
-			g.append("g")
-				.attr("class", "y-axis")
-				.call(yAxis);
-
-			g.selectAll(".bar")
-				.data(question.answers)
-				.enter().append("rect")
-				.attr("transform", function (d) {
-					return "translate(" + x(d.country) + ")";
-				}).attr("class", function (d) {
-					return "bar " + d.region.abbreviation
-				})
-				.attr("x", function (d) {
-					return x(d.name);
-				})
-				.attr("y", function (d) {
-					return y(d.answer);
-				})
-				.attr("height", function (d) {
-					return height - y(+d.answer);
-				})
-				.attr("width", x.bandwidth());
-			/*
-			-------------------------------------
-			*/
-
-			break;
-		default:
-			break;
+		d3.json('/surveys.json', handler);
 	}
+
+
+})(this);
+
+/*--------------- Draw and Update Functions ---------------*/
+
+/*
+Each type of graph has an draw and an update function.  The draw function is for setup
+and is called only once at the beginning of this script.  The update function is called
+each time a graph of this type is viewed and updates the graph with the data from the question
+being viewed.
+*/
+
+function drawNumber(graph) {
+
+
 }
 
-//GeneralGraph();
+function updateNumber(gData) {
+
+}
+
+function drawMultipleChoice(graph) {
+
+	graph.attr("height", height + margin.top + margin.bottom).attr("width", width + margin.left + margin.right);
+
+	var graphBase = graph.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+	var radius = Math.min(height / 2, width / 4);
+	var pie = d3.layout.pie()
+		.sort(null)
+		.value(function (d) {
+			return d.value;
+		});
+
+	var path = d3.svg.arc()
+		.outerRadius(radius - 10)
+		.innerRadius(0);
+
+	var label = d3.svg.arc()
+		.outerRadius(radius - 40)
+		.innerRadius(radius - 40);
+
+	var colors = ["#336699", "#FF6633", "#CC0066", "#FFCC33", "#FF3333", "#FF9933", "#009966", "#339933"];
+
+	var defaultArc = d3.svg.arc().outerRadius(radius - 10).innerRadius(0); //margin of 10.
+
+	return {
+		graphBase: graphBase,
+		radius: radius,
+		pie: pie,
+		path: path,
+		label: label,
+		colors: colors,
+		defaultArc: defaultArc,
+	};
+}
+
+function updateMultipleChoice(gData) {
+	var graphBase = gData.graphBase;
+	var radius = gData.radius;
+	var question = gData.question;
+	var pie = gData.pie;
+	var path = gData.path;
+	var label = gData.label;
+	var colors = gData.colors;
+	var defaultArc = gData.defaultArc;
+	var colorIndex = 0;
+
+
+}
+
+
+function drawShortResponse(graph) {
+	graph.append("div").attr("class", "jumbotron").append("h5").style("color", "#222").html("Short response questions aren't supported yet :(  Try another question!");
+	return graph;
+}
+
+function drawLongResponse(graph) {
+	graph.append("div").attr("class", "jumbotron").append("h5").style("color", "#222").html("Long response questions aren't supported yet :(  Try another question!");
+	return graph;
+}
+
+function updateLongResponse(gData) {
+	/*var graph = longResponseGraph.select(".carousel-inner");
+	var question = gData;
+
+	var items = graph.selectAll('.carousel-item').data(question.answers, function (d) {
+		if (question.keys) {
+			d.identifier = d.keyAnswers[0];
+			return d.keyAnswers[0];
+		} else {
+			d.identifier = d.country;
+			return d.country;
+		}
+	});
+
+	var itemsEnter = items.enter().insert("div")
+		.attr("class", "carousel-item");
+
+	itemsEnter.append("p").attr("class", "d-block").html(function (d) {
+		return d.answer
+	});
+
+	var itemsExt = bar.exit().remove();
+	*/
+}
+
+function drawTrueFalse(graph) {
+	graph.append("div").attr("class", "jumbotron").append("h5").style("color", "#222").html("True/False questions aren't supported yet :(  Try another question!");
+}
+
+function drawYesNo(graph) {
+	graph.append("div").attr("class", "jumbotron").append("h5").style("color", "#222").html("Yes/No questions aren't supported yet :(  Try another question!");
+	return graph;
+}

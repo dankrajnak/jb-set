@@ -5,7 +5,7 @@ json.keys @keys, :id, :name unless @keys.empty?
 
 json.set! :answers do
   json.array! @question.question_answers.each do |a|
-		unless a.answer.blank?
+		unless a.answer.blank? or a.answer == "/No Answer/"
 			#Keys are identifiers of a survey outside of country. 
 			keyAnswers = Array.new
 			unless @keys.empty?
