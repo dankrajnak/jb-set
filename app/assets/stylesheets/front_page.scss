@@ -1,329 +1,320 @@
-// Place all the styles related to the front_pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "creative";
-@import "variables";
-
-/* Custom page CSS */
-
-body>.container {
-	padding: 70px 15px 60px;
-}
-
-.container .text-muted {
-	margin: 20px 0;
-}
-
-.footer>.container {
-	padding-right: 15px;
-	padding-left: 15px;
-}
-
-code {
-	font-size: 80%;
-}
-
-.row-bottom {
-	position: relative;
-}
-
-.bottom-align {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-}
-
-.footer-text {
-	padding: 0px;
-}
-
-.field_with_errors {
-	display: inline;
-	@extend .has-error;
-}
-
-
-/*No Padding or Margins*/
-
-.no-padding {
-	padding: 0;
-}
-
-.no-margins {
-	margin: 0;
-}
-
-
-/* Graph styles */
-
-#general-graph-question-select {
-	margin-bottom: 10px;
-}
-
-.general-graph {
-	display: none;
-}
-
-#general-graph-number {
-	.AJB {
-		fill: $cisv-orange;
+	// Place all the styles related to the front_pages controller here.
+	// They will automatically be included in application.css.
+	// You can use Sass (SCSS) here: http://sass-lang.com/
+	@import "bootstrap-sprockets";
+	@import "bootstrap";
+	@import "creative";
+	@import "variables";
+	/* Custom page CSS */
+	
+	body>.container {
+		padding: 70px 15px 60px;
 	}
-	.EJB {
-		fill: $cisv-pink;
+	
+	.container .text-muted {
+		margin: 20px 0;
 	}
-	.APJB {
-		fill: $cisv-green;
+	
+	.footer>.container {
+		padding-right: 15px;
+		padding-left: 15px;
 	}
-	text {
-		fill: white;
-		font: 10px sans-serif;
-		text-anchor: middle;
+	
+	code {
+		font-size: 80%;
 	}
-	y-axis {
-		color: white;
+	
+	.row-bottom {
+		position: relative;
 	}
-}
-
-#general-graph-multiple-choice {
-	text {
-		fill: white;
+	
+	.bottom-align {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+	}
+	
+	.footer-text {
+		padding: 0px;
+	}
+	
+	.field_with_errors {
+		display: inline;
+		@extend .has-error;
+	}
+	/*No Padding or Margins*/
+	
+	.no-padding {
+		padding: 0;
+	}
+	
+	.no-margins {
+		margin: 0;
+	}
+	/* Graph styles */
+	
+	#general-graph-question-select {
+		margin-bottom: 10px;
+	}
+	
+	.general-graph {
+		display: none;
+	}
+	
+	#general-graph-number {
+		.AJB {
+			fill: $cisv-orange;
+		}
+		.EJB {
+			fill: $cisv-pink;
+		}
+		.APJB {
+			fill: $cisv-green;
+		}
+		text {
+			fill: $gray-lighter;
+			@include sans-serif-font();
+			text-anchor: middle;
+			&.x-axis {
+				display: none;
+				&.active {
+					display: inherit;
+				}
+			}
+		}
+	}
+	
+	#general-graph-multiple-choice {
+		text {
+			fill: white;
+			@include sans-serif-font();
+			font-weight: 300;
+			text-anchor: middle;
+		}
+		.pie-info {
+			font-size: 1em;
+			font-weight: bold;
+		}
+	}
+	
+	#general-graph-long-response {
+		background-color: $gray-lighter;
+		padding: 20px;
+		color: $gray-darker;
+		.long-response-card {
+			background-color: $gray-lighter;
+			border-radius: 2px;
+			box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+			margin: 10px;
+			padding: 10px;
+		}
+		.long-response-text::before {
+			content: "\201c";
+			font-size: 20px;
+		}
+		.long-response-text::after {
+			content: "\201d";
+			font-size: 20px;
+		}
+		.long-response-text {
+			@include cool-serif-font();
+			font-size: 15px;
+		}
+		.long-response-next {
+			float: right;
+		}
+		.long-response-previous {
+			float: left
+		}
+		.long-response-label::before,
+		.long-response-label::after {
+			content: " — ";
+		}
+		.long-response-label {
+			color: $theme-primary;
+			font-weight: 200;
+			margin: auto;
+			text-align: center;
+		}
+		button {
+			background-color: $gray-lighter;
+			border: solid $gray 1px;
+			border-radius: 4px;
+			padding: 5px;
+		}
+	}
+	
+	.axis text {
 		@include sans-serif-font();
-		font-weight: 300;
-		text-anchor: middle;
+		font-size: 10px;
 	}
-	.pie-info {
-		font-size: 1em;
-		font-weight: bold;
+	
+	.y-axis path,
+	.y-axis line {
+		fill: none;
+		stroke: $gray-lighter;
+		shape-rendering: crispEdges;
 	}
-}
-
-#general-graph-long-response {
-	background-color: $gray-lighter;
-	padding: 20px;
-	color: $gray-darker;
-	.long-response-card {
-		background-color: $gray-lighter;
-		border-radius: 2px;
-		box-shadow: 0px 3px 3px 2px rgba(0, 0, 0, .2);
-		margin: 10px;
-		padding: 10px;
+	/* Graph Animations */
+	
+	$transformAmount: 100px;
+	$transformDuration: .3s;
+	@-webkit-keyframes fadeLeft {
+		from {}
+		to {
+			opacity: 0;
+		}
 	}
-	.long-response-text::before {
-		content: "\201c";
-		font-size: 20px;
+	
+	@keyframes fadeLeft {
+		from {}
+		to {
+			opacity: 0;
+		}
 	}
-	.long-response-text::after {
-		content: "\201d";
-		font-size: 20px;
+	
+	.fadeLeft {
+		-webkit-animation-name: fadeLeft;
+		animation-name: fadeLeft;
+		animation-timing-function: ease;
+		-webkit-animation-duration: $transformDuration;
+		animation-duration: $transformDuration;
 	}
-	.long-response-text {
-		@include cool-serif-font();
-		font-size: 15px;
+	
+	@-webkit-keyframes fadeRight {
+		from {}
+		to {
+			opacity: 0;
+		}
 	}
-	.long-response-next {
-		float: right;
+	
+	@keyframes fadeRight {
+		from {}
+		to {
+			opacity: 0;
+		}
 	}
-	.long-response-previous {
-		float: left
+	
+	.fadeRight {
+		-webkit-animation-name: fadeRight;
+		animation-name: fadeRight;
+		animation-timing-function: ease;
+		-webkit-animation-duration: $transformDuration;
+		animation-duration: $transformDuration;
 	}
-	.long-response-label::before,
-	.long-response-label::after {
-		content: " — ";
+	
+	@-webkit-keyframes showRight {
+		from {
+			-webkit-transform: perspective(1000) translate($transformAmount, 0) rotate3d(0, 1, 0, 60deg);
+			transform: perspective(1000) translate($transformAmount, 0) rotate3d(0, 1, 0, 60deg);
+			opacity: 0;
+		}
+		to {}
 	}
-	.long-response-label {
-		color: $theme-primary;
-		font-weight: 200;
-		margin: auto;
-		text-align: center;
+	
+	@keyframes showRight {
+		from {
+			-webkit-transform: perspective(1000) translate($transformAmount, 0) rotate3d(0, 1, 0, 60deg);
+			transform: perspective(1000) translate($transformAmount, 0) rotate3d(0, 1, 0, 60deg);
+			opacity: 0;
+		}
+		to {}
 	}
-	button {
-		background-color: $gray-lighter;
-		border: solid $gray 1px;
-		border-radius: 4px;
-		padding: 5px;
+	
+	.showRight {
+		-webkit-animation-name: showRight;
+		animation-name: showRight;
+		animation-timing-function: ease;
+		-webkit-animation-duration: $transformDuration;
+		animation-duration: $transformDuration;
 	}
-}
-
-.axis text {
-	@include sans-serif-font();
-	font-size: 10px;
-}
-
-.x-axis path,
-.x-axis line {
-	fill: none;
-}
-
-.y-axis path,
-.y-axis line {
-	fill: none;
-	stroke: #FFF;
-	shape-rendering: crispEdges;
-}
-
-
-/* Graph Animations */
-
-$transformAmount: 100px;
-$transformDuration: .3s;
-@-webkit-keyframes fadeLeft {
-	from {}
-	to {
-		opacity: 0;
+	
+	@-webkit-keyframes showLeft {
+		from {
+			-webkit-transform: perspective(1000) translate(-$transformAmount, 0) rotate3d(0, 1, 0, 300deg);
+			transform: perspective(1000) translate(-$transformAmount, 0) rotate3d(0, 1, 0, 300deg);
+			opacity: 0;
+		}
+		to {}
 	}
-}
-
-@keyframes fadeLeft {
-	from {}
-	to {
-		opacity: 0;
+	
+	@keyframes showLeft {
+		from {
+			-webkit-transform: perspective(1000) translate(-$transformAmount, 0) rotate3d(0, 1, 0, 300deg);
+			transform: perspective(1000) translate(-$transformAmount, 0) rotate3d(0, 1, 0, 300deg);
+			opacity: 0;
+		}
+		to {}
 	}
-}
-
-.fadeLeft {
-	-webkit-animation-name: fadeLeft;
-	animation-name: fadeLeft;
-	animation-timing-function: ease;
-	-webkit-animation-duration: $transformDuration;
-	animation-duration: $transformDuration;
-}
-
-@-webkit-keyframes fadeRight {
-	from {}
-	to {
-		opacity: 0;
+	
+	.showLeft {
+		-webkit-animation-name: showLeft;
+		animation-name: showLeft;
+		animation-timing-function: ease;
+		-webkit-animation-duration: $transformDuration;
+		animation-duration: $transformDuration;
 	}
-}
-
-@keyframes fadeRight {
-	from {}
-	to {
-		opacity: 0;
+	
+	@-webkit-keyframes fadeIn {
+		from {
+			-webkit-transform: perspective(400) scaleZ(.1) rotate3d(1, 0, 0, -20deg);
+			transform: perspective(400) scale3d(.8, .8, .8) rotate3d(1, 0, 0, -20deg);
+			opacity: 0;
+		}
+		to {
+			-webkit-transform: perspective(400px);
+			transform: perspective(400px);
+		}
 	}
-}
-
-.fadeRight {
-	-webkit-animation-name: fadeRight;
-	animation-name: fadeRight;
-	animation-timing-function: ease;
-	-webkit-animation-duration: $transformDuration;
-	animation-duration: $transformDuration;
-}
-
-@-webkit-keyframes showRight {
-	from {
-		-webkit-transform: perspective(1000) translate($transformAmount, 0) rotate3d(0, 1, 0, 60deg);
-		transform: perspective(1000) translate($transformAmount, 0) rotate3d(0, 1, 0, 60deg);
-		opacity: 0;
+	
+	@keyframes fadeIn {
+		from {
+			-webkit-transform: perspective(400) scaleZ(.1) rotate3d(1, 0, 0, -20deg);
+			transform: perspective(400) scale3d(.8, .8, .8) rotate3d(1, 0, 0, -20deg);
+			opacity: 0;
+		}
+		to {
+			-webkit-transform: perspective(400px);
+			transform: perspective(400px);
+		}
 	}
-	to {}
-}
-
-@keyframes showRight {
-	from {
-		-webkit-transform: perspective(1000) translate($transformAmount, 0) rotate3d(0, 1, 0, 60deg);
-		transform: perspective(1000) translate($transformAmount, 0) rotate3d(0, 1, 0, 60deg);
-		opacity: 0;
+	
+	.fadeIn {
+		-webkit-animation-name: fadeIn;
+		animation-name: fadeIn;
+		animation-timing-function: ease;
+		-webkit-animation-duration: .7s;
+		animation-duration: .7s;
 	}
-	to {}
-}
-
-.showRight {
-	-webkit-animation-name: showRight;
-	animation-name: showRight;
-	animation-timing-function: ease;
-	-webkit-animation-duration: $transformDuration;
-	animation-duration: $transformDuration;
-}
-
-@-webkit-keyframes showLeft {
-	from {
-		-webkit-transform: perspective(1000) translate(-$transformAmount, 0) rotate3d(0, 1, 0, 300deg);
-		transform: perspective(1000) translate(-$transformAmount, 0) rotate3d(0, 1, 0, 300deg);
-		opacity: 0;
+	
+	@-webkit-keyframes fadeOut {
+		from {
+			-webkit-transform: perspective(400px);
+			transform: perspective(400px);
+		}
+		to {
+			-webkit-transform: perspective(400) scaleZ(.1) rotate3d(1, 0, 0, -20deg);
+			transform: perspective(400) scale3d(.8, .8, .8) rotate3d(1, 0, 0, -20deg);
+			opacity: 0;
+		}
 	}
-	to {}
-}
-
-@keyframes showLeft {
-	from {
-		-webkit-transform: perspective(1000) translate(-$transformAmount, 0) rotate3d(0, 1, 0, 300deg);
-		transform: perspective(1000) translate(-$transformAmount, 0) rotate3d(0, 1, 0, 300deg);
-		opacity: 0;
+	
+	@keyframes fadeOut {
+		from {
+			-webkit-transform: perspective(400px);
+			transform: perspective(400px);
+		}
+		to {
+			-webkit-transform: perspective(400) scaleZ(.1) rotate3d(1, 0, 0, -20deg);
+			transform: perspective(400) scale3d(.8, .8, .8) rotate3d(1, 0, 0, -20deg);
+			opacity: 0;
+		}
 	}
-	to {}
-}
-
-.showLeft {
-	-webkit-animation-name: showLeft;
-	animation-name: showLeft;
-	animation-timing-function: ease;
-	-webkit-animation-duration: $transformDuration;
-	animation-duration: $transformDuration;
-}
-
-@-webkit-keyframes fadeIn {
-	from {
-		-webkit-transform: perspective(400) scaleZ(.1) rotate3d(1, 0, 0, -20deg);
-		transform: perspective(400) scale3d(.8, .8, .8) rotate3d(1, 0, 0, -20deg);
-		opacity: 0;
+	
+	.fadeOut {
+		-webkit-animation-name: fadeOut;
+		animation-name: fadeOut;
+		animation-timing-function: ease-out;
+		-webkit-animation-duration: .7s;
+		animation-duration: .7s;
 	}
-	to {
-		-webkit-transform: perspective(400px);
-		transform: perspective(400px);
-	}
-}
-
-@keyframes fadeIn {
-	from {
-		-webkit-transform: perspective(400) scaleZ(.1) rotate3d(1, 0, 0, -20deg);
-		transform: perspective(400) scale3d(.8, .8, .8) rotate3d(1, 0, 0, -20deg);
-		opacity: 0;
-	}
-	to {
-		-webkit-transform: perspective(400px);
-		transform: perspective(400px);
-	}
-}
-
-.fadeIn {
-	-webkit-animation-name: fadeIn;
-	animation-name: fadeIn;
-	animation-timing-function: ease;
-	-webkit-animation-duration: .7s;
-	animation-duration: .7s;
-}
-
-@-webkit-keyframes fadeOut {
-	from {
-		-webkit-transform: perspective(400px);
-		transform: perspective(400px);
-	}
-	to {
-		-webkit-transform: perspective(400) scaleZ(.1) rotate3d(1, 0, 0, -20deg);
-		transform: perspective(400) scale3d(.8, .8, .8) rotate3d(1, 0, 0, -20deg);
-		opacity: 0;
-	}
-}
-
-@keyframes fadeOut {
-	from {
-		-webkit-transform: perspective(400px);
-		transform: perspective(400px);
-	}
-	to {
-		-webkit-transform: perspective(400) scaleZ(.1) rotate3d(1, 0, 0, -20deg);
-		transform: perspective(400) scale3d(.8, .8, .8) rotate3d(1, 0, 0, -20deg);
-		opacity: 0;
-	}
-}
-
-.fadeOut {
-	-webkit-animation-name: fadeOut;
-	animation-name: fadeOut;
-	animation-timing-function: ease-out;
-	-webkit-animation-duration: .7s;
-	animation-duration: .7s;
-}

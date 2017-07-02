@@ -58,13 +58,8 @@
 			y = d3.scale.linear().range([height, 0]);
 			x = d3.scale.ordinal().rangeRoundBands([0, width], 0.01);
 
-			xAxis = d3.svg.axis().scale(x).orient("bottom");
+			//xAxis = d3.svg.axis().scale(x).orient("bottom");
 			yAxis = d3.svg.axis().scale(y).orient("left");
-
-			//Attach axes
-			graphBase.append("g").attr("class", "x-axis axis")
-				.attr("transform", "translate(0," + height + ")")
-				.call(xAxis);
 
 			graphBase.append("g")
 				.attr("class", "y-axis axis")
@@ -103,7 +98,7 @@
 			}
 		});
 
-		var barEnter = bar.enter().insert("g", ".x-axis")
+		var barEnter = bar.enter().insert("g")
 			.attr("class", "bar")
 			.attr("fill-opacity", 0);
 
@@ -113,7 +108,29 @@
 			})
 			.attr("width", 0)
 			.attr("height", 0)
-			.attr("transform", "translate(0, " + height + ")");
+			.attr("transform", "translate(0, " + height + ")").on("mouseover", function () {
+				var numOfChildren = 2;
+				for (var i = 0; i < numOfChildren; i++) {
+
+					var node = this.parentNode.childNodes.item(i)
+					if (node.tagName === 'text') {
+						node.classList.add('active');
+						break;
+					}
+				}
+			})
+			.on('mouseout', function () {
+				var numOfChildren = 2;
+				for (var i = 0; i < numOfChildren; i++) {
+					var node = this.parentNode.childNodes.item(i)
+					if (node.tagName === 'text') {
+						node.classList.remove('active');
+						break;
+					}
+				}
+			});
+
+
 
 		y.domain([0, d3.max(question.answers, function (d) {
 			return +d.answer; //coerce to number
@@ -131,6 +148,10 @@
 			return c.country;
 		}));
 
+		barEnter.append("text").attr('class', 'x-axis').attr('x', x.rangeBand() / 2).attr('y', height + margin.bottom / 2).text(function (d) {
+			return d.identifier;
+		});
+
 		var barUpdate = d3.transition(bar)
 			.attr("transform", function (d) {
 				return "translate(" + x(d.identifier) + ", 0)";
@@ -146,6 +167,9 @@
 			})
 			.attr("width", x.rangeBand());
 
+		barUpdate.select('text').attr('x', x.rangeBand() / 2);
+
+
 		var barExit = d3.transition(bar.exit())
 			.style("fill-opacity", 0)
 			.remove()
@@ -155,7 +179,7 @@
 			.attr("height", 0);
 
 		d3.transition(graphBase).select(".y-axis").call(yAxis);
-		d3.transition(graphBase).select(".x-axis").call(xAxis);
+		//d3.transition(graphBase).select(".x-axis").call(xAxis);
 	}
 
 })(this)
