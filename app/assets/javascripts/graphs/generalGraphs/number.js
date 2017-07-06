@@ -88,21 +88,16 @@
 			});
 		}
 
-		console.log('question', question);
-
 		var bar = graphBase.selectAll(".bar").data(question.answers, function (d) {
 			if (question.keys && d.keyAnswers) {
 				d.identifier = d.keyAnswers[0];
-				console.log('keys', Object.assign({}, d));
 				return d.keyAnswers[0];
 			} else {
 				d.identifier = d.country;
-				console.log('country', Object.assign({}, d));
 				return d.country;
 			}
 		});
 
-		console.log("___________DATA DONE_______________");
 		var barEnter = bar.enter().insert("g")
 			.attr("class", "bar")
 			.attr("fill-opacity", 0);
@@ -147,9 +142,6 @@
 			}
 			return +a.region.id - b.region.id;
 		}).map(function (c) {
-			if (c.country === "Brazil") {
-				console.log("WOW", c);
-			}
 			return c.identifier;
 		}));
 
