@@ -88,16 +88,21 @@
 			});
 		}
 
+		console.log('question', question);
+
 		var bar = graphBase.selectAll(".bar").data(question.answers, function (d) {
-			if (question.keys) {
+			if (question.keys && d.keyAnswers) {
 				d.identifier = d.keyAnswers[0];
+				console.log('keys', Object.assign({}, d));
 				return d.keyAnswers[0];
 			} else {
 				d.identifier = d.country;
+				console.log('country', Object.assign({}, d));
 				return d.country;
 			}
 		});
 
+		console.log("___________DATA DONE_______________");
 		var barEnter = bar.enter().insert("g")
 			.attr("class", "bar")
 			.attr("fill-opacity", 0);
@@ -142,10 +147,10 @@
 			}
 			return +a.region.id - b.region.id;
 		}).map(function (c) {
-			if (question.keys) {
-				return c.keyAnswers[0];
+			if (c.country === "Brazil") {
+				console.log("WOW", c);
 			}
-			return c.country;
+			return c.identifier;
 		}));
 
 		barEnter.append("text").attr('class', 'x-axis').attr('x', x.rangeBand() / 2).attr('y', height + margin.bottom / 2).text(function (d) {
@@ -167,7 +172,9 @@
 			})
 			.attr("width", x.rangeBand());
 
-		barUpdate.select('text').attr('x', x.rangeBand() / 2);
+		barUpdate.select('text').attr('x', x.rangeBand() / 2).text(function (d) {
+			return d.identifier;
+		});
 
 
 		var barExit = d3.transition(bar.exit())
