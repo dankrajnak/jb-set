@@ -1,3 +1,4 @@
+require "csv"
 wb = xlsx_package.workbook
 
 wb.styles do |style|
@@ -6,12 +7,12 @@ wb.styles do |style|
 
   @surveys.each do |survey|
     wb.add_worksheet(name: survey.name) do |sheet|
-      firstRow = ["Country"] #array containing the first row
+      firstRow = ["Country", "Region"] #array containing the first row
 
       #array which stores which rows each question corresponds to
       rowIndex = 0
       question_row = []
-      rowIndex += 1
+      rowIndex += firstRow.length
 
 
       #add the questions unless the question is a header
@@ -28,9 +29,18 @@ wb.styles do |style|
         end
       end
       sheet.add_row firstRow
-
-      survey.survey_completions.order(:country).each do |completion|
+			
+			countries = CSV.read('app/assets/images/jb-countries.tsv', { :col_sep => "\t" })
+			regions = CSV.read('app/assets/images/jb-regions.tsv', { :col_sep => "\t"})
+      
+			survey.survey_completions.order(:country).each do |completion|
         row = [completion.country]
+				
+				row.push (regions.at(regions.index do |region|
+					countries.at(
+						countries.index { |country| country[1] == completion.country})[2] == region[0]
+				end))[1]
+				
         questionAnswers = []
 
         #copy array so temporary deletion is possible
