@@ -135,8 +135,22 @@
 			.data(pie(choices), function (d) {
 				return d.data.index;
 			});
-
+		var text = graphBase.selectAll(".pie-text-area", ".arc").data(pie(choices), function (d){
+			return d.data.index;
+		});
+		
 		var arcEnter = arc.enter().append("g").attr("class", "arc").style("fill-opacity", 0);
+		
+		var textSpace = 15
+		var textArea = text.enter().append("g").attr("class", "pie-text-area").style("fill-opacity", 0)
+			.attr("transform", function (d) {
+				return "translate(" + label.centroid(d) + ")";
+			})
+			.attr("dy", "2.4em")
+			.style("max-width", radius)
+			.attr("title", function (d) {
+				return d.data.name + ", " + Math.round(d.data.value * 100) + "%";
+			})
 
 		arcEnter.append("path").attr("d", defaultArc).attr("fill", function (d) {
 			return colors[d.data.index % colors.length];
@@ -147,16 +161,7 @@
 			};
 		})
 
-		var textSpace = 15
-		var textArea = arcEnter.append("g").attr("class", "pie-text-area")
-			.attr("transform", function (d) {
-				return "translate(" + label.centroid(d) + ")";
-			})
-			.attr("dy", "2.4em")
-			.style("max-width", radius)
-			.attr("title", function (d) {
-				return d.data.name + ", " + Math.round(d.data.value * 100) + "%";
-			})
+		
 
 		textArea.append("text")
 			.attr("class", "pie-info")
@@ -173,6 +178,7 @@
 
 		//Update
 		var arcUpdate = d3.transition(arc).style("fill-opacity", 1);
+		var textUpdate = d3.transition(text).style("fill-opacity", 1);
 
 
 		var paths = arcUpdate.selectAll("path")
@@ -182,24 +188,28 @@
 		}).style("fill-opacity", 1)
 
 
-		arcUpdate.select(".pie-text-area").attr("transform", function (d) {
+		textUpdate.attr("transform", function (d) {
 			return "translate(" + label.centroid(d) + ")";
 		}).attr("title", function (d) {
 			return d.data.name + ", " + Math.round(d.data.value * 100) + "%";
 		});
 
-		arcUpdate.select(".pie-info")
+		textUpdate.select(".pie-info")
 			.text(function (d) {
 				return d.data.name;
 			})
 
-		arcUpdate.select(".pie-value").text(function (d) {
+		textUpdate.select(".pie-value").text(function (d) {
 			return Math.round(d.data.value * 100) + "%";
 		});
 
 
 		//exit
 		var arcExit = d3.transition(arc.exit())
+			.style("fill-opacity", 0)
+			.remove();
+		
+		var textExit = d3.transition(text.exit())
 			.style("fill-opacity", 0)
 			.remove();
 
@@ -211,7 +221,6 @@
 				});
 			})
 
-		arc.exit().select(".pie-text-area").remove();
 
 	}
 
